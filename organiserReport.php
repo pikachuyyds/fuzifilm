@@ -79,9 +79,9 @@ if (isset ($_POST["month"], $_POST["year"]))
     </head>
     <body>
         <div class = headerSection>
-            <p>Organiser</p>
             <div class = "userName">
                 <?php
+                    echo strtoUpper("<p>$userType</p>");
                     echo "$name";
                     echo "<img src='images/" .$pic. "'/>";
                 ?>
@@ -89,9 +89,11 @@ if (isset ($_POST["month"], $_POST["year"]))
             
             <div class = "pageInfo">
                 <?php
+                    echo "<ul>";
                     echo "<li>$profileUrl</li>";
                     echo "<li>$contestUrl</li>";
                     echo "<li>$reportUrl</li>";
+                    echo "</ul>";
                 ?>
             </div>
         </div>

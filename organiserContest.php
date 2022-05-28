@@ -42,9 +42,9 @@ if (isset($_SESSION['loginId'])){
     </head>
     <body>
         <div class = headerSection>
-            <p>Organiser</p>
             <div class = "userName">
                 <?php
+                    echo strtoUpper("<p>$userType</p>");
                     echo "$userResult[name]";
                     echo "<img src='images/". $userResult['profilePic']."'/>";
                     
