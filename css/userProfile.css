@@ -19,6 +19,7 @@ body{
 }
 
 .headerSection .userInfo banDate{
+    margin-left: 8%;
     font-weight: 530;
     font-size: 12pt;
     color:red;

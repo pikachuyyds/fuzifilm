@@ -1,6 +1,6 @@
 <?php
 require "conn.php";
-require "header.php";
+// require "header.php";
 $_SESSION['loginId'] = 1;
 if (isset($_SESSION['loginId'])){
     // to determine participant or organiser or admin
@@ -72,7 +72,6 @@ if (isset($_SESSION['loginId'])){
                         }
                     }
                 ?>
-            </p>
             </div> 
                 
             <div class = "userName">

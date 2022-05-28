@@ -2,29 +2,36 @@
 require "conn.php";
 require "header.php";
 
-$loginData = mysqli_query($con, "SELECT * FROM login");
-$loginResult = mysqli_fetch_array($loginData);
+if (isset($_SESSION['loginId'])){
 
-$organiserData = mysqli_query($con, "SELECT * FROM organiser");
-$organiserResult = mysqli_fetch_array($organiserData);
+    $userType = 'organiser';
+    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$_SESSION[loginId]' ");
+    $userResult = mysqli_fetch_array($userData);
 
-//for conducted contest
-$conductedData = mysqli_query($con, "SELECT * FROM contest WHERE DATE(endDate)<DATE(NOW())");
-while ($conductedResult = mysqli_fetch_array($conductedData)){
-    $conductedId[] = $conductedResult["contestId"];
-    $conductedName[] = $conductedResult["contestName"];
+    $id = $userResult["organiserID"];
+    $profileUrl = "<a href = 'userProfile.php'> Personal Information </a>";
+    $contestUrl =  "<a href = 'organiserContest.php'> Contest </a>";
+    $reportUrl = "<a href = 'organiserReport.php'> Report </a>";
+
+    //for conducted contest
+    $conductedData = mysqli_query($con, "SELECT * FROM contest WHERE DATE(endDate)<DATE(NOW()) 
+                                        AND organiserID = '$id' ");
+    while ($conductedResult = mysqli_fetch_array($conductedData)){
+        $conductedId[] = $conductedResult["contestId"];
+        $conductedName[] = $conductedResult["contestName"];
+    }
+
+    //for ongoing contest
+    $ongoingData = mysqli_query($con, "SELECT * FROM contest WHERE DATE(endDate)>=DATE(NOW())
+                                        AND organiserID = '$id'");
+    while ($ongoingResult = mysqli_fetch_array($ongoingData)){
+        $ongoingId[] = $ongoingResult["contestId"];
+        $ongoingName[] = $ongoingResult["contestName"];
+    }
+
+    $countEnd= mysqli_num_rows($conductedData);
+    $countOn = mysqli_num_rows($ongoingData); 
 }
-
-//for ongoing contest
-$ongoingData = mysqli_query($con, "SELECT * FROM contest WHERE DATE(endDate)>=DATE(NOW())");
-while ($ongoingResult = mysqli_fetch_array($ongoingData)){
-    $ongoingId[] = $ongoingResult["contestId"];
-    $ongoingName[] = $ongoingResult["contestName"];
-}
-
-$countEnd= mysqli_num_rows($conductedData);
-$countOn = mysqli_num_rows($ongoingData); 
-
 ?> 
 
 <!DOCTYPE html>
@@ -38,19 +45,18 @@ $countOn = mysqli_num_rows($ongoingData);
             <p>Organiser</p>
             <div class = "userName">
                 <?php
-                    if ($loginResult["loginId"] == $organiserResult["organiserID"]){
-                        echo "$organiserResult[name]";
-                        echo "<img src='images/". $organiserResult['profilePic']."'/>";
-                    }
+                    echo "$userResult[name]";
+                    echo "<img src='images/". $userResult['profilePic']."'/>";
+                    
                 ?>
             </div>
             
             <div class = "pageInfo">
-                <ul>
-                    <li><a href = "organiserProfile.php"> Personal Information </a></li>
-                    <li><a href = "organiserContest.php"> Contest </a></li>
-                    <li><a href = "organiserReport.php"> Report </a></li>
-                </ul>
+                <?php
+                    echo "<li>$profileUrl</li>";
+                    echo "<li>$contestUrl</li>";
+                    echo "<li>$reportUrl</li>";
+                ?>
             </div>
         </div>
 
@@ -62,16 +68,13 @@ $countOn = mysqli_num_rows($ongoingData);
                     <br>
                     <?php
                         if ($countEnd>0){
-                            if ($loginResult["loginId"] == $organiserResult["organiserID"]){
-                                for ($i= 0; $i<$countEnd; $i++ ){
-                                    echo("<a href ='$conductedId[$i].php'>$conductedName[$i]</a><br><br><br><br>");
-                                }
-                            }else{
-                                echo "No Conducted Contest";
+                            for ($i= 0; $i<$countEnd; $i++ ){
+                                echo("<a href ='$conductedId[$i].php'>$conductedName[$i]</a><br><br><br><br>");
                             }
                         }else{
-                            echo "No Contest Found";
-                        }  
+                            echo "No Conducted Contest";
+                        }
+                        
                     ?>
                 </div>
 
@@ -80,16 +83,12 @@ $countOn = mysqli_num_rows($ongoingData);
                     <br>
                     <?php
                        if ($countOn>0){
-                        if ($loginResult["loginId"] == $organiserResult["organiserID"]){
                             for ($i= 0; $i<$countOn; $i++ ){
                                 echo("<a href ='$ongoingId[$i].php'>$ongoingName[$i]</a><br><br><br><br>");
                             }
                         }else{
                             echo "No Ongoing Contest";
                         }
-                    }else{
-                        echo "No Contest Found";
-                    }  
                         mysqli_close($con);
                     ?>
                 </div>
