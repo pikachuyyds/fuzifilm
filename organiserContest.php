@@ -53,9 +53,11 @@ if (isset($_SESSION['loginId'])){
             
             <div class = "pageInfo">
                 <?php
+                    echo "<ul>";
                     echo "<li>$profileUrl</li>";
                     echo "<li>$contestUrl</li>";
                     echo "<li>$reportUrl</li>";
+                    echo "</ul>";
                 ?>
             </div>
         </div>

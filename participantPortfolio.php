@@ -2,13 +2,25 @@
 require "conn.php";
 require "header.php";
 
-$loginData = mysqli_query($con, "SELECT * FROM login");
-$loginResult = mysqli_fetch_array($loginData);
+if (isset($_SESSION['loginId'])){
 
-$participantData = mysqli_query($con, "SELECT * FROM participant");
-$participantResult = mysqli_fetch_array($participantData);
+    $userType = 'participant';
+    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$_SESSION[loginId]' ");
+    $userResult = mysqli_fetch_array($userData);
 
-$portfolio = mysqli_query($con, "SELECT * FROM participantlist WHERE participantListId = '$loginResult[loginId]'");
+    $name = $userResult['name'];
+    $pic = $userResult['profilePic'];
+    $banStart = $userResult['banStartDate'];
+    $banEnd = $userResult['banEndDate'];
+
+    $profileUrl =  "<a href = 'userProfile.php'> Personal Information </a>";
+    $portfolioUrl = "<a href = 'participantPortfolio.php'> Portfolio </a>";
+    
+    $portfolio = mysqli_query($con, "SELECT * FROM participantlist WHERE participanId = '$_SESSION[loginId]'");
+    $countPic = mysqli_num_rows($portfolio);
+}
+
+
 
 
 ?> 
@@ -22,31 +34,29 @@ $portfolio = mysqli_query($con, "SELECT * FROM participantlist WHERE participant
     <body>
         <div class = headerSection>
             <div class = "userInfo">
-                <p>Participant
-            <?php   
-                if ($loginResult["loginId"] == $participantResult["participantId"]){
-                    if ($participantResult["banStartDate"] != null){
-                        echo "<banDate> banned until  " .$participantResult['banEndDate']. "</banDate>";
+                <?php   
+                    echo strtoUpper("<p>$userType</p>");
+                    if ($banStart!= null){
+                        echo "<banDate> banned until  " .$banEnd. "</banDate>";
                     }
-                } 
-            ?>
-            </p>
+                    
+                ?>
             </div> 
                 
             <div class = "userName">
                 <?php
-                    if ($loginResult["loginId"] == $participantResult["participantId"]){
-                        echo "$participantResult[name]";
-                        echo "<img src='images/". $participantResult['profilePic']."'/>";
-                    }
+                    echo "$name";
+                    echo "<img src='images/" .$pic. "'/>";
                 ?>
             </div>
 
             <div class = "pageInfo">
-                <ul>
-                    <li><a href = "participantProfile.php"> Personal Information </a></li>
-                    <li><a href = "participantPortfolio.php"> Portfolio </a></li>
-                </ul>
+                <?php
+                    echo "<ul>";
+                    echo "<li>$profileUrl</li>";
+                    echo "<li>$portfolioUrl</li>";
+                    echo "</ul>";
+                ?>
             </div>
         </div>
         
@@ -54,7 +64,7 @@ $portfolio = mysqli_query($con, "SELECT * FROM participantlist WHERE participant
             <p>PORTFOLIO</p>
             <div class = picture>
                 <?php
-                    if (mysqli_num_rows($portfolio)>0){
+                    if ($countPic>0){
                         while($portfolioResult = mysqli_fetch_array($portfolio)){
                             echo"<img src='images/". $portfolioResult['photo']."'/><br>";
                         }

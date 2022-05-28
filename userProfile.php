@@ -76,7 +76,7 @@ if (isset($_SESSION['loginId'])){
             <div class = "userName">
                 <?php
                     echo "$name";
-                    echo "<img src='images/" .$profilePic. "'/>";
+                    echo "<img src='images/" .$pic. "'/>";
                 ?>
             </div>
 
@@ -92,9 +92,11 @@ if (isset($_SESSION['loginId'])){
                         echo "<li>$contestUrl</li>";
                         echo "<li>$reportUrl</li>";
                     }
-                    else{ //admin
+                    else if ($userType == 'admin'){
                         echo "<li>$profileUrl</li>";
                         echo "<li>$reportUrl</li>";
+                    }else{
+                        echo "";
                     }
                     echo "</ul>";
                 ?>
