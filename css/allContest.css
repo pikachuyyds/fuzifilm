@@ -1,0 +1,99 @@
+/* ---------------------------------------------- contest 1 (title & filter)----------------------------------------------*/
+.contest1{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px auto;
+    padding: 0 90px;
+}
+
+/************ title *************/
+
+.title {
+    font-size: 80px;
+    margin-bottom: 25px;
+    color: #5B3E38;
+}
+
+/************ filter *************/
+.allFilter {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    align-content: left;
+    flex-wrap: wrap;
+} 
+
+.selectedFilter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border: 1px solid #5B3E38;
+    width: auto;
+    flex-shrink: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.selectedFilter img {
+    width: 20px;
+    margin-left: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+}
+
+.right {
+    padding-left: 30px;
+}
+
+.filterBtn img {
+    width: 50px;
+    cursor: pointer;
+}
+
+
+/* ---------------------------------------------- contest 2 (clickable contests) ----------------------------------------------*/
+.allContest {
+    width: 100%;
+    padding: 0 70px;
+    margin: 60px 0;
+    display: flex;
+    flex: 1 1 0;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.aContest {
+    height: 400px;
+    width: 480px;
+    margin: 0 35px 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.img {
+    width: 480px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #5B3E38;
+}
+
+.aContest img {
+    width: 98%;
+    height: 96%;
+    object-fit: cover;
+}
+
+.contentInfo{
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
