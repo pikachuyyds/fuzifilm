@@ -1,10 +1,10 @@
 <?php
-include("conn.php");
-$_SESSION['loginId'] = 1;
+require "conn.php";
+require "header.php";
+
 if (isset($_SESSION['loginId'])){
 // to determine participant or organiser or admin
-    // $userType = $_SESSION['userType'];
-    $userType = 'participant';
+    $userType = $_SESSION['userType'];
     $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$_SESSION[loginId]' ");
     $userResult = mysqli_fetch_array($userData);
 
@@ -47,7 +47,6 @@ if (isset($_SESSION['loginId'])){
             <link href = "css/editProfile.css" rel = "stylesheet" type = "text/css">
         </head>
         <body>
-            <?php //require("header.php") ?>
             <div class="title">
                 EDIT PROFILE
             </div>
@@ -129,7 +128,7 @@ if (isset($_SESSION['loginId'])){
                     }
                 ?>
             </div>
-            <?php //require("footer.php") ?>
+            <?php require "footer.php" ?>
         </body>
     </html>
 

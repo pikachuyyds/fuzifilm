@@ -1,5 +1,6 @@
 <?php
-include ("conn.php");
+require "conn.php";
+require "header.php";
 
 $loginData = mysqli_query($con, "SELECT * FROM login");
 $loginResult = mysqli_fetch_array($loginData);
@@ -19,7 +20,6 @@ $portfolio = mysqli_query($con, "SELECT * FROM participantlist WHERE participant
         <link href = "css/participantPortfolio.css" rel = "stylesheet" type = "text/css">
     </head>
     <body>
-        <?php //require "header.php"?>
         <div class = headerSection>
             <div class = "userInfo">
                 <p>Participant
@@ -65,6 +65,6 @@ $portfolio = mysqli_query($con, "SELECT * FROM participantlist WHERE participant
                 ?>
             </div> 
         </div>
-        <?php //require "footer.php"?>
+        <?php require "footer.php"?>
     </body>
 </html>    

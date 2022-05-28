@@ -1,5 +1,6 @@
 <?php
-include("conn.php");
+require "conn.php";
+require "header.php";
 
 if (isset($_SESSION['loginId'])){
 // to determine participant or organiser or admin
@@ -18,7 +19,6 @@ if (isset($_SESSION['loginId'])){
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
         </head>
         <body>
-            <?php //require("header.php") ?>
             <div class="title">
                 CHANGE PASSWORD
             </div>
@@ -73,7 +73,7 @@ if (isset($_SESSION['loginId'])){
                     </script>
                 </div>
             </div>
-            <?php //require("footer.php") ?>
+            <?php require "footer.php" ?>
         </body>
     </html>
 

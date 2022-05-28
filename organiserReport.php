@@ -1,5 +1,6 @@
 <?php
-include ("conn.php");
+require "conn.php";
+require "header.php";
 
 if (isset($_SESSION['loginId'])){
 
@@ -77,7 +78,6 @@ if (isset ($_POST["month"], $_POST["year"]))
         <link href = "css/organiserReport.css" rel = "stylesheet" type = "text/css">
     </head>
     <body>
-        <?php //require "header.php"?> 
         <div class = headerSection>
             <p>Organiser</p>
             <div class = "userName">
@@ -146,7 +146,7 @@ if (isset ($_POST["month"], $_POST["year"]))
                 </table>
             </div>
         </div>
-        <?php //require "footer.php"?>
+        <?php require "footer.php"?>
     </body>
     
 </html>

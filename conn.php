@@ -1,7 +1,6 @@
 <?php
 //connection
 $con=mysqli_connect("localhost","root","","fuzifilm");
-session_start();
 // Check connection
 if (mysqli_connect_errno())
   {

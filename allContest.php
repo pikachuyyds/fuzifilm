@@ -13,7 +13,6 @@
             window.location.href = 'home_pg.php';</script>";
         }
     }
-1
     // get all contests information
     $sql_allContest = "SELECT * FROM contest WHERE approvalStatus = 'approved';";
     $sql_allContestQuery = mysqli_query($con,$sql_allContest);

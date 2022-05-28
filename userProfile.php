@@ -1,5 +1,6 @@
 <?php
-include ("conn.php");
+require "conn.php";
+require "header.php";
 $_SESSION['loginId'] = 1;
 if (isset($_SESSION['loginId'])){
     // to determine participant or organiser or admin
@@ -60,8 +61,7 @@ if (isset($_SESSION['loginId'])){
         <title> FUZIFILM | User Profile </title>
         <link href = "css/userProfile.css" rel = "stylesheet" type = "text/css">
     </head>
-    <body>
-        <?php //require "header.php"?> 
+    <body> 
         <div class = headerSection>
             <div class = "userInfo">
                 <?php
@@ -142,6 +142,6 @@ if (isset($_SESSION['loginId'])){
                 ?>
             </div>
         </div>
-        <?php //require "footer.php"?>
+        <?php require "footer.php"?>
     </body>
 </html>

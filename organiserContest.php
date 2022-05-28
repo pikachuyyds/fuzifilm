@@ -1,5 +1,6 @@
 <?php
-include ("conn.php");
+require "conn.php";
+require "header.php";
 
 $loginData = mysqli_query($con, "SELECT * FROM login");
 $loginResult = mysqli_fetch_array($loginData);
@@ -33,7 +34,6 @@ $countOn = mysqli_num_rows($ongoingData);
         <link href = "css/organiserContest.css" rel = "stylesheet" type = "text/css">
     </head>
     <body>
-        <?php //require "header.php"?> 
         <div class = headerSection>
             <p>Organiser</p>
             <div class = "userName">
@@ -95,6 +95,6 @@ $countOn = mysqli_num_rows($ongoingData);
                 </div>
             </div>
         </div>
-        <?php //require "footer.php"?>
+        <?php require "footer.php"?>
     </body>
 </html>
