@@ -1,0 +1,88 @@
+.signUpMain {
+    background-color: white;
+    color: #5B3E38;
+    padding: 60px 0;
+    margin: 0 10%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    width: 80%;
+    text-decoration: underline;
+    color: #5B3E38;
+    font-size: 25px;
+}
+
+form {
+    width: 80%;
+}
+
+.form input[type=text], input[type=email], input[type=number],  input[type=date], input[type=tel], input[type=password], .dropdownbox {
+    height: 43px;
+    width: 100%;
+    margin: 6px 0 17px 0;
+    color: #5B3E38;
+    background-color: #FAF4EE;
+    transition: 0.5s;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    margin-bottom: 25px;
+}
+
+::placeholder {
+    color: #8A756F;
+}
+
+.form input[type=submit] {
+    border: none;
+    background-color: #5B3E38;
+    color: white;
+    border-radius: 30px;
+    padding: 9px 16px;
+    margin: 30px auto 10px;
+    cursor: pointer;
+}
+
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0.8px rgb(41, 25, 18); 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #b9aca952; 
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b9aca99b; 
+  }
+
+  a {
+      text-decoration: none;
+      color: black;
+  }
+
+  a:hover {
+      color: black;
+  }
+
+.someHeight{
+    height: 150px;
+}

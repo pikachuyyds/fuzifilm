@@ -1,0 +1,96 @@
+ .title {
+    width: 80%;
+    margin: 65px auto 15px;
+    font-size: 65px;
+ }
+
+ .caption {
+    width: 80%;
+    margin: 0 auto 65px;
+ }
+
+ .allRewards {
+     width: 90%;
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     flex: 1 1 0;
+     flex-wrap: wrap;
+     margin: 0 auto 190px;
+ }
+
+ .aReward {
+     display: flex;
+     flex-direction: column;
+     border-radius: 50px;
+     margin: 40px 15px;
+     transition: 0.5s;
+ }
+
+ .aReward:hover {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+ }
+
+ .reward_image {
+    width: 500px;
+    height: 303px;
+    background-color: #faf4ee52;
+    border-radius: 50px 50px 0 0;
+ }
+
+ .reward_image img{
+    width: 100%;
+    height: 303px;
+    object-fit: cover;
+    border-radius: 50px 50px 0 0;
+ }
+
+ .reward_details {
+     width: 100%;
+     height: 115px;
+     background-color: #faf4ee;
+     border-radius: 0 0 50px 50px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 0 50px;
+ }
+
+ .name {
+     font-size: 25px;
+     margin-bottom: 7px;
+ }
+
+ .points {
+     font-size: 14px;
+     color: #5b3e38c5;
+ }
+
+ input[type=submit] {
+    text-decoration: none;
+    border: none;
+ }
+
+.redeemBtn {
+    text-decoration: none;
+    color: white;
+    background-color: #5B3E38;
+    padding: 10px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.redeemBtn a {
+    text-decoration: none;
+    color: white;
+}
+
+.editBtn {
+    margin-left: 8px;
+}
+
+.editBtn img {
+    width: 51px;
+    height: 51px;
+    object-fit: cover;
+}

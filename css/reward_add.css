@@ -1,0 +1,78 @@
+.title {
+    margin: 65px auto;
+    width: 80%;
+    font-size: 65px;
+}
+
+.addReward_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 160px;
+}
+
+/* add image part */
+
+.addImage {
+    width: 40%;
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #5B3E38;
+}
+
+#preview {
+    object-fit:cover;
+    height: 100%;
+    width: 100%;
+}
+
+input[type=file] {
+    display: none;
+}
+
+.addImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 0;
+    color: #5B3E38;
+    cursor: pointer;
+    font-size: 13px;
+    width: 100%;
+    border-top: 2px solid #5B3E38;
+}
+
+/* reward info input */
+.others {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+input[type=text], input[type=number]{
+    width: 100%;
+    margin: 3px 0 18px;
+    height: 35px;
+    border: none;
+    border-bottom: 1px solid #5B3E38;
+}
+
+input[type=text]:focus, input[type=number]:focus {
+    outline: none;
+}
+
+/* end */
+
+.button {
+    padding: 10px 18px;
+    margin-top: 40px;
+    background-color: #5B3E38;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+}
