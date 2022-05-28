@@ -1,11 +1,10 @@
 <?php
 require "conn.php";
-// require "header.php";
-$_SESSION['loginId'] = 1;
+require "header.php";
+
 if (isset($_SESSION['loginId'])){
     // to determine participant or organiser or admin
-    $userType = 'participant';
-    // $userType = $_SESSION['userType'];
+    $userType = $_SESSION['userType'];
     $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$_SESSION[loginId]' ");
     $userResult = mysqli_fetch_array($userData);
 
