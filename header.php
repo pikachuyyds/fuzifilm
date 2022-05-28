@@ -2,6 +2,7 @@
     session_start();
     if (isset($_SESSION['userType']))
     {
+        // 
         $user = $_SESSION['userType'];
     }
     else
