@@ -71,7 +71,7 @@ if (isset($_SESSION['loginId'])){
                     <?php
                         if ($countEnd>0){
                             for ($i= 0; $i<$countEnd; $i++ ){
-                                echo("<a href ='$conductedId[$i].php'>$conductedName[$i]</a><br><br><br><br>");
+                                echo("<a href ='aContest.php?id = $conductedId[$i]'>$conductedName[$i]</a><br><br><br><br>");
                             }
                         }else{
                             echo "No Conducted Contest";
@@ -86,7 +86,7 @@ if (isset($_SESSION['loginId'])){
                     <?php
                        if ($countOn>0){
                             for ($i= 0; $i<$countOn; $i++ ){
-                                echo("<a href ='$ongoingId[$i].php'>$ongoingName[$i]</a><br><br><br><br>");
+                                echo("<a href ='aContest.php?id =$ongoingId[$i]'>$ongoingName[$i]</a><br><br><br><br>");
                             }
                         }else{
                             echo "No Ongoing Contest";
@@ -96,6 +96,6 @@ if (isset($_SESSION['loginId'])){
                 </div>
             </div>
         </div>
-        <?php require "footer.php"?>
     </body>
 </html>
+<?php require "footer.php"?>

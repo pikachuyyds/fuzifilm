@@ -75,6 +75,6 @@ if (isset($_SESSION['loginId'])){
                 ?>
             </div> 
         </div>
-        <?php require "footer.php"?>
     </body>
-</html>    
+</html>         
+<?php require "footer.php"?>   

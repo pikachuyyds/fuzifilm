@@ -148,7 +148,6 @@ if (isset ($_POST["month"], $_POST["year"]))
                 </table>
             </div>
         </div>
-        <?php require "footer.php"?>
     </body>
-    
-</html>
+</html>        
+<?php require "footer.php"?>

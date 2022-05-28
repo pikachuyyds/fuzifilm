@@ -1,6 +1,6 @@
 <?php
-include ("conn.php");
-include ("conn.php");
+require ("conn.php");
+require ("header.php");
 if (isset($_SESSION['loginId'])){
 
     $userType = "admin";
@@ -109,7 +109,6 @@ if (isset ($_POST["month"], $_POST["year"]))
         <link href = "css/adminReport.css" rel = "stylesheet" type = "text/css">
     </head>
     <body>
-        <?php //require "header.php"?> 
         <div class = headerSection>
             <p>Admin</p>
             <div class = "userName">
@@ -193,7 +192,6 @@ if (isset ($_POST["month"], $_POST["year"]))
                 </table>
             </div>
         </div>
-        <?php //require "footer.php"?>
     </body>
-    
 </html>
+<?php require "footer.php" ?>

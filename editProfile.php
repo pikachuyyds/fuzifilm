@@ -128,10 +128,9 @@ if (isset($_SESSION['loginId'])){
                     }
                 ?>
             </div>
-            <?php require "footer.php" ?>
         </body>
     </html>
-
+<?php require "footer.php" ?>
 <?php
     if (isset($_POST['submit'])){
         if ($userType == 'participant'){

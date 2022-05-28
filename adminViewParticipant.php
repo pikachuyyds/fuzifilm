@@ -3,7 +3,7 @@
     require "conn.php";
 
     $participantData = mysqli_query($con, "SELECT * FROM participant");
-    $participantresult = mysqli_fetch_array($participantData);
+    
 ?>
 
 <!DOCTYPE html>
@@ -23,4 +23,27 @@
             </div>
         </div>
 
+        <div class = "data">
+            <?php
+                while($participantresult = mysqli_fetch_array($participantData)){
+                    
+                    $id = $participantresult["participantId"];
+                    $name = $participantresult["name"];
+                    $pic = $participantresult["profilePic"];
+
+            ?>
+                <a href = "aUserProfile.php?id = <?php echo $id; ?>"><div class = "aUserProfile">
+                    <div class = "profileInfo"><?php echo $name ?></div>
+                    <div class = "profileInfo">
+                        <div class = "img">
+                            <img src = "<?php echo $pic ?>" alt = "profile pic">
+                        </div>
+                    </div>
+
+                </div></a>
+
+            <?php } ?>
+        </div>
     </body>
+</html>
+<?php require "footer.php" ?>
