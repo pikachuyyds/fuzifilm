@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body{
+    width: 100%;
+    background-color: rgba(119, 89, 84, 0.9);
+}
+
+.title{
+    font-size: 30pt;
+    font-weight: bold;
+    color: rgb(197, 173, 168);
+    padding: 50pt;
+}
+
+.data{
+    padding: 40pt 40pt 40pt 100pt;
+}
+
+.data p{
+    color: black;
+    font-weight: 600;
+    font-size: 20pt;
+}
+
+.data .pwd{
+    height: 35pt;
+    width: 200pt;
+    border-radius: 10px;
+}
+
+.data .btn{
+    font-weight: 400;
+    font-size: 15pt;
+    background-color: rgba(191, 175, 164, 0.44);
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    margin: 20px;
+    padding: 30px 60px 30px 60px;
+}
+
+.data .fa-eye{
+    margin-left: -30px; 
+    cursor: pointer;
+}

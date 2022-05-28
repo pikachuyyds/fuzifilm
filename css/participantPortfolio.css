@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.body{
+    display: inline-block;
+    width: 100%;
+    background-color: black;
+}
+
+.headerSection{
+    background-color: rgb(198, 195, 195) ;
+    padding:50px;
+    margin:0; 
+}
+
+.headerSection .userInfo p{
+    margin-left: 8%;
+    font-weight: 530;
+    font-size: 12pt;
+    color:black;
+}
+
+.headerSection .userInfo banDate{
+    font-weight: 530;
+    font-size: 12pt;
+    color:red;
+}
+
+.headerSection .userName{
+    margin-left: 8%;
+    font-weight: 600;
+    font-size: 25pt;
+    color:black;
+}
+
+.headerSection .userName img{
+    border: 2px solid rgba(91, 62, 56, 1);
+    border-radius: 50%;
+    width: 15%;
+    height: 15%;
+    margin-right: 40%;
+    float: right;
+}
+
+.headerSection .pageInfo{
+    margin-left: 8%;
+    color:black;
+    list-style-type: disc;
+}
+
+.headerSection .pageInfo a{
+    color: black;
+    text-decoration: none;
+}
+
+.portfolio{
+    background-color:rgba(91, 62, 56, 1); 
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    padding-bottom: 30pt;
+}
+
+.portfolio p{
+    position: absolute;
+    font-weight: bold;
+    color:rgba(106, 75, 69, 1);
+    font-family: "Roboto", monospace;
+    left: 100px;
+    font-size: 100px;
+    letter-spacing: 5px;
+}
+
+.portfolio .picture{
+    padding: 10%;
+    position: relative;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.portfolio .picture img{
+    margin: 30pt;
+    width: 20%;
+    height: 20%;
+    border: 2px solid #ddd;
+    padding: 8px;
+}
+
+.portfolio .picture b{
+    font-size: 30pt;
+}
