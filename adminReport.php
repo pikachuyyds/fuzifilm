@@ -1,6 +1,6 @@
 <?php
 include ("conn.php");
-
+include ("conn.php");
 if (isset($_SESSION['loginId'])){
 
     $userType = "admin";
