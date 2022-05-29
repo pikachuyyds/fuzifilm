@@ -1,10 +1,11 @@
 <?php
 require "conn.php";
 require "header.php";
-
+$_SESSION['loginId'] = 11;
 if (isset($_SESSION['loginId'])){
 // to determine participant or organiser or admin
     $userType = $_SESSION['userType'];
+    $userType = 'participant';
     $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$_SESSION[loginId]' ");
     $userResult = mysqli_fetch_array($userData);
 
@@ -53,74 +54,78 @@ if (isset($_SESSION['loginId'])){
             <div class="data">
                 <?php //picture havent done
                     if ($userType == 'participant'){
-                        echo "
+                        echo"
                             <form method = 'POST'>
                                 <label for = 'name'>Name: </label>
-                                <input type = 'text' name = 'name' value = '$name'>
+                                <input type = 'text' name = 'name' value = '$name' id='name' pattern='[A-Za-z ]{1,50}' oninvalid='invalidMessage(\"FnameID\")' required>
                                 <br>
                                 <label for = 'dob'>Date of Birth: </label>
-                                <input type = 'date' name = 'dob' value = '$dob'>
+                                <input type = 'text' name = 'dob' value = '$dob' onfocus='(this.type=\"date\")' onblur='(this.type=\"text\")' required>
                                 <br>
                                 <label for = 'phone'>Phone Number: </label>
-                                <input type = 'text' name = 'phone' value = '$phoneNo'>
+                                <input type = 'text' name = 'phone' value = '$phoneNo' id='phone' pattern='0.{9,12}' title='phone number invalid' required>
                                 <br>
-                                <label for = 'street'>Street: </label>
-                                <textarea name = 'street'>$street</textarea>
+                                <label for = 'street'>Address Line: </label>
+                                <input type='text' name='street' id='street' value = '$street' required>
                                 <br>
                                 <label for = 'city'>City: </label>
-                                <input type = 'text' name = 'city' value = '$city'>
+                                <input type = 'text' name = 'city' id = 'city' value = '$city' required>
                                 <br>
                                 <label for = 'state'>State: </label>
-                                <input type = 'text' name = 'state' value = '$state'>
+                                <input type = 'text' name = 'state' id = 'state' value = '$state' required>
                                 <br>
                                 <label for = 'postcode'>Postcode: </label>
-                                <input type = 'number' name = 'postcode' value = '$postcode'>
+                                <input type = 'number' name = 'postcode' id = 'postcode' value = '$postcode' required>
                                 <br>
                                 <label for = 'country'>Country: </label>
-                                <input type = 'text' name = 'country' value = '$country'>
+                                <input type = 'text' name = 'country' id = 'country' value = '$country' required>
                                 <br>
                                 <input type= 'submit' name='submit' value='SUBMIT' class='btn'>
-                                <input type= 'submit' value = 'BACK' class='btn' onclick= 'window.location.href = \'userProfile.php' '> //error
+                                <input type= 'submit' value = 'BACK' class='btn' name = 'back'> 
                             </form>";
                     
                     }else if ($userType == 'organiser'){
                         echo "
                             <form method = 'POST'> 
                                 <label for = 'name'>Name: </label>
-                                <input type = 'text' name = 'name' value = '$name'>
+                                <input type = 'text' name = 'name' value = '$name' id='name' pattern='[A-Za-z ]{1,50}' oninvalid='invalidMessage(\"FnameID\")' required>
                                 <br>
                                 <label for = 'phone'>Phone Number: </label>
-                                <input type = 'text' name = 'phone' value = '$phoneNo'>
+                                <input type = 'text' name = 'phone' value = '$phoneNo' id='phone' pattern='0.{9,12}' title='phone number invalid' required>
                                 <br>
-                                <label for = 'street'>Street: </label>
-                                <textarea name = 'street'>$street</textarea>
+                                <label for = 'street'>Address Line: </label>
+                                <input type='text' name='street' id='street' value = '$street' required>
                                 <br>
                                 <label for = 'city'>City: </label>
-                                <input type = 'text' name = 'city' value = '$city'>
+                                <input type = 'text' name = 'city' id = 'city' value = '$city' required>
                                 <br>
                                 <label for = 'state'>State: </label>
-                                <input type = 'text' name = 'state' value = '$state'>
+                                <input type = 'text' name = 'state' id = 'state' value = '$state' required>
                                 <br>
                                 <label for = 'postcode'>Postcode: </label>
-                                <input type = 'number' name = 'postcode' value = '$postcode'>
+                                <input type = 'number' name = 'postcode' id = 'postcode' value = '$postcode' required>
                                 <br>
                                 <label for = 'country'>Country: </label>
-                                <input type = 'text' name = 'country' value = '$country'>
+                                <input type = 'text' name = 'country' id = 'country' value = '$country' required>
                                 <br>
+                                <input type= 'submit' name='submit' value='SUBMIT' class='btn'>
+                                <input type= 'submit' value = 'BACK' class='btn' name = 'back'>
                             </form>";
 
                     }else if ($userType == 'admin'){
                         echo "
                             <form method = 'POST'> 
                                 <label for = 'name'>Name: </label>
-                                <input type = 'text' name = 'name' value = '$name'>  
+                                <input type = 'text' name = 'name' value = '$name' id='name' pattern='[A-Za-z ]{1,50}' oninvalid='invalidMessage(\"FnameID\")' required>
                                 <br>
                                 <label for = 'dob'>Date of Birth: </label>
-                                <input type = 'date' name = 'dob' value = '$dob'>
+                                <input type = 'text' name = 'dob' value = '$dob' onfocus='(this.type=\"date\")' onblur='(this.type=\"text\")' required>
                                 <br>
                                 <label for = 'phone'>Phone Number: </label>
-                                <input type = 'text' name = 'phone' value = '$phoneNo'>
+                                <input type = 'text' name = 'phone' value = '$phoneNo' id='phone' pattern='0.{9,12}' title='phone number invalid' required>
                                 <br>
+                                <input type= 'submit' name='submit' value='SUBMIT' class='btn'>
+                                <input type= 'submit' value = 'BACK' class='btn' name = 'back'>
                             </form>"; 
                     
                     }else{
@@ -169,5 +174,9 @@ if (isset($_SESSION['loginId'])){
             window.location.href = 'userProfile.php';
             </script>";
         }
+    }
+    
+    if (isset($_POST['back'])){
+        echo "<script>window.location.href = 'userProfile.php';</script>";
     }
 ?>
