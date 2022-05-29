@@ -88,13 +88,13 @@
     position: relative;
     display: flex;
     padding: 20px;
+    flex-wrap: wrap;
 }
 
 .portfolio .img {
     height: 200px;
     width: 280px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     border: 2px solid white;
