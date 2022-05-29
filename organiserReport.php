@@ -9,11 +9,16 @@ if (isset($_SESSION['loginId'])){
     $userResult = mysqli_fetch_array($userData);
 
     $name = $userResult['name'];
-    $pic = $userResult['profilePic'];
 
     $profileUrl = "<a href = 'userProfile.php'> Personal Information </a>";
     $contestUrl =  "<a href = 'organiserContest.php'> Contest </a>";
     $reportUrl = "<a href = 'organiserReport.php'> Report </a>";
+
+    if ($userResult['profilePic'] === null){
+        $pic = 'uploads/defaultProfile.png';
+    }else{
+        $pic = $userResult['profilePic'];
+    }
 }
 
 if (isset ($_POST["month"], $_POST["year"]))
@@ -79,13 +84,9 @@ if (isset ($_POST["month"], $_POST["year"]))
     </head>
     <body>
         <div class = headerSection>
-            <div class = "userName">
-                <?php
-                    echo strtoUpper("<p>$userType</p>");
-                    echo "$name";
-                    echo "<img src='images/" .$pic. "'/>";
-                ?>
-            </div>
+            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
+            <div class = "userInfo"><?php echo strtoUpper("<p>$userType</p>") ?></div>
+            <div class = "userName"><?php echo "$name"?></div>
             
             <div class = "pageInfo">
                 <?php

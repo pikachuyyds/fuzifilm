@@ -10,16 +10,19 @@ body{
     font-weight: bold;
     color: rgb(197, 173, 168);
     padding: 50pt;
+    display: flex;
 }
 
 .data{
     padding: 40pt 40pt 40pt 100pt;
+    display: flex;
 }
 
 .data p{
     color: black;
     font-weight: 600;
     font-size: 20pt;
+    line-height: 100px;
 }
 
 .data .pwd{

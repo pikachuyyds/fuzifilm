@@ -36,8 +36,8 @@ if (isset($_SESSION['loginId'])){
     }  
     $profile = "userProfile.php";
 
-    if ($pic === null){
-        $picImg = 'uploads/defaultProfile.png';
+    if ($userResult['profilePic'] === null){
+        $pic = 'uploads/defaultProfile.png';
     }else{
         $pic = $userResult['profilePic'];
     }

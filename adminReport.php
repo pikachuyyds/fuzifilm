@@ -8,10 +8,15 @@ if (isset($_SESSION['loginId'])){
     $userResult = mysqli_fetch_array($userData);
 
     $name = $userResult['name'];
-    $pic = $userResult['profilePic'];
 
     $profileUrl = "<a href = 'userProfile.php'> Personal Information </a>";
     $reportUrl = "<a href = 'adminReport.php'> Report </a>";
+
+    if ($userResult['profilePic'] === null){
+        $pic = 'uploads/defaultProfile.png';
+    }else{
+        $pic = $userResult['profilePic'];
+    }
 }
 
 $contestData = mysqli_query($con, "SELECT * FROM contest");
@@ -110,13 +115,9 @@ if (isset ($_POST["month"], $_POST["year"]))
     </head>
     <body>
         <div class = headerSection>
+            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
             <p>Admin</p>
-            <div class = "userName">
-                <?php
-                    echo "$name";
-                    echo "<img src='images/" .$pic. "'/>";
-                ?>
-            </div>
+            <div class = "userName"><?php echo "$name"?></div>
             
             <div class = "pageInfo">
                 <?php

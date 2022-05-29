@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .body{
-    display: inline-block;
     width: 100%;
-    background-color: black;
 }
 
 .headerSection{
     background-color: rgb(198, 195, 195) ;
-    padding:50px;
+    padding:80px;
     margin:0; 
+    display: inline-block;
+    width: 100%;
 }
 
 .headerSection .userInfo p{
@@ -31,15 +31,28 @@
     font-weight: 600;
     font-size: 25pt;
     color:black;
+    line-height: 150px;
 }
 
-.headerSection .userName img{
-    border: 2px solid rgba(91, 62, 56, 1);
-    border-radius: 50%;
-    width: 15%;
-    height: 15%;
+.headerSection .image{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    justify-content: center;;
+    border: 2px solid #5B3E38;
+    float:right;
     margin-right: 40%;
-    float: right;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.headerSection .image img{
+    display: flex;
+    width: 195px;
+    height: 195px;
+    justify-content: center;
+    align-items: center;
 }
 
 .headerSection .pageInfo{
@@ -57,8 +70,8 @@
     background-color:rgba(91, 62, 56, 1); 
     height: 100%;
     width: 100%;
-    display: inline-block;
-    padding-bottom: 30pt;
+    display: flex;
+    padding: 70px;
 }
 
 .portfolio p{
@@ -71,19 +84,28 @@
     letter-spacing: 5px;
 }
 
-.portfolio .picture{
-    padding: 10%;
+.portfolio .image{
     position: relative;
-    display:flex;
-    flex-wrap: wrap;
+    display: flex;
+    padding: 20px;
 }
 
-.portfolio .picture img{
-    margin: 30pt;
-    width: 20%;
-    height: 20%;
-    border: 2px solid #ddd;
-    padding: 8px;
+.portfolio .img {
+    height: 200px;
+    width: 280px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid white;
+    padding: 5px;
+    margin: 30px;
+}
+
+.portfolio .img img {
+    width: 98%;
+    height: 96%;
+    object-fit: cover;
 }
 
 .portfolio .picture b{
