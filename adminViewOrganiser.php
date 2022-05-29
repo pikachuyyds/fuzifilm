@@ -16,34 +16,65 @@
         <div class = "headerSection">
             <div class = "title">Organiser Profile</div>
             <div class = "search">
-                <form method = "post" action = "<?php echo $_SERVER['PHP_SELF']; ?>" >
+                <form method = "get" action = "<?php echo $_SERVER['PHP_SELF']; ?>" >
                     <label for = "searchTitle">Search: </label>
-                    <input type = "search" id = "search" name = "search">
+                    <input type = "search" id = "search" name = "searchText">
                 </form>
             </div>
         </div>
 
         <div class = "data">
             <?php
-                while($organiserResult = mysqli_fetch_array($organiserData)){
-                    
-                    $id = $organiserResult["organiserID"];
-                    $name = $organiserResult["name"];
-                    $pic = $organiserResult["profilePic"];
-
+                if(isset($_GET["searchText"])){
+                    $searchText = $_GET["searchText"];
+                    $searchText = htmlspecialchars($searchText);
+                    $searchText = mysqli_real_escape_string($con, $searchText); //escape special character
+                    $searchData = mysqli_query($con, "SELECT * FROM organiser WHERE (name LIKE '%" .$searchText. "%') ");
+                    if (mysqli_num_rows($searchData) > 0){
+                        while($searchResult = mysqli_fetch_array($searchData))
+                        {
+                            $id = $searchResult["organiserID"];
+                            $name = $searchResult["name"];
+                            $pic = $searchResult["profilePic"];
             ?>
-                <a href = "aUserProfile.php?id = <?php echo $id; ?>"><div class = "aUserProfile">
-                    <div class = "profileInfo"><?php echo $name ?></div>
-                    <div class = "profileInfo">
-                        <div class = "img">
-                            <img src = "<?php echo $pic ?>" alt = "profile pic">
+                        <a href = "aUserProfile.php?id = <?php echo $id ?>"><div class = "aUserProfile">
+                            <div class = "profileInfo"><?php echo $name ?></div>
+                            <div class = "profileInfo">
+                                <div class = "img">
+                                    <img src = "<?php echo $pic ?>" alt = "profile pic">
+                                </div>
+                            </div>
+        
+                        </div></a>
+        
+                <?php 
+                        }
+                    }else{
+                        echo "No Match Result.";
+                    }
+                }else{
+                    while($organiserResult = mysqli_fetch_array($organiserData))
+                    {
+                        
+                        $id = $organiserResult["organiserID"];
+                        $name = $organiserResult["name"];
+                        $pic = $organiserResult["profilePic"];
+                ?>
+                    <a href = "aUserProfile.php?id = <?php echo $id ?>"><div class = "aUserProfile">
+                        <div class = "profileInfo"><?php echo $name ?></div>
+                        <div class = "profileInfo">
+                            <div class = "img">
+                                <img src = "<?php echo $pic ?>" alt = "profile pic">
+                            </div>
                         </div>
-                    </div>
 
-                </div></a>
+                    </div></a>
 
-            <?php } ?>
+            <?php } 
+                }
+            ?>
         </div>
+
     </body>
 </html>
 <?php require "footer.php" ?>
