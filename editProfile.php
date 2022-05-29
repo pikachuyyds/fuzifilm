@@ -13,7 +13,6 @@ if (isset($_SESSION['loginId'])){
         $name = $userResult['name'];
         $dob = $userResult['dob'];
         $phoneNo = $userResult['phoneNo'];
-        $pic = $userResult['profilePic'];
         $street = $userResult['street'];
         $city = $userResult['city'];
         $state = $userResult['state'];
@@ -28,16 +27,20 @@ if (isset($_SESSION['loginId'])){
         $state = $userResult['state'];
         $postcode = $userResult['postCode'];
         $country = $userResult['country']; 
-        $pic = $userResult['profilePic'];
 
     } else{ //admin
         $name = $userResult['name'];
         $dob = $userResult['dob'];
         $phoneNo = $userResult['phoneNo'];
-        $pic = $userResult['profilePic'];
 
     }  
     $profile = "userProfile.php";
+
+    if ($pic === null){
+        $picImg = 'uploads/defaultProfile.png';
+    }else{
+        $pic = $userResult['profilePic'];
+    }
 }
 ?>
 

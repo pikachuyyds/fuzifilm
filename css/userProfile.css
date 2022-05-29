@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 body{
-    display: inline-block;
     width: 100%;
 }
 
@@ -9,6 +8,8 @@ body{
     background-color: rgb(198, 195, 195) ;
     padding:80px;
     margin:0; 
+    display: inline-block;
+    width: 100%;
 }
 
 .headerSection .userInfo p{
@@ -30,17 +31,28 @@ body{
     font-weight: 600;
     font-size: 25pt;
     color:black;
+    line-height: 150px;
 }
 
-.headerSection .userName img{
-    border: 2px solid rgba(91, 62, 56, 1);
-    border-radius: 50%;
+.headerSection .image{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    justify-content: center;;
+    border: 2px solid #5B3E38;
+    float:right;
     margin-right: 40%;
-    float: right;
-    padding: 2pt;
-    width: 18%;
+    border-radius: 50%;
     overflow: hidden;
-    box-sizing: border-box;
+}
+
+.headerSection .image img{
+    display: flex;
+    width: 195px;
+    height: 195px;
+    justify-content: center;
+    align-items: center;
 }
 
 .headerSection .pageInfo{
@@ -58,7 +70,7 @@ body{
     background-color:rgba(91, 62, 56, 1);
     height: 100%;
     width: 100%;
-    display: inline-block;
+    display: flex;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 

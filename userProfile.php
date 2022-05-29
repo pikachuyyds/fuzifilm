@@ -1,10 +1,11 @@
 <?php
 require "conn.php";
 require "header.php";
-
+$_SESSION['loginId'] = 11;
 if (isset($_SESSION['loginId'])){
     // to determine participant or organiser or admin
-    $userType = $_SESSION['userType'];
+    // $userType = $_SESSION['userType'];
+    $userType = 'participant';
     $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$_SESSION[loginId]' ");
     $userResult = mysqli_fetch_array($userData);
 
@@ -13,7 +14,6 @@ if (isset($_SESSION['loginId'])){
         $dob = $userResult['dob'];
         $phoneNo = $userResult['phoneNo'];
         $joinDate = $userResult['joinDate'];
-        $pic = $userResult['profilePic'];
         $street = $userResult['street'];
         $city = $userResult['city'];
         $state = $userResult['state'];
@@ -36,7 +36,6 @@ if (isset($_SESSION['loginId'])){
         $state = $userResult['state'];
         $postcode = $userResult['postCode'];
         $country = $userResult['country']; 
-        $pic = $userResult['profilePic'];
     
         $profileUrl = "<a href = 'userProfile.php'> Personal Information </a>";
         $contestUrl =  "<a href = 'organiserContest.php'> Contest </a>";
@@ -46,11 +45,16 @@ if (isset($_SESSION['loginId'])){
         $name = $userResult['name'];
         $dob = $userResult['dob'];
         $phoneNo = $userResult['phoneNo'];
-        $pic = $userResult['profilePic'];
 
         $profileUrl = "<a href = 'userProfile.php'> Personal Information </a>";
         $reportUrl = "<a href = 'adminReport.php'> Report </a>";
-    }  
+    }
+    
+    if ($userResult['profilePic'] === null){
+        $pic = 'uploads/ngan.jpg';
+    }else{
+        $pic = $userResult['profilePic'];
+    }
 }
 ?> 
 
@@ -62,6 +66,7 @@ if (isset($_SESSION['loginId'])){
     </head>
     <body> 
         <div class = headerSection>
+            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
             <div class = "userInfo">
                 <?php
                     echo strtoUpper("<p>$userType</p>");   
@@ -73,12 +78,9 @@ if (isset($_SESSION['loginId'])){
                 ?>
             </div> 
                 
-            <div class = "userName">
-                <?php
-                    echo "$name";
-                    echo "<img src='images/" .$pic. "'/>";
-                ?>
-            </div>
+            <div class = "userName"><?php echo "$name"?></div>
+            
+            
 
             <div class = "pageInfo">
                 <?php
