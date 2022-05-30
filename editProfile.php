@@ -1,11 +1,10 @@
 <?php
 require "conn.php";
 require "header.php";
-$_SESSION['loginId'] = 11;
+
 if (isset($_SESSION['loginId'])){
 // to determine participant or organiser or admin
-    // $userType = $_SESSION['userType'];
-    $userType = 'participant';
+    $userType = $_SESSION['userType'];
     $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$_SESSION[loginId]' ");
     $userResult = mysqli_fetch_array($userData);
 
@@ -184,7 +183,7 @@ if (isset($_SESSION['loginId'])){
                             city = '$_POST[city]',
                             state = '$_POST[state]',
                             postCode = '$_POST[postcode]',
-                            country = '$_POST[country]'
+                            country = '$_POST[country]',
                             profilePic = '$fileLocation' 
                     WHERE loginId = '$_SESSION[loginId]'";
         }else if ($userType == 'organiser'){
@@ -195,14 +194,14 @@ if (isset($_SESSION['loginId'])){
                             city = '$_POST[city]',
                             state = '$_POST[state]',
                             postCode = '$_POST[postcode]',
-                            country = '$_POST[country]'
+                            country = '$_POST[country]',
                             profilePic = '$fileLocation'
                     WHERE loginId = '$_SESSION[loginId]'";
         }else{ //admin
             $sql = "UPDATE admin SET
                             name = '$_POST[name]',
                             dob = '$_POST[dob]',
-                            phoneNo = '$_POST[phone]'
+                            phoneNo = '$_POST[phone]',
                             profilePic = '$fileLocation'
                     WHERE loginId = '$_SESSION[loginId]'";
         }
