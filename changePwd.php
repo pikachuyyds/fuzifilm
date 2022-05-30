@@ -26,19 +26,18 @@ if (isset($_SESSION['loginId'])){
                 <div>
                     <form method="post">
                         <p>CURRENT PASSWORD</p>
-                        <input class = "pwd" type="password" name="oldPwd" id="oldPwd" pattern=".{8,}" title="at least 8 characters" onkeyup="passwordValidation('oldPwd')" readonly></input>
-                        <script>document.getElementById("oldPwd").value = <?php echo $oldPwd ?>;</script>
-                        <i class="far fa-eye" id="togglePassword" onclick = "showOld()"></i>
+                        <input class = "pwd" type="password" name="oldPwd" id="oldPwd" pattern=".{8,}" title="at least 8 characters" onkeyup="passwordValidation('oldPwd')" required></input>
+                        <i class="far fa-eye" id="toggleOld" onclick = "showOld()"></i>
                         <br>
 
                         <p>NEW PASSWORD</p>
                         <input class = "pwd" type="password" placeholder="minimum 8 character" name="newPwd" id="newPwd" pattern=".{8,}" title="at least 8 characters" onkeyup="passwordValidation('newPwd')" required></input>
-                        <i class="far fa-eye" id="togglePassword" onclick = "showNew()"></i>
+                        <i class="far fa-eye" id="toggleNew" onclick = "showNew()"></i>
                         <br>
 
                         <p>CONFIRM NEW PASSWORD</p>
                         <input class = "pwd" type="password" placeholder="Confirm password" name="confirmPwd" id="confirmPwd" pattern=".{8,}" title="at least 8 characters" onkeyup="confirmPasswordValidation('newPwd', 'confirmPwd')" required></input>
-                        <i class="far fa-eye" id="togglePassword" onclick = "showConfirm()"></i>
+                        <i class="far fa-eye" id="toggleConfirm" onclick = "showConfirm()"></i>
                         <br><br><br><br>
                         
                         <input type="submit" name="submit" value="SUBMIT" class="btn">
@@ -46,7 +45,6 @@ if (isset($_SESSION['loginId'])){
                     </form>
 
                     <script>
-                        const togglePassword = document.querySelector('#togglePassword');
                         const oldPwd = document.getElementById("oldPwd");
                         const newPwd = document.getElementById("newPwd");
                         const confirmPwd = document.getElementById("confirmPwd");
@@ -55,20 +53,23 @@ if (isset($_SESSION['loginId'])){
                             // toggle the type attribute
                             const type = oldPwd.getAttribute('type') === 'password' ? 'text' : 'password';
                             oldPwd.setAttribute('type', type);
+                            const togglePassword = document.querySelector('#toggleOld').classList;
                             // toggle the eye slash icon
-                            togglePassword.classList.toggle('fa-eye-slash');
+                            togglePassword.toggle('fa-eye-slash');
                         }
 
                         function showNew(){
                             const type = newPwd.getAttribute('type') === 'password' ? 'text' : 'password';
                             newPwd.setAttribute('type', type);
-                            togglePassword.classList.toggle('fa-eye-slash');
+                            const togglePassword = document.querySelector('#toggleNew').classList;
+                            togglePassword.toggle('fa-eye-slash');
                         }
 
                         function showConfirm(){
                             const type = confirmPwd.getAttribute('type') === 'password' ? 'text' : 'password';
                             confirmPwd.setAttribute('type', type);
-                            togglePassword.classList.toggle('fa-eye-slash');
+                            const togglePassword = document.querySelector('#toggleConfirm').classList;
+                            togglePassword.toggle('fa-eye-slash');
                         }
                     </script>
                 </div>
@@ -84,30 +85,39 @@ if (isset($_SESSION['loginId'])){
                 if ($vldt === $_POST['newPwd']) {
                     $validations = true;
                 } else {
-                    echo "<script>document.getElementById('pwdvalidation').style.display = 'inline-block';</script>";
                     $validations = false;
                 }
+
         if ($validations === true) {
-            // original password confirmation
-            if ($_POST['newPwd'] == $_POST['oldPwd']){
-                echo "<script>alert('Original Password invalid');</script>";
+
+            //original password confirmation
+            if ($oldPwd != $_POST['oldPwd']){
+                echo "<script>alert('Original Password Invalid');</script>";
                 $originalPwdValidation = false;
             } else {
                 $originalPwdValidation = true;
             }
 
+            //new password confirmation
+            if ($_POST['newPwd'] == $_POST['oldPwd']){
+                echo "<script>alert('Same with Original Password');</script>";
+                $newPwdValidation = false;
+            } else {
+                $newPwdValidation = true;
+            }
+
             // password confirmation
             if($_POST['newPwd'] != $_POST['confirmPwd']){
-                echo "<script>alert('Wrong confirm password');</script>";
+                echo "<script>alert('Wrong Confirm Password');</script>";
                 $confirmPwdValidation = false;
-            } else if ($_POST['newPwd'] == $_POST['confirmPwd']){
+            } else{
                 $confirmPwdValidation = true;
             }
 
-            if ($confirmPwdValidation === true && $originalPwdValidation === true) {
+            if ($confirmPwdValidation === true && $originalPwdValidation === true && $newPwdValidation === true) {
                 $sql_changePwd = "UPDATE login SET 
-                loginPassword = '$_POST[newPwd]'
-                WHERE loginId = '$_SESSION[loginId]' AND userType = '$userType'  ";
+                                loginPassword = '$_POST[newPwd]'
+                                WHERE loginId = '$_SESSION[loginId]' AND userType = '$userType'  ";
 
                 if(!mysqli_query($con, $sql_changePwd)){
                     die('error'.mysqli_error($con));
