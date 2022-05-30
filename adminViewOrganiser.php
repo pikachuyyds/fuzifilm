@@ -35,7 +35,15 @@
                         {
                             $id = $searchResult["organiserID"];
                             $name = $searchResult["name"];
-                            $pic = $searchResult["profilePic"];
+
+                            $id = $searchResult["participantId"];
+                            $name = $searchResult["name"];
+
+                            if ($searchResult['profilePic'] === null){
+                                $pic = 'uploads/defaultProfile.png';
+                            }else{
+                                $pic = $searchResult['profilePic'];
+                            }
             ?>
                         <a href = "aUserProfile.php?id = <?php echo $id ?>"><div class = "aUserProfile">
                             <div class = "profileInfo"><?php echo $name ?></div>
@@ -59,11 +67,17 @@
                         $id = $organiserResult["organiserID"];
                         $name = $organiserResult["name"];
                         $pic = $organiserResult["profilePic"];
+
+                        if ($organiserResult['profilePic'] === null){
+                            $pic = 'uploads/defaultProfile.png';
+                        }else{
+                            $pic = $organiserResult['profilePic'];
+                        }
                 ?>
                     <a href = "aUserProfile.php?id = <?php echo $id ?>"><div class = "aUserProfile">
                         <div class = "profileInfo"><?php echo $name ?></div>
                         <div class = "profileInfo">
-                            <div class = "img">
+                            <div class = "image">
                                 <img src = "<?php echo $pic ?>" alt = "profile pic">
                             </div>
                         </div>

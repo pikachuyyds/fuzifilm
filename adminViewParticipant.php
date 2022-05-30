@@ -4,6 +4,7 @@
 
     $participantData = mysqli_query($con, "SELECT * FROM participant");
     
+    
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +36,12 @@
                         {
                             $id = $searchResult["participantId"];
                             $name = $searchResult["name"];
-                            $pic = $searchResult["profilePic"];
+
+                            if ($searchResult['profilePic'] === null){
+                                $pic = 'uploads/defaultProfile.png';
+                            }else{
+                                $pic = $searchResult['profilePic'];
+                            }
         
             ?>
                         <a href = "aUserProfile.php?id = <?php echo $id ?>"><div class = "aUserProfile">
@@ -59,12 +65,17 @@
                         
                         $id = $participantResult["participantId"];
                         $name = $participantResult["name"];
-                        $pic = $participantResult["profilePic"];
+
+                        if ($participantResult['profilePic'] === null){
+                            $pic = 'uploads/defaultProfile.png';
+                        }else{
+                            $pic = $participantResult['profilePic'];
+                        }
                 ?>
                     <a href = "aUserProfile.php?id = <?php echo $id ?>"><div class = "aUserProfile">
                         <div class = "profileInfo"><?php echo $name ?></div>
                         <div class = "profileInfo">
-                            <div class = "img">
+                            <div class = "image">
                                 <img src = "<?php echo $pic ?>" alt = "profile pic">
                             </div>
                         </div>

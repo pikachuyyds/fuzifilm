@@ -14,12 +14,14 @@ body{
     color: rgba(91, 62, 56, 1);
     padding: 50pt;
     float: left;
+    display: flex;
 }
 
 .headerSection .search{
     float: right;
     padding: 60pt;
     font-size: 15pt;
+    display: flex;
 }
 
 .headerSection input{
@@ -38,7 +40,7 @@ body{
     flex-wrap: wrap;
 }
 
-.aUserProfile{
+.aUserProfile {
     height: 400px;
     width: 480px;
     margin: 0 35px 70px;
@@ -48,13 +50,19 @@ body{
     justify-content: center;
 }
 
-.img{
+.image {
     width: 480px;
     height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid #5B3E38;
+}
+
+.aUserProfile img {
+    width: 98%;
+    height: 96%;
+    object-fit: cover;
 }
 
 .profileInfo{
