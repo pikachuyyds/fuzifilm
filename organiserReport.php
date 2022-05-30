@@ -70,9 +70,42 @@ if (isset ($_POST["month"], $_POST["year"]))
     }
 
 }else{ //if didnt set
-    $countCon = "";
-    $countPar = "";
-    $totalPay = "";
+    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$_SESSION[loginId]' ");
+    if (mysqli_num_rows($contestData) > 0){ //check whether has data
+        while ($contestResult = mysqli_fetch_array($contestData)){
+            $contestId[] = $contestResult["contestId"]; 
+        }
+        $countCon = count($contestId); 
+        $contestIds = implode (";", $contestId);
+    }else{
+        $countCon = "0";
+    }
+
+    if (count($contestId) >0){ //check whether has contest
+        $parListData = mysqli_query($con, "SELECT * FROM participantlist WHERE contestId IN ('$contestIds') ");
+        if (mysqli_num_rows($parListData) > 0){
+            while ($parListResult = mysqli_fetch_array($parListData)){
+                $joinedId[] = $parListResult["participantId"];
+            }
+
+            $countPar = count($joinedId); //count total participants joined
+        }
+    }else{
+        $countPar = "0";
+    }
+
+    if(count($contestId) >0){
+        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$_SESSION[loginId]' 
+                                    AND contestId IN ('$contestIds') ");
+        if (mysqli_num_rows($payData) > 0){
+            while ($payResult = mysqli_fetch_array($payData)){
+                $amount[] = $payResult["amount"];
+            }
+            $totalPay = array_sum($amount); //count total amount earned for all contests
+        }
+    }else{
+        $totalPay = "0";
+    }
 }
 ?> 
 
