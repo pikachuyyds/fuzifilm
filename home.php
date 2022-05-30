@@ -17,10 +17,14 @@
      <!---------------------------------------------- home 1 ---------------------------------------------->
 
         <div class="home1">
-            <img src="images\logo.png" class="home1Logo" alt="logo">
-            <img src="images\homePhoto1.jpg" class="home1Photo1" alt="photo1">
-            <div class="home1P">Join competition & display your portfolio to</div>
-            <div class="home1H1">Show the world that yo<span style="color: white;">u're a PHOTOGRAPHER</span></div>
+            <div class="part1">
+                <img src="images\logo.png" class="home1Logo" alt="logo">
+                <div class="home1P"><br>Join competition & display your portfolio to</div>
+                <div class="home1H1">Show the world that you're a photographer</div>
+            </div>
+            <div class="part2">
+                <img src="images\homePhoto1.jpg" class="home1Photo1" alt="photo1">
+            </div>
         </div>
 
         <!---------------------------------------------- home 2 ---------------------------------------------->
