@@ -29,6 +29,7 @@ body{
     height: 35pt;
     width: 200pt;
     border-radius: 10px;
+    border-color: black;
 }
 
 .data .btn{

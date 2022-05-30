@@ -30,4 +30,32 @@ body{
     height: 30pt;
     width: 200pt;
     padding-left: 20px;
+    border-color: black;
+}
+
+.data button{
+    font-weight: 400;
+    font-size: 15pt;
+    background-color: rgba(191, 175, 164, 0.44);
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    margin: 20px;
+    padding: 30px 60px 30px 60px;
+}
+
+.data .upload{
+    width: 100pt;
+    margin: 0;
+    padding: 0;
+}
+
+.img{
+    height: 480px;
+    width: 300px;
 }

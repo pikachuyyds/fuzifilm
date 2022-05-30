@@ -4,7 +4,7 @@ require "header.php";
 $_SESSION['loginId'] = 11;
 if (isset($_SESSION['loginId'])){
 // to determine participant or organiser or admin
-    $userType = $_SESSION['userType'];
+    // $userType = $_SESSION['userType'];
     $userType = 'participant';
     $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$_SESSION[loginId]' ");
     $userResult = mysqli_fetch_array($userData);
@@ -58,7 +58,7 @@ if (isset($_SESSION['loginId'])){
                 <?php //picture havent done
                     if ($userType == 'participant'){
                         echo"
-                            <form method = 'POST'>
+                            <form method = 'POST'  enctype = 'multipart/form-data'>
                                 <label for = 'name'>Name: </label>
                                 <input type = 'text' name = 'name' value = '$name' id='name' pattern='[A-Za-z ]{1,50}' oninvalid='invalidMessage(\"FnameID\")' required>
                                 <br>
@@ -83,13 +83,18 @@ if (isset($_SESSION['loginId'])){
                                 <label for = 'country'>Country: </label>
                                 <input type = 'text' name = 'country' id = 'country' value = '$country' required>
                                 <br>
-                                <input type= 'submit' name='submit' value='SUBMIT' class='btn'>
-                                <input type= 'submit' value = 'BACK' class='btn' name = 'back'> 
+                                <label for = 'picture'>Profile Picture: </label>
+                                <input type = 'file' name = 'file' id = 'file' accept='image/jpg, image/jpeg, image/png'>
+                                <input class = 'upload' type = 'submit' value = 'UPLOAD' name = 'submitPic'>
+                                <br>
+                                <button type= 'submit' name='submit'>SUBMIT</button>
+                                <button type= 'submit' name = 'back'>BACK</button> 
                             </form>";
+                            
                     
                     }else if ($userType == 'organiser'){
                         echo "
-                            <form method = 'POST'> 
+                            <form method = 'POST' enctype = 'multipart/form-data'> 
                                 <label for = 'name'>Name: </label>
                                 <input type = 'text' name = 'name' value = '$name' id='name' pattern='[A-Za-z ]{1,50}' oninvalid='invalidMessage(\"FnameID\")' required>
                                 <br>
@@ -110,6 +115,10 @@ if (isset($_SESSION['loginId'])){
                                 <br>
                                 <label for = 'country'>Country: </label>
                                 <input type = 'text' name = 'country' id = 'country' value = '$country' required>
+                                <br>
+                                <label for = 'picture'>Profile Picture: </label>
+                                <input type = 'file' name = 'file'>
+                                <input class = 'upload' type = 'submit' value = 'UPLOAD' name = 'submitPic'>
                                 <br>
                                 <input type= 'submit' name='submit' value='SUBMIT' class='btn'>
                                 <input type= 'submit' value = 'BACK' class='btn' name = 'back'>
@@ -117,7 +126,7 @@ if (isset($_SESSION['loginId'])){
 
                     }else if ($userType == 'admin'){
                         echo "
-                            <form method = 'POST'> 
+                            <form method = 'POST' enctype = 'multipart/form-data'> 
                                 <label for = 'name'>Name: </label>
                                 <input type = 'text' name = 'name' value = '$name' id='name' pattern='[A-Za-z ]{1,50}' oninvalid='invalidMessage(\"FnameID\")' required>
                                 <br>
@@ -126,6 +135,10 @@ if (isset($_SESSION['loginId'])){
                                 <br>
                                 <label for = 'phone'>Phone Number: </label>
                                 <input type = 'text' name = 'phone' value = '$phoneNo' id='phone' pattern='0.{9,12}' title='phone number invalid' required>
+                                <br>
+                                <label for = 'picture'>Profile Picture: </label>
+                                <input type = 'file' name = 'file' id = 'file'>
+                                <input class = 'upload' type = 'submit' value = 'UPLOAD' name = 'submitPic'>
                                 <br>
                                 <input type= 'submit' name='submit' value='SUBMIT' class='btn'>
                                 <input type= 'submit' value = 'BACK' class='btn' name = 'back'>
@@ -140,6 +153,36 @@ if (isset($_SESSION['loginId'])){
     </html>
 <?php require "footer.php" ?>
 <?php
+    if (isset($_POST['submitPic'])){
+        // if (basename($_FILES['file']['name']) != ""){
+        
+        //     $targetImg_dir = "uploads/";
+        //     $targetFile = $targetImg_dir . basename($_FILES['file']['name']);
+        //     echo $targetFile;
+        //     if(!move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)){
+        //         die('Image uploading failed');
+        //     } else { 
+        //         $fileLocation = $targetImg_dir . basename($_FILES['file']['name']); 
+        //         echo $fileLocation;
+        //     }
+        // } else {
+        //     $fileLocation = $pic;
+        // }
+
+        $target_dir = "uploads/";
+
+        $targetFile = $target_dir. basename($_FILES["file"]["name"]);
+    
+        if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile))
+    
+        {
+    
+            $targetName = basename($_FILES["file"]["name"]);
+    
+        }
+    }
+
+
     if (isset($_POST['submit'])){
         if ($userType == 'participant'){
             $sql = "UPDATE participant SET
@@ -178,7 +221,7 @@ if (isset($_SESSION['loginId'])){
             </script>";
         }
     }
-    
+
     if (isset($_POST['back'])){
         echo "<script>window.location.href = 'userProfile.php';</script>";
     }

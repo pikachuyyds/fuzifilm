@@ -61,13 +61,13 @@ if (isset($_SESSION['loginId'])){
             <p>PORTFOLIO</p>
             <div class = image>
                 <?php
-                    // if ($countPic>0){
-                    //     while($portfolioResult = mysqli_fetch_array($portfolio)){
-                    //         echo"<img src=". $portfolioResult['photo']." alt = 'portfolio img'>";
-                    //     }
-                    // }else{
-                    //     echo"<b>No Pictures</b>";
-                    // }
+                    if ($countPic>0){
+                        while($portfolioResult = mysqli_fetch_array($portfolio)){
+                            echo"<div class = 'img' img src=". $portfolioResult['photo']." alt = 'portfolio img'>";
+                        }
+                    }else{
+                        echo"<b>No Pictures</b>";
+                    }
                     echo"<div class = 'img'><img src=". $pic." alt = 'portfolio img'></div>";
                     echo"<div class = 'img'><img src=". $pic." alt = 'portfolio img'></div>";
                     echo"<div class = 'img'><img src=". $pic." alt = 'portfolio img'></div>";
