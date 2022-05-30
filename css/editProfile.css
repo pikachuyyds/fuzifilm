@@ -49,7 +49,34 @@ body{
     padding: 30px 60px 30px 60px;
 }
 
-.img{
-    height: 480px;
-    width: 300px;
+.uploadImage {
+    width: 40pt;
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #5B3E38;
+}
+
+#preview {
+    object-fit:cover;
+    height: 100%;
+    width: 100%;
+}
+
+input[type=file] {
+    display: none;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    color: #5B3E38;
+    cursor: pointer;
+    font-size: 13px;
+    width: 100%;
+    border-top: 2px solid black;
 }

@@ -33,8 +33,7 @@ if (isset($_SESSION['loginId'])){
         $dob = $userResult['dob'];
         $phoneNo = $userResult['phoneNo'];
 
-    }  
-    $profile = "userProfile.php";
+    } 
 
     if ($userResult['profilePic'] === null){
         $pic = 'uploads/defaultProfile.png';
@@ -49,6 +48,7 @@ if (isset($_SESSION['loginId'])){
         <head>
             <title>Fuzifilm | Edit Profile</title>
             <link href = "css/editProfile.css" rel = "stylesheet" type = "text/css">
+            <script src="js\reward_add.js"></script>
         </head>
         <body>
             <div class="title">
@@ -84,7 +84,10 @@ if (isset($_SESSION['loginId'])){
                                 <input type = 'text' name = 'country' id = 'country' value = '$country' required>
                                 <br>
                                 <label for = 'picture'>Profile Picture: </label>
-                                <input type = 'file' name = 'image' id = 'image' accept='image/jpg, image/jpeg, image/png'>
+                                <div class = 'uploadImage'>
+                                    <img id='preview' src='$pic' alt='Profile Image'>
+                                    <label class = 'image'> <input type = 'file' name = 'file' id = 'file' accept='image/jpg, image/jpeg, image/png' onchange='previeww()'>select picture</label>
+                                </div>
                                 <br>
                                 <button type= 'submit' name='submit'>SUBMIT</button>
                                 <button type= 'submit' name = 'back'>BACK</button> 
@@ -116,8 +119,10 @@ if (isset($_SESSION['loginId'])){
                                 <input type = 'text' name = 'country' id = 'country' value = '$country' required>
                                 <br>
                                 <label for = 'picture'>Profile Picture: </label>
-                                <input type = 'file' name = 'file'>
-                                <input class = 'upload' type = 'submit' value = 'UPLOAD' name = 'submitPic'>
+                                <div class = 'uploadImage'>
+                                    <img id='preview' src='$pic' alt='Profile Image'>
+                                    <label class = 'image'> <input type = 'file' name = 'file' id = 'file' accept='image/jpg, image/jpeg, image/png' onchange='previeww()'>select picture</label>
+                                </div>
                                 <br>
                                 <input type= 'submit' name='submit' value='SUBMIT' class='btn'>
                                 <input type= 'submit' value = 'BACK' class='btn' name = 'back'>
@@ -136,8 +141,10 @@ if (isset($_SESSION['loginId'])){
                                 <input type = 'text' name = 'phone' value = '$phoneNo' id='phone' pattern='0.{9,12}' title='phone number invalid' required>
                                 <br>
                                 <label for = 'picture'>Profile Picture: </label>
-                                <input type = 'file' name = 'file' id = 'file'>
-                                <input class = 'upload' type = 'submit' value = 'UPLOAD' name = 'submitPic'>
+                                <div class = 'uploadImage'>
+                                    <img id='preview' src='$pic' alt='Profile Image'>
+                                    <label class = 'image'> <input type = 'file' name = 'file' id = 'file' accept='image/jpg, image/jpeg, image/png' onchange='previeww()'>select picture</label>
+                                </div>
                                 <br>
                                 <input type= 'submit' name='submit' value='SUBMIT' class='btn'>
                                 <input type= 'submit' value = 'BACK' class='btn' name = 'back'>
@@ -152,37 +159,22 @@ if (isset($_SESSION['loginId'])){
     </html>
 <?php require "footer.php" ?>
 <?php
-    if (isset($_POST['image'])){
-        // if (basename($_FILES['file']['name']) != ""){
-        
-        //     $targetImg_dir = "uploads/";
-        //     $targetFile = $targetImg_dir . basename($_FILES['file']['name']);
-        //     echo $targetFile;
-        //     if(!move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)){
-        //         die('Image uploading failed');
-        //     } else { 
-        //         $fileLocation = $targetImg_dir . basename($_FILES['file']['name']); 
-        //         echo $fileLocation;
-        //     }
-        // } else {
-        //     $fileLocation = $pic;
-        // }
-
-        $target_dir = "uploads/";
-
-        $targetFile = $target_dir. basename($_FILES["image"]["name"]);
-    
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile))
-    
-        {
-    
-            $targetName = basename($_FILES["image"]["name"]);
-    
-        }
-    }
-
 
     if (isset($_POST['submit'])){
+
+        if (basename($_FILES['file']['name']) != ""){
+    
+            $targetImg_dir = "uploads/";
+            $targetFile = $targetImg_dir . basename($_FILES['file']['name']);
+            if(!move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)){
+                die('Image uploading failed');
+            } else { 
+                $fileLocation = $targetImg_dir . basename($_FILES['file']['name']); 
+            }
+        } else {
+            $fileLocation = $pic;
+        }
+
         if ($userType == 'participant'){
             $sql = "UPDATE participant SET
                             name = '$_POST[name]',
@@ -193,6 +185,7 @@ if (isset($_SESSION['loginId'])){
                             state = '$_POST[state]',
                             postCode = '$_POST[postcode]',
                             country = '$_POST[country]'
+                            profilePic = '$fileLocation' 
                     WHERE loginId = '$_SESSION[loginId]'";
         }else if ($userType == 'organiser'){
             $sql = "UPDATE organiser SET
@@ -203,12 +196,14 @@ if (isset($_SESSION['loginId'])){
                             state = '$_POST[state]',
                             postCode = '$_POST[postcode]',
                             country = '$_POST[country]'
+                            profilePic = '$fileLocation'
                     WHERE loginId = '$_SESSION[loginId]'";
         }else{ //admin
             $sql = "UPDATE admin SET
                             name = '$_POST[name]',
                             dob = '$_POST[dob]',
                             phoneNo = '$_POST[phone]'
+                            profilePic = '$fileLocation'
                     WHERE loginId = '$_SESSION[loginId]'";
         }
         
@@ -224,4 +219,5 @@ if (isset($_SESSION['loginId'])){
     if (isset($_POST['back'])){
         echo "<script>window.location.href = 'userProfile.php';</script>";
     }
+
 ?>
