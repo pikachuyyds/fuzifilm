@@ -102,10 +102,10 @@
                         <ul>
                             <li> <p class="togglerItemTitle">Profile</p> 
                                 <ul style="list-style-type:none;">
-                                    <li class="togglerItem"><a href="#">personal information</a></li>
-                                    <li class="togglerItem"><a href="#">portfolio</a></li>
+                                    <li class="togglerItem"><a href="userProfile.php">personal information</a></li>
+                                    <li class="togglerItem"><a href="participantPortfolio.php">portfolio</a></li>
                                     <li class="togglerItem"><a href="#">contest history</a></li>
-                                    <li class="togglerItem"><a href="#">redeem reward history</a></li>
+                                    <li class="togglerItem"><a href="reward_viewReport.php">redeem reward history</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -113,7 +113,8 @@
                         <ul>
                             <li> <p class="togglerItemTitle">Setting</p> 
                                 <ul style="list-style-type:none;">
-                                    <li class="togglerItem"><a href="#change password">change password</a></li>
+                                    <li class="togglerItem"><a href="editProfile.php">edit profile</a></li>
+                                    <li class="togglerItem"><a href="changePwd.php">change password</a></li>
                                     <li class="togglerItem"><a href="logout.php">Logout</a></li>
                                 </ul>
                             </li>
@@ -146,8 +147,9 @@
                         <ul>
                             <li> <p class="togglerItemTitle">Profile</p> 
                                 <ul style="list-style-type:none;">
-                                    <li class="togglerItem"><a href="#">personal information</a></li>
-                                    <li class="togglerItem"><a href="#">report</a></li>
+                                    <li class="togglerItem"><a href="userProfile.php">personal information</a></li>
+                                    <li class="togglerItem"><a href="organiserContest.php">contest history</a></li>
+                                    <li class="togglerItem"><a href="organiserReport.php">reports</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -155,7 +157,8 @@
                         <ul>
                             <li> <p class="togglerItemTitle">Setting</p> 
                                 <ul style="list-style-type:none;">
-                                    <li class="togglerItem"><a href="#change password">change password</a></li>
+                                    <li class="togglerItem"><a href="editProfile.php">edit profile</a></li>
+                                    <li class="togglerItem"><a href="changePwd.php">change password</a></li>
                                     <li class="togglerItem"><a href="logout.php">Logout</a></li>
                                 </ul>
                             </li>
@@ -182,8 +185,8 @@
                         <ul>
                             <li> <p class="togglerItemTitle">User</p> 
                                 <ul style="list-style-type:none;">
-                                    <li class="togglerItem"><a href="#">participant</a></li>
-                                    <li class="togglerItem"><a href="#">organiser</a></li>
+                                    <li class="togglerItem"><a href="adminViewParticipant.php">participant</a></li>
+                                    <li class="togglerItem"><a href="adminViewOrganiser.php">organiser</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -202,8 +205,8 @@
                         <ul>
                             <li> <p class="togglerItemTitle">Profile</p> 
                                 <ul style="list-style-type:none;">
-                                    <li class="togglerItem"><a href="#">personal information</a></li>
-                                    <li class="togglerItem"><a href="#">report</a></li>
+                                    <li class="togglerItem"><a href="userProfile.php">personal information</a></li>
+                                    <li class="togglerItem"><a href="adminReport.php">report</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -211,7 +214,8 @@
                         <ul>
                             <li> <p class="togglerItemTitle">Setting</p> 
                                 <ul style="list-style-type:none;">
-                                    <li class="togglerItem"><a href="#change password">change password</a></li>
+                                    <li class="togglerItem"><a href="editProfile.php">edit profile</a></li>
+                                    <li class="togglerItem"><a href="changePwd.php">change password</a></li>
                                     <li class="togglerItem"><a href="logout.php">Logout</a></li>
                                 </ul>
                             </li>
