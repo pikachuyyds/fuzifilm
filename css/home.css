@@ -1,37 +1,48 @@
+* {
+    box-sizing: content-box;
+}
+
 /* ---------------------------------------------- home 1 ----------------------------------------------*/
 
 .home1 {
     height: 50vw;
-    margin-top: 5.5vw;
+    margin: 40px auto 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:80%
+}
+
+.part1 {
+    align-self: flex-end;
+    padding-bottom: 45px;
+    width: 40%;
+}
+
+.part2 {
+    padding-right: 60px;
+    width: 50%;
 }
 
 .home1Logo {
     width: 18.2vw;
-    position: relative;
-    left: 8vw;
-    top: 26vw;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
 }
 
 .home1Photo1 {
     width: 45vw;
-    position: absolute;
-    right: 8vw;
 }
 
 .home1 .home1P {
     font-size: 1.6vw;
-    position: relative;
-    left: 8vw;
-    top: 27.5vw;
     color: #BFAFA4;
+    margin-top: 10px;
 }
 
 .home1 .home1H1 {
     font-size: 4.1vw;
-    position: relative;
-    left: 8vw;
-    top: 28.7vw;
+    margin-top: 10px;
+    line-height: 1.5;
 }
 
 /* ---------------------------------------------- home 2 ----------------------------------------------*/
@@ -45,16 +56,18 @@
 }
 
 .home2Photo {
+    width: 40%;
+    float: right;
     margin: 140px 40px;
 }
 
 .home2Photo2 {
-    width: 33vw;
+    width: 600px;
 }
 
 .home2Dscrpt{
     margin: auto 5.6vw;
-    width: 30%;
+    width: 40%;
 }
 
 .home2Title {
