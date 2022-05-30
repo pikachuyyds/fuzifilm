@@ -12,7 +12,7 @@ if (isset($_SESSION['loginId'])){
     $name = $userResult['name'];
 
     $profileUrl = "<a href = 'userProfile.php'> Personal Information </a>";
-    $contestUrl =  "<a href = 'organiserContest.php'> Contest </a>";
+    $contestUrl =  "<a href = 'organiserContest.php'> Contest History</a>";
     $reportUrl = "<a href = 'organiserReport.php'> Report </a>";
 
 

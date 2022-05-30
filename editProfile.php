@@ -123,8 +123,8 @@ if (isset($_SESSION['loginId'])){
                                     <label class = 'image'> <input type = 'file' name = 'file' id = 'file' accept='image/jpg, image/jpeg, image/png' onchange='previeww()'>select picture</label>
                                 </div>
                                 <br>
-                                <input type= 'submit' name='submit' value='SUBMIT' class='btn'>
-                                <input type= 'submit' value = 'BACK' class='btn' name = 'back'>
+                                <button type= 'submit' name='submit'>SUBMIT</button>
+                                <button type= 'submit' name = 'back'>BACK</button> 
                             </form>";
 
                     }else if ($userType == 'admin'){
@@ -145,8 +145,8 @@ if (isset($_SESSION['loginId'])){
                                     <label class = 'image'> <input type = 'file' name = 'file' id = 'file' accept='image/jpg, image/jpeg, image/png' onchange='previeww()'>select picture</label>
                                 </div>
                                 <br>
-                                <input type= 'submit' name='submit' value='SUBMIT' class='btn'>
-                                <input type= 'submit' value = 'BACK' class='btn' name = 'back'>
+                                <button type= 'submit' name='submit'>SUBMIT</button>
+                                <button type= 'submit' name = 'back'>BACK</button> 
                             </form>"; 
                     
                     }else{
