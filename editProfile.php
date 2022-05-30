@@ -84,8 +84,7 @@ if (isset($_SESSION['loginId'])){
                                 <input type = 'text' name = 'country' id = 'country' value = '$country' required>
                                 <br>
                                 <label for = 'picture'>Profile Picture: </label>
-                                <input type = 'file' name = 'file' id = 'file' accept='image/jpg, image/jpeg, image/png'>
-                                <input class = 'upload' type = 'submit' value = 'UPLOAD' name = 'submitPic'>
+                                <input type = 'file' name = 'image' id = 'image' accept='image/jpg, image/jpeg, image/png'>
                                 <br>
                                 <button type= 'submit' name='submit'>SUBMIT</button>
                                 <button type= 'submit' name = 'back'>BACK</button> 
@@ -153,7 +152,7 @@ if (isset($_SESSION['loginId'])){
     </html>
 <?php require "footer.php" ?>
 <?php
-    if (isset($_POST['submitPic'])){
+    if (isset($_POST['image'])){
         // if (basename($_FILES['file']['name']) != ""){
         
         //     $targetImg_dir = "uploads/";
@@ -171,13 +170,13 @@ if (isset($_SESSION['loginId'])){
 
         $target_dir = "uploads/";
 
-        $targetFile = $target_dir. basename($_FILES["file"]["name"]);
+        $targetFile = $target_dir. basename($_FILES["image"]["name"]);
     
-        if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile))
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile))
     
         {
     
-            $targetName = basename($_FILES["file"]["name"]);
+            $targetName = basename($_FILES["image"]["name"]);
     
         }
     }
