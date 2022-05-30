@@ -37,7 +37,7 @@ if (isset($_SESSION['loginId'])){
         $country = $userResult['country']; 
     
         $profileUrl = "<a href = 'userProfile.php'> Personal Information </a>";
-        $contestUrl =  "<a href = 'organiserContest.php'> Contest </a>";
+        $contestUrl =  "<a href = 'organiserContest.php'> Contest History</a>";
         $reportUrl = "<a href = 'organiserReport.php'> Report </a>";
 
     } else{ //admin
@@ -116,7 +116,7 @@ if (isset($_SESSION['loginId'])){
                         echo '<b>Street</b><br>'.$street.'<br>'.'<br>';
                         echo '<b>City</b><br>'.$city.'<br>'.'<br>';
                         echo '<b>State</b><br>'.$state.'<br>'.'<br>';
-                        echo '<b>Postcode</b><br>'.$postCode.'<br>'.'<br>';
+                        echo '<b>Postcode</b><br>'.$postcode.'<br>'.'<br>';
                         echo '<b>Country</b><br>'.$country.'<br>'.'<br>'.'<br>'; 
                         echo '<b>Leaderboard Point</b><br>'.$leaderboard.'<br>'.'<br>';
                         echo '<b>Redeem Reward Point</b><br>'.$rewardRedeem.'<br>'.'<br>';
@@ -128,7 +128,7 @@ if (isset($_SESSION['loginId'])){
                         echo '<b>Street</b><br>'.$street.'<br>'.'<br>';
                         echo '<b>City</b><br>'.$city.'<br>'.'<br>';
                         echo '<b>State</b><br>'.$state.'<br>'.'<br>';
-                        echo '<b>Postcode</b><br>'.$postCode.'<br>'.'<br>';
+                        echo '<b>Postcode</b><br>'.$postcode.'<br>'.'<br>';
                         echo '<b>Country</b><br>'.$country.'<br>'.'<br>'.'<br>'; 
                     }
                     else if ($userType == 'admin'){

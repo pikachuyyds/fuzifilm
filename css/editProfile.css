@@ -49,6 +49,9 @@ body{
     padding: 30px 60px 30px 60px;
 }
 
+.data button .hover{
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
 .uploadImage {
     width: 40pt;
     min-width: 250px;
