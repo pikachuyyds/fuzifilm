@@ -68,9 +68,6 @@ if (isset($_SESSION['loginId'])){
                     }else{
                         echo"<b>No Pictures</b>";
                     }
-                    echo"<div class = 'img'><img src=". $pic." alt = 'portfolio img'></div>";
-                    echo"<div class = 'img'><img src=". $pic." alt = 'portfolio img'></div>";
-                    echo"<div class = 'img'><img src=". $pic." alt = 'portfolio img'></div>";
                     mysqli_close($con);
                 ?>
             </div> 
