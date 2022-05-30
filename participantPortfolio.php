@@ -59,7 +59,7 @@ if (isset($_SESSION['loginId'])){
         
         <div class = portfolio>
             <p>PORTFOLIO</p>
-            <div class = image>
+            <div class = image style="color: black;">
                 <?php
                     if ($countPic>0){
                         while($portfolioResult = mysqli_fetch_array($portfolio)){
