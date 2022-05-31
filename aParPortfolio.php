@@ -1,19 +1,18 @@
 <?php
-require "conn.php";
-require "header.php";
+    require "header.php";
+    require "conn.php";
 
-if (isset($_SESSION['loginId'])){
-
+    $id = $_GET["id"];
     $userType = 'participant';
-    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$_SESSION[loginId]' ");
+    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$id' ");
     $userResult = mysqli_fetch_array($userData);
 
     $name = $userResult['name'];
     $banStart = $userResult['banStartDate'];
     $banEnd = $userResult['banEndDate'];
 
-    $profileUrl =  "<a href = 'userProfile.php'> Personal Information </a>";
-    $portfolioUrl = "<a href = 'participantPortfolio.php'> Portfolio </a>";
+    $profileUrl =  "<a href = 'aParProfile.php?id = $id '> Personal Information </a>";
+    $portfolioUrl = "<a href = 'aParPortfolio.php?id = $id '> Portfolio </a>";
 
     if ($userResult['profilePic'] === null){
         $pic = 'uploads/defaultProfile.png';
@@ -21,17 +20,16 @@ if (isset($_SESSION['loginId'])){
         $pic = $userResult['profilePic'];
     }
     
-    $portfolio = mysqli_query($con, "SELECT * FROM participantlist WHERE participantId = '$_SESSION[loginId]'");
+    $portfolio = mysqli_query($con, "SELECT * FROM participantlist WHERE participantId = '$id'");
     $countPic = mysqli_num_rows($portfolio);
 
-}
 ?> 
 
 <!DOCTYPE html>
 <html lang = en>
     <head>
-        <title> FUZIFILM | Participant Portfolio </title>
-        <link href = "css/participantPortfolio.css" rel = "stylesheet" type = "text/css">
+        <title> FUZIFILM | View Participant Portfolio </title>
+        <link href = "css/aParPortfolio.css" rel = "stylesheet" type = "text/css">
     </head>
     <body>
         <div class = headerSection>
@@ -55,6 +53,11 @@ if (isset($_SESSION['loginId'])){
                     echo "</ul>";
                 ?>
             </div>
+            <form method = "post">
+                <div class = "btn">
+                    <button type= 'submit' name ='delete' onclick = 'deleteProfile();'>DELETE</button> 
+                </div>
+            </form>
         </div>
         
         <div class = portfolio>
@@ -75,3 +78,11 @@ if (isset($_SESSION['loginId'])){
     </body>
 </html>         
 <?php require "footer.php"?>   
+
+<script>
+    function deleteProfile(){
+        if (confirm("Do you really want to delete this participant?")){
+            window.location.href = 'deletePar.php?id = <?php $id ?>';
+        }
+    }
+</script>

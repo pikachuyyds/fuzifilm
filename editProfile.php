@@ -54,7 +54,7 @@ if (isset($_SESSION['loginId'])){
                 EDIT PROFILE
             </div>
             <div class="data">
-                <?php //picture havent done
+                <?php 
                     if ($userType == 'participant'){
                         echo"
                             <form method = 'POST'  enctype = 'multipart/form-data'>

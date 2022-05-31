@@ -1,33 +1,31 @@
 <?php
-require "conn.php";
 require "header.php";
+require "conn.php";
 
-if (isset($_SESSION['loginId'])){
+$id = $_GET["id"];
+$userType = 'organiser';
+$userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$id' ");
+$userResult = mysqli_fetch_array($userData);
 
-    $userType = "organiser";
-    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$_SESSION[loginId]' ");
-    $userResult = mysqli_fetch_array($userData);
+$name = $userResult['name'];
 
-    $name = $userResult['name'];
+$profileUrl = "<a href = 'aOrgProfile.php?id = $id '> Personal Information </a>";
+$contestUrl =  "<a href = 'aOrgContest.php?id = $id'> Contest History</a>";
+$reportUrl = "<a href = 'aOrgReport.php?id = $id'> Report </a>";
 
-    $profileUrl = "<a href = 'userProfile.php'> Personal Information </a>";
-    $contestUrl =  "<a href = 'organiserContest.php'> Contest History </a>";
-    $reportUrl = "<a href = 'organiserReport.php'> Report </a>";
-
-    if ($userResult['profilePic'] === null){
-        $pic = 'uploads/defaultProfile.png';
-    }else{
-        $pic = $userResult['profilePic'];
-    }
+if ($userResult['profilePic'] === null){
+    $pic = 'uploads/defaultProfile.png';
+}else{
+    $pic = $userResult['profilePic'];
 }
 
-if (isset ($_POST["month"], $_POST["year"]))
+    if (isset ($_POST["month"], $_POST["year"]))
 {
     $month = $_POST["month"];
     $year = $_POST["year"];
     $contestId = [];
     
-    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$_SESSION[loginId]' 
+    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$id' 
                                         AND MONTH(startDate) = '$month' AND YEAR(startDate) = '$year'"); 
     //only select contest created in specific month and year
     
@@ -60,7 +58,7 @@ if (isset ($_POST["month"], $_POST["year"]))
     }
 
     if(count($contestId) >0){
-        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$_SESSION[loginId]' 
+        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$id' 
                                     AND contestId IN ('$contestIds') ");
         if (mysqli_num_rows($payData) > 0){
             while ($payResult = mysqli_fetch_array($payData)){
@@ -75,7 +73,7 @@ if (isset ($_POST["month"], $_POST["year"]))
     }
 
 }else{ //if didnt set
-    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$_SESSION[loginId]' ");
+    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$id' ");
     if (mysqli_num_rows($contestData) > 0){ //check whether has data
         while ($contestResult = mysqli_fetch_array($contestData)){
             $contestId[] = $contestResult["contestId"]; 
@@ -104,7 +102,7 @@ if (isset ($_POST["month"], $_POST["year"]))
     }
 
     if(count($contestId) >0){
-        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$_SESSION[loginId]' 
+        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$id' 
                                     AND contestId IN ('$contestIds') ");
         if (mysqli_num_rows($payData) > 0){
             while ($payResult = mysqli_fetch_array($payData)){
@@ -124,8 +122,8 @@ if (isset ($_POST["month"], $_POST["year"]))
 <!DOCTYPE html>
 <html lang = en>
     <head>
-        <title> FUZIFILM | Organiser Report </title>
-        <link href = "css/organiserReport.css" rel = "stylesheet" type = "text/css">
+        <title> FUZIFILM | View Organiser Report </title>
+        <link href = "css/aOrgReport.css" rel = "stylesheet" type = "text/css">
     </head>
     <body>
         <div class = headerSection>
@@ -142,6 +140,11 @@ if (isset ($_POST["month"], $_POST["year"]))
                     echo "</ul>";
                 ?>
             </div>
+            <form method = "post">
+                <div class = "btn">
+                    <button type= 'submit' name ='delete' onclick = 'deleteProfile();'>DELETE</button> 
+                </div>
+            </form>
         </div>
 
         <div class = "orgReport">
@@ -197,3 +200,11 @@ if (isset ($_POST["month"], $_POST["year"]))
     </body>
 </html>        
 <?php require "footer.php"?>
+
+<script>
+    function deleteProfile(){
+        if (confirm("Do you really want to delete this organiser?")){
+            location.href = '/deleteOrg.php';
+        }
+    }
+</script>

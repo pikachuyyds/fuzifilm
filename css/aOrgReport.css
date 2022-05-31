@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body{
+    width: 100%;
+}
+
+.headerSection{
+    background-color: rgb(198, 195, 195) ;
+    padding:50px;
+    margin:0; 
+    display: inline-block;
+    width: 100%;
+}
+
+.headerSection .userInfo p{
+    margin-left: 8%;
+    font-weight: 530;
+    font-size: 12pt;
+    color:black;
+}
+
+.headerSection .userName{
+    margin-left: 8%;
+    font-weight: 600;
+    font-size: 25pt;
+    color:black;
+    line-height: 150px;
+}
+
+.headerSection .image{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    justify-content: center;;
+    border: 2px solid #5B3E38;
+    float:right;
+    margin-right: 40%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.headerSection .image img{
+    display: flex;
+    width: 195px;
+    height: 195px;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerSection .pageInfo{
+    margin-left: 8%;
+    color:black;
+    list-style-type: disc;
+}
+
+.headerSection .pageInfo a{
+    color: black;
+    text-decoration: none;
+}
+
+.headerSection .btn{
+    margin: 20px 20px 20px 60px;
+}
+
+.headerSection .btn button{
+    font-weight: 400;
+    font-size: 13pt;
+    background-color: rgba(191, 175, 164, 0.44);
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid #333333;
+    margin: 20px 40px 20px 20px;
+    padding: 20px 40px 20px 40px;
+}
+
+.headerSection .btn button:hover{
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.orgReport{
+    background-color:rgba(91, 62, 56, 1);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    padding-bottom: 30pt ;
+}
+
+.orgReport p{
+    position: absolute;
+    font-weight: bold;
+    color:rgba(106, 75, 69, 1);
+    font-family: "Roboto", monospace;
+    left: 100px;
+    font-size: 100px;
+    letter-spacing: 10px;
+}
+
+.orgReport .data{
+    padding: 5%;
+    position: relative;
+}
+
+.orgReport .data .selection span{
+   padding: 100px;
+}
+
+.orgReport .data .selection .selectM{
+    font-size: 25px;
+    padding: 15px 10px 15px 15px; /*top right bottom left*/
+    margin-left: 10%;
+    border-radius: 20px;
+}
+
+.orgReport .data .selection .selectY{
+    font-size: 25px;
+    padding: 15px 10px 15px 15px;
+    border-radius: 20px;
+}
+
+.orgReport .data .selection option{
+    font-size: 15px;
+}
+
+.orgReport .data .selection select{
+    cursor: pointer;
+}
+
+.reportData {
+	width: 700px;
+    background-color: rgb(255,255,255,0.5);
+    border: 1px solid black;
+    border-radius: 15px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin: 5%;
+}
+
+.reportData th,td {
+	border: 1px solid black;
+	color: rgba(91, 62, 56, 1);
+    text-align: left;
+    font-size: 20pt;
+}
+
+.reportData th{
+    padding: 20px 0px 30px 50px;
+    font-weight: bold;
+}
+
+.reportData td{
+    padding: 20px 20px 30px 50px;
+    font-weight: lighter;
+}
+

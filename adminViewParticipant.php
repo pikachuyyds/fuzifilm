@@ -4,7 +4,6 @@
 
     $participantData = mysqli_query($con, "SELECT * FROM participant");
     
-    
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +71,7 @@
                             $pic = $participantResult['profilePic'];
                         }
                 ?>
-                    <a href = "aUserProfile.php?id = <?php echo $id ?>"><div class = "aUserProfile">
+                    <a href = "aParProfile.php?id = <?php echo $id ?>"><div class = "aUserProfile">
                         <div class = "profileInfo"><?php echo $name ?></div>
                         <div class = "profileInfo">
                             <div class = "image">
