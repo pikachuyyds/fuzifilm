@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+
+    require "header.php";
+
+?>
 <html>
 <head>
 	<title>Record: Request Modification</title>
@@ -16,3 +21,4 @@
 <iframe class="iframeContainer" src="<?php if ($_SESSION['userType'] =='organiser') {echo'iframeReqModiApprovalOrganiser.php';}if ($_SESSION['userType'] =='admin') {echo'iframeReqModiApprovalAdmin.php';}?>" title="Click to view more information"></iframe>
 
 </body>
+<?php require "footer.php"; ?>

@@ -1,4 +1,9 @@
 <?php include("conn.php"); ?>
+<?php
+
+    require "header.php";
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,3 +113,4 @@ if (isset($_POST['requestModificationReject'])) {
 }
 
 ?>
+<?php require "footer.php"; ?>

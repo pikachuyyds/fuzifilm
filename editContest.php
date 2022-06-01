@@ -1,4 +1,7 @@
-<?php include("conn.php"); ?>
+<?php 
+include("conn.php"); 
+require "header.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,3 +124,4 @@ if (isset($_POST['updateContest'])) {
 	mysqli_close($con);
 }
 ?>
+<?php require "footer.php"; ?>

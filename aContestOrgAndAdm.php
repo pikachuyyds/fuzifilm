@@ -1,6 +1,7 @@
 
 <?php
     require "conn.php";
+    require "header.php";
     $contestId = $_GET['id'];
 
     // get contest information from database
@@ -318,3 +319,4 @@ if (isset($_POST['deleteContest'])) {
 
 </html>
 
+<?php require "footer.php"; ?>
