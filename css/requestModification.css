@@ -1,0 +1,212 @@
+/* Files that reused this css : requestModification.php, requestModificationAdmin.php, requestModificationAdminRecord.php */
+
+body { min-height: 100vh; }
+
+.requestModificationHeader{
+    color:#5B3E38;
+    padding-left:25vmin;
+    padding-top:11vmin;
+    padding-bottom:3vmin;
+    font-size:58px;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.requestModificationContainer{
+    padding-left:26vmin;
+  }
+  
+  .requestModificationSection{
+    float:left;
+    width:100%;
+  }
+
+  .requestModificationLabel{
+    float:left;
+    padding-bottom:3px;
+    font-size:3vmin;
+  }
+
+  .requestModificationField{
+    float:left;
+    width:100%;
+    padding-bottom:30px;
+  }
+
+  input[type=file] {
+    display: none;
+    }
+
+    textarea{
+        width: 80%;
+        margin:0.5% 0 0.5% 0;
+        padding: 1%;
+        display: inline-block;
+        font-size:2vmin;
+        border-radius:1vmin;
+        resize: none;
+        background-color:#E3E3E3;
+        border-style: hidden;
+    }
+  
+    select {
+        width: 40%;
+        margin:0.5% 0 0.5% 0;
+        padding: 1%;
+        display: inline-block;
+        font-size:2vmin;
+        border-radius:1vmin;
+        background-color: #E3E3E3;
+        border-style: hidden;
+    }
+
+    .thumnailUpload{
+        width: 20vmin;
+        height:5vmin;
+        background-color:#E3E3E3;
+        color:black;
+        border-style: hidden;
+        border-radius:5px;
+        display: inline-block;
+        font-size: 2vmin;
+        margin:0.5% 0 0.5% 0;
+        padding: 1vmin 0;
+        text-align:center;
+    }
+
+    .thumnailUpload:hover{
+        cursor:pointer;
+        background-color:#C4C4C4;
+    }
+
+    #displayThumbnailLabel{
+        padding-left:2vmin;
+        padding-right:2vmin;
+        font-size: 2vmin;
+    }
+
+    .displayNone{
+        display:none;
+    }
+
+    .requestModificationBtn{
+        width: 20%;
+        color: black;
+        background-color: #E3E3E3;
+        padding-bottom:1%;
+        padding-top:1%;
+        margin:1.5% 0 0 60%;
+        border-style: hidden;
+        cursor: pointer;
+        opacity: 1;
+        display: inline-block;
+        border-radius:5vmin;
+        font-size: 3vmin;
+    }
+    
+    .requestModificationBtn:hover{
+      cursor:pointer;
+      background-color:#C4C4C4;
+    }
+
+/* CSS for JavaScript that displays uploaded image*/
+.swal-size{
+    width:1300px !important;
+    height:700px !important;
+}
+
+
+/* CSS for requestModificationAdmin.php, some css above are reused for the sake of consistency*/
+.requestModificationOtherPage{
+  width: 15%;
+  color: black;
+  background-color: white;
+  padding-bottom:0.1%;
+  padding-top:0.1%;
+  margin:0% 0.5% 0.5% 0;
+  border-style: hidden;
+  cursor: pointer;
+  opacity: 1;
+  display: inline-block;
+  border:solid;
+  border-width:medium;
+  border-color:#5B3E38;
+  font-size: 2vmin;
+}
+
+.requestModificationReject{
+  width: 20%;
+  color: black;
+  background-color: #E3E3E3;
+  padding-bottom:1%;
+  padding-top:1%;
+  margin:1.5% 0 0 38.5%;
+  border-style: hidden;
+  cursor: pointer;
+  opacity: 1;
+  display: inline-block;
+  border-radius:5vmin;
+  font-size: 3vmin;
+}
+
+.requestModificationApprove{
+  width: 20%;
+  color: black;
+  background-color: #E3E3E3;
+  padding-bottom:1%;
+  padding-top:1%;
+  margin:1.5% 0 0 1%;
+  border-style: hidden;
+  cursor: pointer;
+  opacity: 1;
+  display: inline-block;
+  border-radius:5vmin;
+  font-size: 3vmin;
+}
+
+.requestModificationApprove:hover,.requestModificationReject:hover,.requestModificationOtherPage:hover{
+  cursor:pointer;
+  background-color:#C4C4C4;
+}
+
+.newImageSize{
+  width:800px;
+  height:400px;
+}
+
+hr{
+    border: 2px #5B3E38;
+    width: 80%;               
+}
+
+@media only screen and (max-width: 768px) {
+  [class*="requestModificationHeader"]{
+      color:#5B3E38;
+      text-align: center;
+      padding-left:0;
+      padding-top:11vmin;
+      padding-bottom:3vmin;
+      font-size:7.5vmin;
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      font-family:'Times New Roman', Times, serif;
+  }
+  [class*="requestModificationContainer"]{
+      padding-left:50px;
+  }
+  [class*="requestModificationField"]{
+    padding-bottom:12px;
+}
+  [class*="requestModificationLabel"]{
+    padding-bottom:2px;
+}
+[class*="thumnailUpload"]{
+  width: 17%;
+  height:6vmin;
+  padding-top:1.2vmin;
+}
+[class*="requestModificationOtherPage"]{
+  width: 20%;
+}
+}
