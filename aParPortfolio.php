@@ -69,7 +69,7 @@
                             echo"<div class = 'img' img src=". $portfolioResult['photo']." alt = 'portfolio img'>";
                         }
                     }else{
-                        echo"<b>No Pictures</b>";
+                        echo"<b>No Picture</b>";
                     }
                     mysqli_close($con);
                 ?>
