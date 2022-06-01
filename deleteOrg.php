@@ -1,7 +1,7 @@
 <?php
     require "conn.php";
 
-    $id = $_GET('id');
+    $id = $_GET['id'];
 
     $orgData = mysqli_query($con, "SELECT * FROM organiser WHERE organiserID = $id");
     $orgResult = mysqli_fetch_array($orgData);
@@ -23,8 +23,4 @@
     }else{
         echo "Error deleting record from organiser database:" .$mysqli_error($con);
     }
-
-
-    
-
 ?>

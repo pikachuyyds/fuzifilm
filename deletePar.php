@@ -1,10 +1,10 @@
 <?php
     require "conn.php";
 
-    $id = $_GET('id');
+    $id = $_GET['id'];
 
     $parData = mysqli_query($con, "SELECT * FROM participant WHERE participantId = $id");
-    $parResult = mysqli_fetch_array($orgData);
+    $parResult = mysqli_fetch_array($parData);
     
     $parLoginId = $parResult['loginId']; 
 

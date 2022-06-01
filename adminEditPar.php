@@ -108,7 +108,7 @@
                         postCode = '$_POST[postcode]',
                         country = '$_POST[country]',
                         profilePic = '$fileLocation' 
-                WHERE loginId = '$id'";
+                WHERE participantId = '$id'";
 
         if(!mysqli_query($con, $sql)){
             die('error'.mysqli_error($con));
