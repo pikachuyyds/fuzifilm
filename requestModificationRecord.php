@@ -23,6 +23,7 @@ $result =mysqli_query($con, $sql);
 if (mysqli_num_rows($result)) {
     $row = mysqli_fetch_array($result);}
 $contestsql ="SELECT * FROM contest WHERE contestId =$row[contestId]";
+$contestId=$row['contestId'];
 $contestresult =mysqli_query($con, $contestsql);
 if (mysqli_num_rows($contestresult)) {
     $contestrow = mysqli_fetch_array($contestresult);}
@@ -33,8 +34,8 @@ if (mysqli_num_rows($contestresult)) {
 	<div class=' w-100 requestModificationHeader'> Record: Request Modification</div>
 </div>
 <div class='w-100 d-flex flex-wrap requestModificationContainer'>
-    <button type="button" id="contestPageButton" class="requestModificationOtherPage" onclick="window.open('https://google.com')">View Contest Page</button>
-    <button type="button" id="editContestButton" class="requestModificationOtherPage" onclick="window.open('editContest.php')">Edit Contest</button>
+    <button type="button" id="contestPageButton" class="requestModificationOtherPage" onclick="window.open('aContestOrgAndAdm.php?id=<?php echo $contestId; ?>')">View Contest Page</button>
+    <button type="button" id="editContestButton" class="requestModificationOtherPage" onclick="window.open('editContest.php?id=<?php echo $contestId; ?>')">Edit Contest</button>
     <!-- if user is organiser button will be hidden, if user is admin button will be visible -->
     <?php if ($_SESSION['userType'] =="organiser") {echo"<script>(document.getElementById('contestPageButton')).style.display = 'none';(document.getElementById('editContestButton')).style.display = 'none';</script>";}?>
     <?php if ($_SESSION['userType'] =="admin") {echo"<script>(document.getElementById('contestPageButton')).style.display = 'inline-block';(document.getElementById('editContestButton')).style.display = 'inline-block';</script>";}?>
