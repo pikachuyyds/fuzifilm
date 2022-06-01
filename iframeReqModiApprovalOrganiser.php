@@ -34,7 +34,7 @@ $sql_organiserQuery = mysqli_query($con,$sql_organiser);
 $organiserInfo = mysqli_fetch_array($sql_organiserQuery);
 
 // organiser information
-$organiserId = $organiserInfo['contestName'];
+$organiserId = $organiserInfo['organiserID'];
 
             require "conn.php";
             $sql_allContest = "SELECT changingRequestID, contestId, approvalStatus, detailToChange  FROM contestdetailchangingrequest WHERE organiserID='$organiserId';";
