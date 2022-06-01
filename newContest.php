@@ -1,4 +1,7 @@
 <?php include("conn.php"); ?>
+<?php
+    require "header.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -200,3 +203,4 @@ if (isset($_POST['addNewContest'])) {
 	mysqli_close($con);
 }
 ?>
+<?php require "footer.php"; ?>

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <?php
+    require "header.php";
     if ($_SESSION['userType']=='admin'){
         $title='All Contest';
     }elseif($_SESSION['userType']=='organiser'){
@@ -89,3 +90,4 @@
 </body>
 </html>
 
+<?php require "footer.php"; ?>

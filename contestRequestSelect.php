@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+
+    require "header.php";
+
+?>
 <html>
 <head>
 	<title>Record: Contest Creation</title>
@@ -17,3 +22,4 @@
 <iframe class="iframeContainer" src="<?php if ($_SESSION['userType'] =='organiser') {echo'iframecontestRequestOrg.php';}if ($_SESSION['userType'] =='admin') {echo'iframecontestRequestAdm.php';}?>" title="Click to view more information"></iframe>
 
 </body>
+<?php require "footer.php"; ?>

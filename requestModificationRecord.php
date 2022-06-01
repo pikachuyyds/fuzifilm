@@ -1,4 +1,9 @@
 <?php include("conn.php"); ?>
+<?php
+
+    require "header.php";
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,3 +87,4 @@ if (mysqli_num_rows($contestresult)) {
 			</div>
 	</div>
 </div>
+<?php require "footer.php"; ?>
