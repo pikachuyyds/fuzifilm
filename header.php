@@ -1,5 +1,6 @@
 <?php
     session_start();
+    date_default_timezone_set("Asia/Kuala_Lumpur");
     if (isset($_SESSION['userType']))
     {
         // 
@@ -30,7 +31,7 @@
             // guess & participant
             if ($user=="guest"||$user=="participant") {?>
             <a class="naviBar_sub1_item " href="home.php">home</a>
-            <a class="naviBar_sub1_item" href="allContest.php">contest</a>
+            <a class="naviBar_sub1_item" href="contest_allContest.php">contest</a>
             <a class="naviBar_sub1_item" href="leaderboard.php">leaderboard</a>
             <?php }
 
@@ -62,13 +63,13 @@
             <div class="subToggler1">
                 <?php
 
-                // guess & participant
+                // guest
                 if ($user=="guest") {?>
                 <div style="display: flex; justify-content: space-between;">
                     <ul>
                         <li class="togglerItem"><a href="home.php">home</a></li><br>
                         <li class="togglerItem"><a href="#Aboutus">About us</a></li><br>
-                        <li class="togglerItem"><a href="allContest.php">Contest</a></li><br>
+                        <li class="togglerItem"><a href="contest_allContest.php">Contest</a></li><br>
                         <li class="togglerItem"><a href="leaderboard.php">Leaderboard</a></li><br>
                         <li class="togglerItem"><a href="reward_all.php">Reward</a></li>
                     </ul>
@@ -92,7 +93,7 @@
                         <ul>
                             <li class="togglerItem"><a href="home.php">home</a></li><br>
                             <li class="togglerItem"><a href="#About us">About us</a></li><br>
-                            <li class="togglerItem"><a href="allContest.php">Contest</a></li><br>
+                            <li class="togglerItem"><a href="contest_allContest.php">Contest</a></li><br>
                             <li class="togglerItem"><a href="leaderboard.php">Leaderboard</a></li><br>
                             <li class="togglerItem"><a href="reward_all.php">Reward</a></li>
                         </ul>
@@ -104,7 +105,7 @@
                                 <ul style="list-style-type:none;">
                                     <li class="togglerItem"><a href="userProfile.php">personal information</a></li>
                                     <li class="togglerItem"><a href="participantPortfolio.php">portfolio</a></li>
-                                    <li class="togglerItem"><a href="#">contest history</a></li>
+                                    <li class="togglerItem"><a href="contest_participantJoinHistory.php">contest history</a></li>
                                     <li class="togglerItem"><a href="reward_viewReport.php">redeem reward history</a></li>
                                 </ul>
                             </li>

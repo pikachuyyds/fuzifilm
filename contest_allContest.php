@@ -14,8 +14,10 @@
         }
     }
     // get all contests information
-    $sql_allContest = "SELECT * FROM contest WHERE approvalStatus = 'approved';";
+    $sql_allContest = "SELECT * FROM contest WHERE approvalStatus = 'approved' OR approvalStatus = 'past';";
     $sql_allContestQuery = mysqli_query($con,$sql_allContest);
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +37,7 @@
             <div class="title">Contest</div>
             <div class="allFilter">
                 <div class="selectedFilter">
-                    on-going
-                    <img src="images\x.png" alt="close" onclick=""> <!-- use conclick to delete the selected filter-->
+                    all contest
                 </div>
             </div>
         </div>
@@ -54,7 +55,6 @@
         <?php      
             while ($contestInfo = mysqli_fetch_array($sql_allContestQuery)) {
                 $id = $contestInfo['contestId'];
-                $id = "1";
                 $name = $contestInfo['contestName'];
                 $image = $contestInfo['contestImage'];
                 $paidOrFree = $contestInfo['paidOrFree'];
@@ -72,7 +72,7 @@
                  else if($now > strtotime($endDate))
                 {
                     $status = "judging";  
-                } 
+                }
                 else 
                 {
                     $status = $endDate . " due";
@@ -88,7 +88,7 @@
                     $requiredPrice = "RM ".$price;
                 }
         ?>
-            <a href="aContest.php?id=<?php echo $id; ?>"><div class="aContest">
+            <a href="contest_aContest.php?id=<?php echo $id; ?>"><div class="aContest">
                 <div class="contentInfo"><?php echo $status ?></div>
                 <div class="contentInfo">
                     <div class="img">

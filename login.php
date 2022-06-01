@@ -33,7 +33,7 @@
                         <ul>
                             <li class="togglerItem"><a href="home.php">home</a></li><br>
                             <li class="togglerItem"><a href="#About us">About us</a></li><br>
-                            <li class="togglerItem"><a href="allContest.php">Contest</a></li><br>
+                            <li class="togglerItem"><a href="contest_allContest.php">Contest</a></li><br>
                             <li class="togglerItem"><a href="leaderboard.php">Leaderboard</a></li><br>
                             <li class="togglerItem"><a href="reward_all.php">Reward</a></li>
                         </ul>
