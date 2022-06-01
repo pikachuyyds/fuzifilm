@@ -43,10 +43,10 @@
                             }
         
             ?>
-                        <a href = "aUserProfile.php?id=<?php echo $id ?>"><div class = "aUserProfile">
+                        <a href = "aParProfile.php?id=<?php echo $id ?>"><div class = "aUserProfile">
                             <div class = "profileInfo"><?php echo $name ?></div>
                             <div class = "profileInfo">
-                                <div class = "img">
+                                <div class = "image">
                                     <img src = "<?php echo $pic ?>" alt = "profile pic">
                                 </div>
                             </div>
