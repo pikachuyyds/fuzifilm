@@ -118,7 +118,7 @@ if (isset($_POST['updateContest'])) {
 		}
 	else {
 		echo "<script>
-		window.location.reload();
+		window.location.href= 'editContest.php?id=$_GET[id]';
 		</script>";
 	}
 	mysqli_close($con);
