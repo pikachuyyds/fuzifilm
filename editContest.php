@@ -117,6 +117,7 @@ if (isset($_POST['updateContest'])) {
 			die('Error: ' . mysqli_error($con));
 		}
 	else {
+		echo '<script>alert("Contest edited successfully");</script>';
 		echo "<script>
 		window.location.href= 'editContest.php?id=$_GET[id]';
 		</script>";

@@ -96,6 +96,7 @@ if (isset($_POST['requestModificationSubmit'])) {
 			die('Error: ' . mysqli_error($con));
 		}
 	else {
+		echo '<script>alert("Request submitted!!!")</script>';
 		echo "<script>
 		window.location.href= 'aContestOrgAndAdm.php?id=$_GET[id]';
 		</script>";

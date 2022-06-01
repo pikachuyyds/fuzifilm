@@ -95,6 +95,7 @@ if (isset($_POST['requestModificationReject'])) {
 			die('Error: ' . mysqli_error($con));
 		}
 	else {
+		echo '<script>alert("Request rejected!!!")</script>';
 		echo "<script>
 		window.location.href= 'allRequestModification.php';
 		</script>";
@@ -106,6 +107,7 @@ if (isset($_POST['requestModificationReject'])) {
 			die('Error: ' . mysqli_error($con));
 		}
 	else {
+		echo '<script>alert("Request approved!!!")</script>';
 		echo "<script>
 		window.location.href= 'allRequestModification.php';
 		</script>";

@@ -79,6 +79,7 @@ if (isset($_POST['disqualifyParticipant'])) {
 			die('Error: ' . mysqli_error($con));
 		}
 	else {
+		echo '<script>alert("Contest deleted successfully");</script>';
 		header("Location: iframeAContestParticipantList.php?id=".$_GET['contestId'].";");
 	}
 	mysqli_close($con);

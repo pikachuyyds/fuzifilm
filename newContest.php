@@ -163,6 +163,7 @@ if (isset($_POST['addNewContest'])) {
 			die('Error: ' . mysqli_error($con));
 		}
 	else {
+		echo '<script>alert("New Contest Created");</script>';
 		echo "<script>
 		window.location.href= 'requestModification.php';
 		</script>";
@@ -196,6 +197,7 @@ if (isset($_POST['addNewContest'])) {
 			die('Error: ' . mysqli_error($con));
 		}
 	else {
+		echo '<script>alert("New Contest Created");</script>';
 		echo "<script>
 		window.location.href= 'allContest.php';
 		</script>";
