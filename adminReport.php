@@ -26,18 +26,18 @@ if (mysqli_num_rows($contestData) > 0){ //check whether has data
     }
 
     $countCon = count($contestId); //count total organised contest
+    $contestIds = implode (";", $contestId);
 
 }else{
     $countCon = "No Contest";
-}
+} 
 
-$pointData = mysqli_query($con, "SELECT * FROM participant");
-if (mysqli_num_rows($pointData)>0){
-    while ($pointResult = mysqli_fetch_array($pointData)){
-        $points[] = $pointResult["leaderboardPoint"]; 
+$participantData = mysqli_query($con, "SELECT * FROM participant");
+if (mysqli_num_rows($participantData)>0){
+    while ($participantResult = mysqli_fetch_array($participantData)){
+        $points[] = $participantResult["leaderboardPoint"]; 
     }
     $totalPoint = array_sum($points); //count total earned leaderboard point
-
 }else{
     $totalPoint = "No Points Earned";
 }
@@ -47,8 +47,6 @@ if (isset ($_POST["month"], $_POST["year"]))
 {
     $month = $_POST["month"];
     $year = $_POST["year"];
-    $contestId1 = []; //in that time
-
 
     $contestData1 = mysqli_query($con, "SELECT * FROM contest WHERE MONTH(startDate) = '$month' AND YEAR(startDate) = '$year'"); 
     //only select contest created in specific month and year
@@ -57,17 +55,24 @@ if (isset ($_POST["month"], $_POST["year"]))
         while ($contestResult1 = mysqli_fetch_array($contestData1)){
             $contestId1[] = $contestResult1["contestId"]; 
         }
-        $contestIds = implode (";", $contestId1);//take elements of array into string
+        $contestId1s = implode (";", $contestId1);//take elements of array into string
+    }else{
+        $contestId1 = [];
     }
+
     if (count($contestId1) >0){ //check whether has contest in that time
-        $parListData = mysqli_query($con, "SELECT * FROM participantlist WHERE contestId IN ('$contestIds') ");
-        if (mysqli_num_rows($parListData) > 0){
-            while ($parListResult = mysqli_fetch_array($parListData)){
-                $joinedId[] = $parListResult["participantId"];
+        $parListData1 = mysqli_query($con, "SELECT * FROM participantlist WHERE contestId IN ('$contestId1s') ");
+        if (mysqli_num_rows($parListData1) > 0){
+            while ($parListResult1 = mysqli_fetch_array($parListData1)){
+                $joinedId1[] = $parListResult1["participantId"];
             }
 
-            $countPar = count($joinedId); //count total participants joined in that time
+            $countPar = count($joinedId1); //count total participants joined in that time
+
+        }else{
+            $countPar = "No Participant";
         }
+
     }else{
         $countPar = "No Participant";
     }
@@ -80,19 +85,23 @@ if (isset ($_POST["month"], $_POST["year"]))
                 $amount[] = $payResult["amount"];
             }
             $totalPay = array_sum($amount); //count total amount earned for all contests
+
+        }else{
+            $totalPay = "No Payment";
         }
+
     }else{
         $totalPay = "No Payment";
     }
 
 
-    $registerData = mysqli_query($con, "SELECT * FROM participant WHERE MONTH(joinDate) = '$month' AND YEAR(joinDate) = '$year'");
-    if (mysqli_num_rows($registerData) > 0){
-        while ($registerResult = mysqli_fetch_array($registerData)){
-            $participantId[] = $registerResult["participantId"]; 
+    $registerData1 = mysqli_query($con, "SELECT * FROM participant WHERE MONTH(joinDate) = '$month' AND YEAR(joinDate) = '$year'");
+    if (mysqli_num_rows($registerData1) > 0){
+        while ($registerResult1 = mysqli_fetch_array($registerData1)){
+            $participantId1[] = $registerResult1["participantId"]; 
         }
 
-        $countReg = count($participantId); //count total registered participants in that time
+        $countReg = count($participantId1); //count total registered participants in that time
 
     }else{
         $countReg = "No Participant";
@@ -101,9 +110,60 @@ if (isset ($_POST["month"], $_POST["year"]))
 
 
 }else{ //if didnt set
-    $countPar = "";
-    $totalPay = "";
-    $countReg = "";
+        
+    $contestData2 = mysqli_query($con, "SELECT * FROM contest");
+    if (mysqli_num_rows($contestData2) > 0){ 
+        while ($contestResult2 = mysqli_fetch_array($contestData2)){
+            $contestId2[] = $contestResult2["contestId"]; 
+        }
+        $contestId2s = implode (";", $contestId2);
+    }else{
+        $contestId2 = [];
+    }   
+
+    if (count($contestId2) >0){ 
+        $parListData2 = mysqli_query($con, "SELECT * FROM participantlist WHERE contestId IN ('$contestId2s') ");
+        if (mysqli_num_rows($parListData2) > 0){
+            while ($parListResult2 = mysqli_fetch_array($parListData2)){
+                $joinedId2[] = $parListResult2["participantId"];
+            }
+
+            $countPar = count($joinedId2); //count total participants joined
+
+        }else{
+            $countPar = "No Participant";
+        }
+
+    }else{
+        $countPar = "No Participant";
+    }
+
+    if(count($contestId2) >0){
+        $payData2 = mysqli_query($con, "SELECT * FROM paymentRecord");
+        if (mysqli_num_rows($payData2) > 0){
+            while ($payResult2 = mysqli_fetch_array($payData2)){
+                $amount2[] = $payResult2["amount"];
+            }
+            $totalPay = array_sum($amount2); //count total amount earned for all contests
+
+        }else{
+            $totalPay = "No Payment";
+        }
+
+    }else{
+        $totalPay = "No Payment";
+    }
+
+    $participantData2 = mysqli_query($con, "SELECT * FROM participant");
+    if (mysqli_num_rows($participantData2)>0){
+        while ($participantResult2 = mysqli_fetch_array($participantData2)){
+            $participantId2[] = $participantResult2["participantId"];
+        }
+        $countReg = count($participantId2); //count total registered participants
+
+    }else{
+        $countReg = "No Participant";
+    }
 }
 ?> 
 

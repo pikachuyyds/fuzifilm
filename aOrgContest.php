@@ -1,20 +1,20 @@
 <?php
-require "conn.php";
-require "header.php";
+    require "header.php";
+    require "conn.php";
 
-if (isset($_SESSION['loginId'])){
-
+    $id = $_GET["id"];
     $userType = 'organiser';
-    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$_SESSION[loginId]' ");
+    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$id' ");
     $userResult = mysqli_fetch_array($userData);
 
-    $id = $userResult["organiserID"];
     $name = $userResult['name'];
-
-    $profileUrl = "<a href = 'userProfile.php'> Personal Information </a>";
-    $contestUrl =  "<a href = 'organiserContest.php'> Contest History</a>";
-    $reportUrl = "<a href = 'organiserReport.php'> Report </a>";
-
+    $phoneNo = $userResult['phoneNo'];
+    $companyNo = $userResult['companyNo'];
+    $street = $userResult['street'];
+    $city = $userResult['city'];
+    $state = $userResult['state'];
+    $postcode = $userResult['postCode'];
+    $country = $userResult['country']; 
 
     if ($userResult['profilePic'] === null){
         $pic = 'uploads/defaultProfile.png';
@@ -22,32 +22,35 @@ if (isset($_SESSION['loginId'])){
         $pic = $userResult['profilePic'];
     }
 
-    //for conducted contest
+    $profileUrl = "<a href = 'aOrgProfile.php?id = $id '> Personal Information </a>";
+    $contestUrl =  "<a href = 'aOrgContest.php?id = $id'> Contest History</a>";
+    $reportUrl = "<a href = 'aOrgReport.php?id = $id'> Report </a>";
+
+     //for conducted contest
     $conductedData = mysqli_query($con, "SELECT * FROM contest WHERE DATE(endDate)<DATE(NOW()) 
-                                        AND organiserID = '$id' ");
+                AND organiserID = '$id' ");
     while ($conductedResult = mysqli_fetch_array($conductedData)){
-        $conductedId[] = $conductedResult["contestId"];
-        $conductedName[] = $conductedResult["contestName"];
+    $conductedId[] = $conductedResult["contestId"];
+    $conductedName[] = $conductedResult["contestName"];
     }
 
     //for ongoing contest
     $ongoingData = mysqli_query($con, "SELECT * FROM contest WHERE DATE(endDate)>=DATE(NOW())
-                                        AND organiserID = '$id'");
+                    AND organiserID = '$id'");
     while ($ongoingResult = mysqli_fetch_array($ongoingData)){
-        $ongoingId[] = $ongoingResult["contestId"];
-        $ongoingName[] = $ongoingResult["contestName"];
+    $ongoingId[] = $ongoingResult["contestId"];
+    $ongoingName[] = $ongoingResult["contestName"];
     }
 
     $countEnd= mysqli_num_rows($conductedData);
     $countOn = mysqli_num_rows($ongoingData); 
-}
-?> 
+?>
 
 <!DOCTYPE html>
 <html lang = en>
     <head>
-        <title> FUZIFILM | Organiser Contest History </title>
-        <link href = "css/organiserContest.css" rel = "stylesheet" type = "text/css">
+        <title> FUZIFILM | View Organiser Contest History </title>
+        <link href = "css/aOrgContest.css" rel = "stylesheet" type = "text/css">
     </head>
     <body>
         <div class = headerSection>
@@ -64,6 +67,11 @@ if (isset($_SESSION['loginId'])){
                     echo "</ul>";
                 ?>
             </div>
+            <form method = "post">
+                <div class = "btn">
+                    <button type= 'submit' name ='delete' onclick = 'deleteProfile();'>DELETE</button> 
+                </div>
+            </form>
         </div>
 
         <div class = "contest">
@@ -103,3 +111,11 @@ if (isset($_SESSION['loginId'])){
     </body>
 </html>
 <?php require "footer.php"?>
+
+<script>
+    function deleteProfile(){
+        if (confirm("Do you really want to delete this organiser?")){
+            window.location.href = 'deleteOrg.php?id = <?php $id ?>';
+        }
+    }
+</script>
