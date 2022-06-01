@@ -61,24 +61,18 @@ body{
 }
 
 .headerSection .btn{
-    margin: 20px 20px 20px 60px;
+    margin-left: 8%;
+    margin-top: 30px;
 }
 
-.headerSection .btn button{
-    font-weight: 400;
-    font-size: 13pt;
-    background-color: rgba(191, 175, 164, 0.44);
-    color: white;
-    cursor: pointer;
-    text-align: center;
-    border-radius: 20px;
-    border: 1px solid #333333;
+.headerSection .btn .button {
     margin: 20px 40px 20px 20px;
-    padding: 20px 40px 20px 40px;
 }
 
-.headerSection .btn button:hover{
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+.headerSection .btn .button img {
+    width: 51px;
+    height: 51px;
+    object-fit: cover;
 }
 
 .contest{

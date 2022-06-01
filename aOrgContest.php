@@ -69,7 +69,7 @@
             </div>
             <form method = "post">
                 <div class = "btn">
-                    <button type= 'submit' name ='delete' onclick = 'deleteProfile();'>DELETE</button> 
+                    <a href="deleteOrg.php?id=<?php echo $id ?>" class="button" onclick="return confirm('Do you really want to delete this organiser?')"><img src="images\removebtn.png" alt="remove btn"></a>
                 </div>
             </form>
         </div>
@@ -111,11 +111,3 @@
     </body>
 </html>
 <?php require "footer.php"?>
-
-<script>
-    function deleteProfile(){
-        if (confirm("Do you really want to delete this organiser?")){
-            window.location.href = 'deleteOrg.php?id=<?php $id ?>';
-        }
-    }
-</script>

@@ -55,7 +55,7 @@
             </div>
             <form method = "post">
                 <div class = "btn">
-                    <button type= 'submit' name ='delete' onclick = 'deleteProfile();'>DELETE</button> 
+                    <a href="deletePar.php?id=<?php echo $id ?>" class="button" onclick="return confirm('Do you really want to delete this participant?')"><img src="images\removebtn.png" alt="remove btn"></a>
                 </div>
             </form>
         </div>
@@ -78,11 +78,3 @@
     </body>
 </html>         
 <?php require "footer.php"?>   
-
-<script>
-    function deleteProfile(){
-        if (confirm("Do you really want to delete this participant?")){
-            window.location.href = 'deletePar.php?id=<?php $id ?>';
-        }
-    }
-</script>
