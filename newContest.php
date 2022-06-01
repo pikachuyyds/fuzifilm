@@ -144,7 +144,7 @@ $sql_organiserQuery = mysqli_query($con,$sql_organiser);
 $organiserInfo = mysqli_fetch_array($sql_organiserQuery);
 
 // organiser information
-$organiserId = $organiserInfo['contestName'];
+$organiserId = $organiserInfo['organiserID'];
 
 if (isset($_POST['addNewContest'])) {
 	$target_dir = "uploads/";
