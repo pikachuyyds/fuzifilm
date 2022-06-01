@@ -4,7 +4,7 @@
 
     $id = $_GET["id"];
     $userType = 'organiser';
-    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$id' ");
+    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE organiserID = '$id' ");
     $userResult = mysqli_fetch_array($userData);
 
     $name = $userResult['name'];
@@ -22,9 +22,9 @@
         $pic = $userResult['profilePic'];
     }
 
-    $profileUrl = "<a href = 'aOrgProfile.php?id = $id '> Personal Information </a>";
-    $contestUrl =  "<a href = 'aOrgContest.php?id = $id'> Contest History</a>";
-    $reportUrl = "<a href = 'aOrgReport.php?id = $id'> Report </a>";
+    $profileUrl = "<a href = 'aOrgProfile.php?id=$id '> Personal Information </a>";
+    $contestUrl =  "<a href = 'aOrgContest.php?id=$id'> Contest History</a>";
+    $reportUrl = "<a href = 'aOrgReport.php?id=$id'> Report </a>";
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@
             </div>
             <form method = "post">
                 <div class = "btn">
-                    <button type= 'submit' name='edit' onclick = 'window.location.href = "adminEditOrg.php?id = <?php $id ?>"'>EDIT</button>
+                    <button type= 'submit' name='edit' onclick = 'window.location.href = "adminEditOrg.php?id=<?php $id ?>"'>EDIT</button>
                     <button type= 'submit' name ='delete' onclick = 'deleteProfile();'>DELETE</button> 
                 </div>
             </form>
@@ -80,7 +80,7 @@
 <script>
     function deleteProfile(){
         if (confirm("Do you really want to delete this organiser?")){
-            window.location.href = 'deleteOrg.php?id = <?php $id ?>';
+            window.location.href = 'deleteOrg.php?id=<?php $id ?>';
         }
     }
 </script>

@@ -43,7 +43,7 @@
                             }
         
             ?>
-                        <a href = "aUserProfile.php?id = <?php echo $id ?>"><div class = "aUserProfile">
+                        <a href = "aUserProfile.php?id=<?php echo $id ?>"><div class = "aUserProfile">
                             <div class = "profileInfo"><?php echo $name ?></div>
                             <div class = "profileInfo">
                                 <div class = "img">
@@ -71,7 +71,7 @@
                             $pic = $participantResult['profilePic'];
                         }
                 ?>
-                    <a href = "aParProfile.php?id = <?php echo $id ?>"><div class = "aUserProfile">
+                    <a href = "aParProfile.php?id=<?php echo $id ?>"><div class = "aUserProfile">
                         <div class = "profileInfo"><?php echo $name ?></div>
                         <div class = "profileInfo">
                             <div class = "image">

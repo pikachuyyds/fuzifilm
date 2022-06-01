@@ -4,15 +4,15 @@
 
     $id = $_GET["id"];
     $userType = 'participant';
-    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$id' ");
+    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE participantId = '$id' ");
     $userResult = mysqli_fetch_array($userData);
 
     $name = $userResult['name'];
     $banStart = $userResult['banStartDate'];
     $banEnd = $userResult['banEndDate'];
 
-    $profileUrl =  "<a href = 'aParProfile.php?id = $id '> Personal Information </a>";
-    $portfolioUrl = "<a href = 'aParPortfolio.php?id = $id '> Portfolio </a>";
+    $profileUrl =  "<a href = 'aParProfile.php?id=$id '> Personal Information </a>";
+    $portfolioUrl = "<a href = 'aParPortfolio.php?id=$id '> Portfolio </a>";
 
     if ($userResult['profilePic'] === null){
         $pic = 'uploads/defaultProfile.png';
@@ -82,7 +82,7 @@
 <script>
     function deleteProfile(){
         if (confirm("Do you really want to delete this participant?")){
-            window.location.href = 'deletePar.php?id = <?php $id ?>';
+            window.location.href = 'deletePar.php?id=<?php $id ?>';
         }
     }
 </script>

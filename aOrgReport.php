@@ -4,14 +4,14 @@ require "conn.php";
 
 $id = $_GET["id"];
 $userType = 'organiser';
-$userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$id' ");
+$userData = mysqli_query($con, "SELECT * FROM $userType WHERE organiserID = '$id' ");
 $userResult = mysqli_fetch_array($userData);
 
 $name = $userResult['name'];
 
-$profileUrl = "<a href = 'aOrgProfile.php?id = $id '> Personal Information </a>";
-$contestUrl =  "<a href = 'aOrgContest.php?id = $id'> Contest History</a>";
-$reportUrl = "<a href = 'aOrgReport.php?id = $id'> Report </a>";
+$profileUrl = "<a href = 'aOrgProfile.php?id=$id '> Personal Information </a>";
+$contestUrl =  "<a href = 'aOrgContest.php?id=$id'> Contest History</a>";
+$reportUrl = "<a href = 'aOrgReport.php?id=$id'> Report </a>";
 
 if ($userResult['profilePic'] === null){
     $pic = 'uploads/defaultProfile.png';
@@ -204,7 +204,7 @@ if ($userResult['profilePic'] === null){
 <script>
     function deleteProfile(){
         if (confirm("Do you really want to delete this organiser?")){
-            location.href = '/deleteOrg.php';
+            window.location.href = 'deleteOrg.php?id=<?php $id ?>';
         }
     }
 </script>

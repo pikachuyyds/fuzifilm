@@ -4,7 +4,7 @@
 
     $id = $_GET["id"];
     $userType = 'organiser';
-    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$id' ");
+    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE organiserID = '$id' ");
     $userResult = mysqli_fetch_array($userData);
 
     $name = $userResult['name'];
@@ -22,9 +22,9 @@
         $pic = $userResult['profilePic'];
     }
 
-    $profileUrl = "<a href = 'aOrgProfile.php?id = $id '> Personal Information </a>";
-    $contestUrl =  "<a href = 'aOrgContest.php?id = $id'> Contest History</a>";
-    $reportUrl = "<a href = 'aOrgReport.php?id = $id'> Report </a>";
+    $profileUrl = "<a href = 'aOrgProfile.php?id=$id '> Personal Information </a>";
+    $contestUrl =  "<a href = 'aOrgContest.php?id=$id'> Contest History</a>";
+    $reportUrl = "<a href = 'aOrgReport.php?id=$id'> Report </a>";
 
      //for conducted contest
     $conductedData = mysqli_query($con, "SELECT * FROM contest WHERE DATE(endDate)<DATE(NOW()) 
@@ -83,7 +83,7 @@
                     <?php
                         if ($countEnd>0){
                             for ($i= 0; $i<$countEnd; $i++ ){
-                                echo("<a href ='aContest.php?id = $conductedId[$i]'>$conductedName[$i]</a><br><br><br><br>");
+                                echo("<a href ='aContest.php?id=$conductedId[$i]'>$conductedName[$i]</a><br><br><br><br>");
                             }
                         }else{
                             echo "<b>No Conducted Contest</b>";
@@ -98,7 +98,7 @@
                     <?php
                        if ($countOn>0){
                             for ($i= 0; $i<$countOn; $i++ ){
-                                echo("<a href ='aContest.php?id =$ongoingId[$i]'>$ongoingName[$i]</a><br><br><br><br>");
+                                echo("<a href ='aContest.php?id=$ongoingId[$i]'>$ongoingName[$i]</a><br><br><br><br>");
                             }
                         }else{
                             echo "<b>No Ongoing Contest</b>";
@@ -115,7 +115,7 @@
 <script>
     function deleteProfile(){
         if (confirm("Do you really want to delete this organiser?")){
-            window.location.href = 'deleteOrg.php?id = <?php $id ?>';
+            window.location.href = 'deleteOrg.php?id=<?php $id ?>';
         }
     }
 </script>

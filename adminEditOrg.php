@@ -4,7 +4,7 @@
 
     $id = $_GET["id"];
     $userType = 'organiser';
-    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$id' ");
+    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE organiserID = '$id' ");
     $userResult = mysqli_fetch_array($userData);
 
     $name = $userResult['name'];
@@ -105,12 +105,12 @@
             die('error'.mysqli_error($con));
         }else{
             echo "<script>alert('Data updated');
-            window.location.href = 'aOrgProfile.php?id = $id';
+            window.location.href = 'aOrgProfile.php?id=$id';
             </script>";
         }
     }
 
     if (isset($_POST['back'])){
-        echo "<script>window.location.href = 'aOrgProfile.php?id = $id';</script>";
+        echo "<script>window.location.href = 'aOrgProfile.php?id=$id';</script>";
     }
 ?>

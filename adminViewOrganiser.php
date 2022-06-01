@@ -45,7 +45,7 @@
                                 $pic = $searchResult['profilePic'];
                             }
             ?>
-                        <a href = "aOrgProfile.php?id = <?php echo $id ?>"><div class = "aUserProfile">
+                        <a href = "aOrgProfile.php?id=<?php echo $id ?>"><div class = "aUserProfile">
                             <div class = "profileInfo"><?php echo $name ?></div>
                             <div class = "profileInfo">
                                 <div class = "img">
@@ -74,11 +74,11 @@
                             $pic = $organiserResult['profilePic'];
                         }
                 ?>
-                    <a href = "aOrgProfile.php?id = <?php echo $id ?>"><div class = "aUserProfile">
+                    <a href = "aOrgProfile.php?id=<?php echo $id ?>"><div class = "aUserProfile">
                         <div class = "profileInfo"><?php echo $name ?></div>
                         <div class = "profileInfo">
                             <div class = "image">
-                                <img src = "<?php echo $pic ?>" alt = "profile pic">
+                                <img src ="<?php echo $pic ?>" alt = "profile pic">
                             </div>
                         </div>
 

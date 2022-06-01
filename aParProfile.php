@@ -4,7 +4,7 @@
 
     $id = $_GET["id"];
     $userType = 'participant';
-    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$id' ");
+    $userData = mysqli_query($con, "SELECT * FROM $userType WHERE participantId = '$id' ");
     $userResult = mysqli_fetch_array($userData);
 
     $name = $userResult['name'];
@@ -27,8 +27,8 @@
         $pic = $userResult['profilePic'];
     }
 
-    $profileUrl =  "<a href = 'aParProfile.php?id = $id'> Personal Information </a>";
-    $portfolioUrl = "<a href = 'aParPortfolio.php?id = $id '> Portfolio </a>";
+    $profileUrl =  "<a href = 'aParProfile.php?id=$id'> Personal Information </a>";
+    $portfolioUrl = "<a href = 'aParPortfolio.php?id=$id '> Portfolio </a>";
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +63,7 @@
             </div>
             <form method = "post">
                 <div class = "btn">
-                    <button type= 'submit' name='edit' onclick = 'window.location.href = "adminEditPar.php?id = <?php $id ?>"'>EDIT</button>
+                    <button type= 'submit' name='edit' onclick = 'window.location.href = "adminEditPar.php?id=<?php $id ?>"'>EDIT</button>
                     <button type= 'submit' name ='delete' onclick = 'deleteProfile();'>DELETE</button> 
                 </div>
             </form>
@@ -96,7 +96,7 @@
 <script>
     function deleteProfile(){
         if (confirm("Do you really want to delete this participant?")){
-            window.location.href = 'deletePar.php?id = <?php $id ?>';
+            window.location.href = 'deletePar.php?id=<?php $id ?>';
         }
     }
 </script>
