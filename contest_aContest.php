@@ -6,7 +6,6 @@
     // uploads
     $uploads = "uploads/";
 
-
     // get contest information from database
     $sql_contest = "SELECT * FROM contest WHERE contestId = '$contestId';";
     $sql_contestQuery = mysqli_query($con,$sql_contest);
@@ -337,14 +336,11 @@
         </div>
 
     <?php
-        } else if ($status = "announced" ) {
+        } else if ($status == "announced") {
         
         // <!--------------------------------------------- contest part 4 (announced) ---------------------------------------------->
 
-        if($status=="announced")
-        {
             echo "<iframe class='iframeContainer' id='aContestIframe' src='iframeAContestWinnerList.php?id=<?php echo $_GET[id];?>'  frameBorder='0' title='Click to view more information'></iframe></script>";
-        }
 
         }
     ?>
