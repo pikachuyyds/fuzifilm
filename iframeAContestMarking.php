@@ -36,6 +36,7 @@
 </head>
 <body>
 <?php
+	session_start();
     require "conn.php";
     $sql ="SELECT photo,score FROM participantlist WHERE participantId ='$_GET[participantId]' AND contestId ='$_GET[contestId]'";
     $result =mysqli_query($con, $sql);
