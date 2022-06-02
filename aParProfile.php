@@ -40,27 +40,42 @@
 
     <body> 
         <div class = headerSection>
-            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
-            <div class = "userInfo">
-                <?php
-                    echo strtoUpper("<p>$userType</p>"); 
-                    if ($banStart!= null){
-                        echo "<banDate> banned until  " .$banEnd. "</banDate>";
-                    }
+            <div>
+                <div class = "userInfo">
+                    <?php
+                        echo strtoUpper("<p>$userType</p>");   
+                        if ($userType == 'participant'){
+                            if ($banStart!= null){
+                                echo "<banDate> banned until  " .$banEnd. "</banDate>";
+                            }
+                        }
+                    ?>
+                </div> 
                     
-                ?>
-            </div> 
-                
-            <div class = "userName"><?php echo "$name"?></div>
-
-            <div class = "pageInfo">
-                <?php
-                    echo "<ul>";    
-                    echo "<li>$profileUrl</li>";
-                    echo "<li>$portfolioUrl</li>";
-                    echo "</ul>";
-                ?>
+                <div class = "userName"><?php echo "$name"?></div>
+                <div class = "pageInfo">
+                    <?php
+                        echo "<ul>";    
+                        if ($userType == 'participant'){
+                            echo "<li>$profileUrl</li>";
+                            echo "<li>$portfolioUrl</li>";
+                        }
+                        else if ($userType == 'organiser'){
+                            echo "<li>$profileUrl</li>";
+                            echo "<li>$contestUrl</li>";
+                            echo "<li>$reportUrl</li>";
+                        }
+                        else if ($userType == 'admin'){
+                            echo "<li>$profileUrl</li>";
+                            echo "<li>$reportUrl</li>";
+                        }else{
+                            echo "";
+                        }
+                        echo "</ul>";
+                    ?>                    
+                </div>
             </div>
+            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
             <form method = "post">
                 <div class = "btn">
                     <a href="adminEditPar.php?id=<?php echo $id; ?>" class="button"><img src="images\editbtn.png" alt="edit btn"></a>

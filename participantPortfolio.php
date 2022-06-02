@@ -36,26 +36,28 @@ if (isset($_SESSION['loginId'])){
     </head>
     <body>
         <div class = headerSection>
-            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
-            <div class = "userInfo">
-                <?php
-                    echo strtoUpper("<p>$userType</p>"); 
-                    if ($banStart!= null){
-                        echo "<banDate> banned until  " .$banEnd. "</banDate>";
-                    }
-                ?>
-            </div> 
-                
-            <div class = "userName"><?php echo "$name"?></div>
+            <div>
+                <div class = "userInfo">
+                    <?php
+                        echo strtoUpper("<p>$userType</p>"); 
+                        if ($banStart!= null){
+                            echo "<banDate> banned until  " .$banEnd. "</banDate>";
+                        }
+                    ?>
+                </div> 
+                    
+                <div class = "userName"><?php echo "$name"?></div>
 
-            <div class = "pageInfo">
-                <?php
-                    echo "<ul>";
-                    echo "<li>$profileUrl</li>";
-                    echo "<li>$portfolioUrl</li>";
-                    echo "</ul>";
-                ?>
+                <div class = "pageInfo">
+                    <?php
+                        echo "<ul>";
+                        echo "<li>$profileUrl</li>";
+                        echo "<li>$portfolioUrl</li>";
+                        echo "</ul>";
+                    ?>
+                </div>
             </div>
+            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
         </div>
         
         <div class = portfolio>
