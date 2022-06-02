@@ -144,7 +144,7 @@
             $targetImg_dir = "uploads/";
             $targetFile = $targetImg_dir . basename($_FILES['image']['name']);
             if(!move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)){
-                die('reward item picture transfering failed');
+                die('participant image transfering failed');
             } else { $fileLocation = $targetImg_dir . basename($_FILES['image']['name']); }
         } else {
             die("participant image transfering failed");
