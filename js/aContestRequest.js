@@ -30,7 +30,7 @@ function button1(){
     document.getElementById('contestHeader').style.display = "none";
     document.getElementById('contestContainer').style.display = "none";
     // button 
-    document.getElementById('btnContainer').style.display = "inline-block";
+    document.getElementById('btnContainer').style.display = "flex";
 }
 
 function button2(){
