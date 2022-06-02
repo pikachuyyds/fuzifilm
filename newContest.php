@@ -166,7 +166,7 @@ if (isset($_POST['addNewContest'])) {
 	else {
 		echo '<script>alert("New Contest Created");</script>';
 		echo "<script>
-		window.location.href= 'allContestOrgAndAdm.php';
+		window.location.href= 'contestRequestSelect.php';
 		</script>";
 	}
 	mysqli_close($con);
@@ -200,7 +200,7 @@ if (isset($_POST['addNewContest'])) {
 	else {
 		echo '<script>alert("New Contest Created");</script>';
 		echo "<script>
-		window.location.href= 'allContestOrgAndAdm.php';
+		window.location.href= 'contestRequestSelect.php';
 		</script>";
 	}
 	mysqli_close($con);
