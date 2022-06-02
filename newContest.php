@@ -8,7 +8,7 @@
 	$organiserInfo = mysqli_fetch_array($sql_organiserQuery);
 	// organiser information
 	$organiserId = $organiserInfo['organiserID'];
-	printr($organiserId);
+	print_r($organiserId);
 ?>
 <!DOCTYPE html>
 <html>
@@ -166,7 +166,7 @@ if (isset($_POST['addNewContest'])) {
 	else {
 		echo '<script>alert("New Contest Created");</script>';
 		echo "<script>
-		window.location.href= 'allContest.php';
+		window.location.href= 'allContestOrgAndAdm.php';
 		</script>";
 	}
 	mysqli_close($con);
@@ -200,7 +200,7 @@ if (isset($_POST['addNewContest'])) {
 	else {
 		echo '<script>alert("New Contest Created");</script>';
 		echo "<script>
-		window.location.href= 'allContest.php';
+		window.location.href= 'allContestOrgAndAdm.php';
 		</script>";
 	}
 	mysqli_close($con);
