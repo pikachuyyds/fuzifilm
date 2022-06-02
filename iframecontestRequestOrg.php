@@ -28,6 +28,8 @@
 <body>
 
 <?php
+session_start();
+require "conn.php";
 // get organiser information from database
 $sql_organiser = "SELECT organiserID FROM organiser WHERE loginId = '$_SESSION[loginId]';";
 $sql_organiserQuery = mysqli_query($con,$sql_organiser);
@@ -36,8 +38,7 @@ $organiserInfo = mysqli_fetch_array($sql_organiserQuery);
 // organiser information
 $organiserId = $organiserInfo['organiserID'];
 
-			session_start();
-            require "conn.php";
+			
             $sql_allContest = "SELECT contestId, contestName, approvalStatus, startDate FROM contest WHERE organiserID='$organiserId' AND approvalStatus = 'pending';";
             $sql_allContestQuery = mysqli_query($con,$sql_allContest);
             while ($contestInfo = mysqli_fetch_array($sql_allContestQuery)) {
