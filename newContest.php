@@ -1,6 +1,13 @@
 <?php include("conn.php"); ?>
 <?php
     require "header.php";
+	// get organiser information from database
+	$sql_organiser = "SELECT organiserID FROM organiser WHERE loginId = '$_SESSION[loginId]';";
+	$sql_organiserQuery = mysqli_query($con,$sql_organiser);
+	$organiserInfo = mysqli_fetch_array($sql_organiserQuery);
+	// organiser information
+	$organiserId = $organiserInfo['organiserID'];
+	printr($organiserId);
 ?>
 <!DOCTYPE html>
 <html>
@@ -138,13 +145,6 @@
 </div>
 
 <?php 
-// get organiser information from database
-$sql_organiser = "SELECT organiserID FROM organiser WHERE loginId = '$_SESSION[loginId]';";
-$sql_organiserQuery = mysqli_query($con,$sql_organiser);
-$organiserInfo = mysqli_fetch_array($sql_organiserQuery);
-
-// organiser information
-$organiserId = $organiserInfo['organiserID'];
 
 if (isset($_POST['addNewContest'])) {
 	$target_dir = "uploads/";
