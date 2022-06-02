@@ -1,6 +1,7 @@
-<?php include("conn.php"); ?>
+
 <?php
     require "header.php";
+	include("conn.php");
 	// get organiser information from database
 	$sql_organiser = "SELECT organiserID FROM organiser WHERE loginId = '$_SESSION[loginId]';";
 	$sql_organiserQuery = mysqli_query($con,$sql_organiser);
