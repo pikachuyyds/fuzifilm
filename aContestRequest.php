@@ -249,6 +249,7 @@ if (isset($_POST['rejectButton'])) {
 			die('Error: ' . mysqli_error($con));
 		}
 	else {
+        echo '<script>alert("Contest Rejected");</script>';
 		echo "<script>
 		window.location.href= 'contestRequestSelect.php';
 		</script>";
@@ -261,6 +262,7 @@ if (isset($_POST['approveButton'])) {
 			die('Error: ' . mysqli_error($con));
 		}
 	else {
+        echo '<script>alert("Contest Approved");</script>';
 		echo "<script>
 		window.location.href= 'contestRequestSelect.php';
 		</script>";
