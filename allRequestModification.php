@@ -18,7 +18,7 @@
 	<div class=' w-100 statusOfApprovalHeader'> Record: Request Modification</div>
 </div>
 <!-- Different iframe based on role (organiser//admin)-->
-<iframe class="iframeContainer" src="<?php if ($_SESSION['userType'] =='organiser') {echo'iframeReqModiApprovalOrganiser.php';}if ($_SESSION['userType'] =='admin') {echo'iframeReqModiApprovalAdmin.php';}?>" title="Click to view more information"></iframe>
+<iframe class="iframeContainer mb-5" src="<?php if ($_SESSION['userType'] =='organiser') {echo'iframeReqModiApprovalOrganiser.php';}if ($_SESSION['userType'] =='admin') {echo'iframeReqModiApprovalAdmin.php';}?>" title="Click to view more information"></iframe>
 
 </body>
 <?php require "footer.php"; ?>
