@@ -66,7 +66,7 @@
                 <?php
                     if ($countPic>0){
                         while($portfolioResult = mysqli_fetch_array($portfolio)){
-                            echo"<div class = 'img' img src=". $portfolioResult['photo']." alt = 'portfolio img'>";
+                            echo"<div class = 'img'> <img src=". $portfolioResult['photo']." alt = 'portfolio img'></div>";
                         }
                     }else{
                         echo"<b>No Picture</b>";
