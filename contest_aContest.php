@@ -16,6 +16,7 @@
     $startDate = $contestInfo['startDate'];
     $endDate = $contestInfo['endDate'];
     $type = $contestInfo['contestType'];
+    $contestApprovalStatus = $contestInfo['approvalStatus'];
 
     // paid or free
     $paidOrFree = $contestInfo['paidOrFree'];
@@ -76,6 +77,62 @@
     {
         $requiredPrice = "RM ".$price;
     }
+
+    // send Leaderboardpoint and reward point to participant once $status is in announced phase
+    if($status=='announced' and $contestApprovalStatus=='approved')
+    {
+        $i=1;
+        
+        $sql_allParticipant = "SELECT * FROM participantlist WHERE contestId ='$contestId' AND qualificationStatus='qualified' ORDER BY score DESC;";
+        $sql_allContestQuery = mysqli_query($con,$sql_allParticipant);
+        while ($contestInfo = mysqli_fetch_array($sql_allContestQuery)) {
+            /* main data */$participantId = $contestInfo['participantId'];
+            $sql ="SELECT leaderboardPoint,rewardRedemptionPoint FROM participant WHERE participantId ='$participantId'";
+            $result =mysqli_query($con, $sql);
+            if (mysqli_num_rows($result)) {$row = mysqli_fetch_array($result);}
+            /* main data */$leaderboardPoint = $row['leaderboardPoint'];
+            /* main data */$rewardRedemptionPoint = $row['rewardRedemptionPoint'];
+            if($i==1){
+                $leaderboardPoint = $leaderboardPoint +200;
+                $rewardRedemptionPoint = $rewardRedemptionPoint+200;
+                $sql="UPDATE participant SET leaderboardPoint = '$leaderboardPoint', rewardRedemptionPoint = '$rewardRedemptionPoint' WHERE participantId ='$participantId' ;";
+                if (!mysqli_query($con,$sql)){
+                    die('Error: ' . mysqli_error($con));
+                }
+            }elseif($i==2){
+                $leaderboardPoint = $leaderboardPoint +150;
+                $rewardRedemptionPoint = $rewardRedemptionPoint+150;
+                $sql="UPDATE participant SET leaderboardPoint = '$leaderboardPoint', rewardRedemptionPoint = '$rewardRedemptionPoint' WHERE participantId ='$participantId' ;";
+                if (!mysqli_query($con,$sql)){
+                    die('Error: ' . mysqli_error($con));
+                }
+            }elseif($i==3){
+                $leaderboardPoint = $leaderboardPoint +100;
+                $rewardRedemptionPoint = $rewardRedemptionPoint+100;
+                $sql="UPDATE participant SET leaderboardPoint = '$leaderboardPoint', rewardRedemptionPoint = '$rewardRedemptionPoint' WHERE participantId ='$participantId' ;";
+                if (!mysqli_query($con,$sql)){
+                    die('Error: ' . mysqli_error($con));
+                }
+            }else{
+                $leaderboardPoint = $leaderboardPoint +10;
+                $rewardRedemptionPoint = $rewardRedemptionPoint+20;
+                $sql="UPDATE participant SET leaderboardPoint = '$leaderboardPoint', rewardRedemptionPoint = '$rewardRedemptionPoint' WHERE participantId ='$participantId' ;";
+                if (!mysqli_query($con,$sql)){
+                        die('Error: ' . mysqli_error($con));
+                    }
+            }
+            $i++;
+        }
+
+            // update contestApprovalStatus to past so it wont give participant points repeatedly
+            $sql="UPDATE contest SET approvalStatus = 'past' WHERE contestId ='$contestId' ;";
+            if (!mysqli_query($con,$sql))
+            {
+                die('Error: ' . mysqli_error($con));
+            }
+        }
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -84,6 +141,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\aContestRequest.css">
     <link rel="stylesheet" href="css\aContest.css">
     <title>Contest</title>
 </head>
@@ -276,14 +334,15 @@
         </div>
 
     <?php
-        } else if ($status = "announced") {
-    ?>
-
-    <!--------------------------------------------- contest part 4 (announced) ---------------------------------------------->
-    <!-- display winner iframe -->
+        } else if ($status = "announced" ) {
         
+        // <!--------------------------------------------- contest part 4 (announced) ---------------------------------------------->
 
-    <?php
+        if($status=="announced")
+        {
+            echo "<iframe class='iframeContainer' id='aContestIframe' src='iframeAContestWinnerList.php?id=<?php echo $_GET[id];?>'  frameBorder='0' title='Click to view more information'></iframe></script>";
+        }
+
         }
     ?>
 

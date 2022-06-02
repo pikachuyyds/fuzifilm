@@ -38,14 +38,14 @@
             // organiser
             else if ($user=="organiser") { ?>
             <a class="naviBar_sub1_item " href="home.php">home</a>
-            <a class="naviBar_sub1_item" href="allContest.php">contest</a> <!-- dropdown button (view all responsible contest, contest request (create & modify), create new contest) -->
+            <a class="naviBar_sub1_item" href="allContestOrgAndAdm.php">contest</a> <!-- dropdown button (view all responsible contest, contest request (create & modify), create new contest) -->
             <a class="naviBar_sub1_item" href="leaderboard.php">leaderboard</a>
             <?php }
 
             //  admin
             else if ($user=="admin") { ?>
             <a class="naviBar_sub1_item " href="home.php">home</a>
-            <a class="naviBar_sub1_item" href="allContest.php">contest</a> <!-- dropdown button(view all contest, conteset request) -->
+            <a class="naviBar_sub1_item" href="allContestOrgAndAdm.php">contest</a> <!-- dropdown button(view all contest, conteset request) -->
             <a class="naviBar_sub1_item" href="#profile">profile</a> <!-- guess, organiser account -->
             <?php } ?>
 
@@ -137,8 +137,10 @@
                         <ul>
                             <li> <p class="togglerItemTitle">Contest</p> 
                                 <ul style="list-style-type:none;">
-                                    <li class="togglerItem"><a href="#">all contest</a></li>
-                                    <li class="togglerItem"><a href="#">create contest</a></li>
+                                    <li class="togglerItem"><a href="allContestOrgAndAdm.php">all contest</a></li>
+                                    <li class="togglerItem"><a href="newContest.php">create contest</a></li>
+                                    <li class="togglerItem"><a href="contestRequestSelect.php">contest creation request</a></li>
+                                    <li class="togglerItem"><a href="allRequestModification.php">requested modification request</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -177,8 +179,9 @@
                         <ul>
                             <li> <p class="togglerItemTitle">Contest</p> 
                                 <ul style="list-style-type:none;">
-                                    <li class="togglerItem"><a href="#">all contests</a></li>
-                                    <li class="togglerItem"><a href="#">request</a></li>
+                                    <li class="togglerItem"><a href="allContestOrgAndAdm.php">all contests</a></li>
+                                    <li class="togglerItem"><a href="contestRequestSelect.php">contest creation request</a></li>
+                                    <li class="togglerItem"><a href="allRequestModification.php">request modification</a></li>
                                 </ul>
                             </li>
                         </ul>
