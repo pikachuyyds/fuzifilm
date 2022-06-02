@@ -83,7 +83,7 @@ if (isset($_POST['requestModificationSubmit'])) {
 	else {
 		echo '<script>alert("Request submitted!!!")</script>';
 		echo "<script>
-		window.location.href= 'aContestOrgAndAdm.php?id=$_GET[id]';
+		window.location.href= 'allRequestModification.php';
 		</script>";
 	}
 	mysqli_close($con);
@@ -104,7 +104,7 @@ if (isset($_POST['requestModificationSubmit'])) {
 	else {
 		echo '<script>alert("Request submitted!!!")</script>';
 		echo "<script>
-		window.location.href= 'aContestOrgAndAdm.php?id=$_GET[id]';
+		window.location.href= 'allRequestModification.php';
 		</script>";
 	}
 	mysqli_close($con);

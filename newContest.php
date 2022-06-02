@@ -1,6 +1,14 @@
-<?php include("conn.php"); ?>
+
 <?php
     require "header.php";
+	include("conn.php");
+	// get organiser information from database
+	$sql_organiser = "SELECT organiserID FROM organiser WHERE loginId = '$_SESSION[loginId]';";
+	$sql_organiserQuery = mysqli_query($con,$sql_organiser);
+	$organiserInfo = mysqli_fetch_array($sql_organiserQuery);
+	// organiser information
+	$organiserId = $organiserInfo['organiserID'];
+	print_r($organiserId);
 ?>
 <!DOCTYPE html>
 <html>
@@ -138,13 +146,6 @@
 </div>
 
 <?php 
-// get organiser information from database
-$sql_organiser = "SELECT organiserID FROM organiser WHERE loginId = '$_SESSION[loginId]';";
-$sql_organiserQuery = mysqli_query($con,$sql_organiser);
-$organiserInfo = mysqli_fetch_array($sql_organiserQuery);
-
-// organiser information
-$organiserId = $organiserInfo['organiserID'];
 
 if (isset($_POST['addNewContest'])) {
 	$target_dir = "uploads/";
@@ -165,7 +166,7 @@ if (isset($_POST['addNewContest'])) {
 	else {
 		echo '<script>alert("New Contest Created");</script>';
 		echo "<script>
-		window.location.href= 'allContest.php';
+		window.location.href= 'contestRequestSelect.php';
 		</script>";
 	}
 	mysqli_close($con);
@@ -199,7 +200,7 @@ if (isset($_POST['addNewContest'])) {
 	else {
 		echo '<script>alert("New Contest Created");</script>';
 		echo "<script>
-		window.location.href= 'allContest.php';
+		window.location.href= 'contestRequestSelect.php';
 		</script>";
 	}
 	mysqli_close($con);
