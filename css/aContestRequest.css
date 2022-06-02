@@ -234,8 +234,9 @@
 
 /* <!--------------------------------------------- contest part 4 (button) ----------------------------------------------> */
 .btnContainer {
-    display: inline-block;
-    margin: 90px 0 90px 550px;
+
+    display: flex;
+    justify-content: center;
 }
 
 .btnContainer .price {

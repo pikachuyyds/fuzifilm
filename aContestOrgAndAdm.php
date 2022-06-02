@@ -308,6 +308,7 @@ if (isset($_POST['deleteContest'])) {
 			die('Error: ' . mysqli_error($con));
 		}
 	else {
+        echo '<script>alert("Contest Deleted");</script>';
         echo "<script>
 		window.location.href= 'allContestOrgAndAdm.php';
 		</script>";
