@@ -59,7 +59,7 @@
         <input class="btnCss" type="submit" name="disqualifyParticipant" value="Disqualify This Participant">
     </div>
 </form>
-<?php if($_SESSION['userType']!='admin'){echo'<script>(document.getElementById("percentageMark")).style.display = "none";(document.getElementById("submitMark")).style.display = "none";</script>';}?>
+<?php if($_SESSION['userType']!='admin'){echo'<script>(document.getElementById("percentageMark")).style.display = "none";(document.getElementById("submitMark")).style.display = "none";</script>';}if($_SESSION['userType']!='organiser'){echo'<script>(document.getElementById("percentageMark")).style.display = "block";(document.getElementById("submitMark")).style.display = "block";</script>';}?>
 </body>
 
 <?php
