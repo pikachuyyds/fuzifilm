@@ -127,19 +127,21 @@ if ($userResult['profilePic'] === null){
     </head>
     <body>
         <div class = headerSection>
-            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
-            <div class = "userInfo"><?php echo strtoUpper("<p>$userType</p>") ?></div>
-            <div class = "userName"><?php echo "$name"?></div>
-            
-            <div class = "pageInfo">
-                <?php
-                    echo "<ul>";
-                    echo "<li>$profileUrl</li>";
-                    echo "<li>$contestUrl</li>";
-                    echo "<li>$reportUrl</li>";
-                    echo "</ul>";
-                ?>
+            <div>
+                <div class = "userInfo"><?php echo strtoUpper("<p>$userType</p>") ?></div>
+                <div class = "userName"><?php echo "$name"?></div>
+                
+                <div class = "pageInfo">
+                    <?php
+                        echo "<ul>";
+                        echo "<li>$profileUrl</li>";
+                        echo "<li>$contestUrl</li>";
+                        echo "<li>$reportUrl</li>";
+                        echo "</ul>";
+                    ?>
+                </div>
             </div>
+            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
             <form method = "post">
                 <div class = "btn">
                     <a href="deleteOrg.php?id=<?php echo $id ?>" class="button" onclick="return confirm('Do you really want to delete this organiser?')"><img src="images\removebtn.png" alt="remove btn"></a>

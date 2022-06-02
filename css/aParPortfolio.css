@@ -5,11 +5,13 @@
 }
 
 .headerSection{
-    background-color: rgb(198, 195, 195) ;
     padding:80px;
-    margin:0; 
-    display: inline-block;
-    width: 100%;
+    margin:0 auto 45px; 
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
 }
 
 .headerSection .userInfo p{
@@ -20,14 +22,13 @@
 }
 
 .headerSection .userInfo banDate{
+    margin-left: 8%;
     font-weight: 530;
     font-size: 12pt;
     color:red;
-    margin-left: 8%;
 }
 
 .headerSection .userName{
-    margin-left: 8%;
     font-weight: 600;
     font-size: 25pt;
     color:black;
@@ -35,28 +36,21 @@
 }
 
 .headerSection .image{
-    display: flex;
-    width: 200px;
-    height: 200px;
-    align-items: center;
-    justify-content: center;;
+    width: 300px;
+    height: 300px;
     border: 2px solid #5B3E38;
-    float:right;
-    margin-right: 40%;
     border-radius: 50%;
     overflow: hidden;
+
 }
 
 .headerSection .image img{
-    display: flex;
-    width: 195px;
-    height: 195px;
-    justify-content: center;
-    align-items: center;
+    width: 295px;
+    height: 295px;
+    object-fit: cover;
 }
 
 .headerSection .pageInfo{
-    margin-left: 8%;
     color:black;
     list-style-type: disc;
 }
