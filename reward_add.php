@@ -34,7 +34,7 @@
         <div class="others">
             <div>
                 <label for="name">Name</label><br>
-                <input type="text" placeholder="enter a name" pattern="[a-zA-Z0-9-]+" name="name" id="name" required></input><br>
+                <input type="text" placeholder="enter a name" pattern="[a-zA-Z0-9- ]+" name="name" id="name" required></input><br>
             </div>
 
             <div>
