@@ -139,8 +139,8 @@
                                 <ul style="list-style-type:none;">
                                     <li class="togglerItem"><a href="allContestOrgAndAdm.php">all contest</a></li>
                                     <li class="togglerItem"><a href="newContest.php">create contest</a></li>
-                                    <li class="togglerItem"><a href="contestRequestSelect.php">contest creation request</a></li>
-                                    <li class="togglerItem"><a href="allRequestModification.php">requested modification request</a></li>
+                                    <li class="togglerItem"><a href="contestRequestSelect.php">creation request</a></li>
+                                    <li class="togglerItem"><a href="allRequestModification.php">modification request</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -180,8 +180,8 @@
                             <li> <p class="togglerItemTitle">Contest</p> 
                                 <ul style="list-style-type:none;">
                                     <li class="togglerItem"><a href="allContestOrgAndAdm.php">all contests</a></li>
-                                    <li class="togglerItem"><a href="contestRequestSelect.php">contest creation request</a></li>
-                                    <li class="togglerItem"><a href="allRequestModification.php">request modification</a></li>
+                                    <li class="togglerItem"><a href="contestRequestSelect.php">creation request</a></li>
+                                    <li class="togglerItem"><a href="allRequestModification.php">modification</a></li>
                                 </ul>
                             </li>
                         </ul>
