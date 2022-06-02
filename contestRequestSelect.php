@@ -19,7 +19,7 @@
 	<div class=' w-100 statusOfApprovalHeader'> Record: Contest Creation</div>
 </div>
 <!-- Different iframe based on role (organiser//admin)-->
-<iframe class="iframeContainer" src="<?php if ($_SESSION['userType'] =='organiser') {echo'iframecontestRequestOrg.php';}if ($_SESSION['userType'] =='admin') {echo'iframecontestRequestAdm.php';}?>" title="Click to view more information"></iframe>
+<iframe class="iframeContainer mb-5" src="<?php if ($_SESSION['userType'] =='organiser') {echo'iframecontestRequestOrg.php';}if ($_SESSION['userType'] =='admin') {echo'iframecontestRequestAdm.php';}?>" title="Click to view more information"></iframe>
 
 </body>
 <?php require "footer.php"; ?>
