@@ -36,6 +36,7 @@ $organiserInfo = mysqli_fetch_array($sql_organiserQuery);
 // organiser information
 $organiserId = $organiserInfo['organiserID'];
 
+			session_start();
             require "conn.php";
             $sql_allContest = "SELECT contestId, contestName, approvalStatus, startDate FROM contest WHERE organiserID='$organiserId' AND approvalStatus = 'pending';";
             $sql_allContestQuery = mysqli_query($con,$sql_allContest);

@@ -28,6 +28,7 @@
 <body>
 
 <?php
+			session_start();
             require "conn.php";
             $sql_allContest = "SELECT contestId, contestName, approvalStatus, startDate FROM contest WHERE approvalStatus = 'pending';";
             $sql_allContestQuery = mysqli_query($con,$sql_allContest);

@@ -28,6 +28,7 @@
 <body>
 <h1> Participant List</h1>
 <?php
+			session_start();
             require "conn.php";
             $sql_allContest = "SELECT participantId, joinDate, score FROM participantlist WHERE contestId = '$_GET[id]' AND qualificationStatus='qualified';";
             $sql_allContestQuery = mysqli_query($con,$sql_allContest);

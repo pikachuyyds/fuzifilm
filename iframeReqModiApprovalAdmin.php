@@ -28,6 +28,7 @@
 <body>
 
 <?php
+			session_start();
             require "conn.php";
             $sql_allContest = "SELECT changingRequestID, contestId, approvalStatus, detailToChange  FROM contestdetailchangingrequest;";
             $sql_allContestQuery = mysqli_query($con,$sql_allContest);

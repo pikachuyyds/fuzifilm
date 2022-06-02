@@ -29,6 +29,7 @@
 <h1> Winner List</h1>
 
 <?php
+            session_start();
             $x=1;
             require "conn.php";
             $sql_allContest = "SELECT * FROM participantlist WHERE contestId ='$_GET[id]' AND qualificationStatus='qualified' ORDER BY score DESC LIMIT 3;";
