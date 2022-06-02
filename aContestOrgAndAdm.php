@@ -140,7 +140,7 @@
     <script src="js/aContestRequest.js"></script>
     <title>Contest Page</title>
 </head>
-<body >
+<body>
     <!--------------------------------------------- contest part 1 (basic information) ---------------------------------------------->
     <div class="aContest1" id="aContestDiv1">
         <!-- 1st part (contest type and status) -->
@@ -240,7 +240,7 @@
     </div>
 
     <!--------------------------------------------- contest part 3 (timeline) ---------------------------------------------->
-    <div class="aContest3" id="aContestDiv3" style="display:inline;">
+    <div class="aContest3" id="aContestDiv3" >
         <div class="timelineTitle">Timeline</div>
         <div class="timeline">
             <div class="line"></div>
