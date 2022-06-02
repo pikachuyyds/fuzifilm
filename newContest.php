@@ -8,7 +8,6 @@
 	$organiserInfo = mysqli_fetch_array($sql_organiserQuery);
 	// organiser information
 	$organiserId = $organiserInfo['organiserID'];
-	print_r($organiserId);
 ?>
 <!DOCTYPE html>
 <html>
@@ -186,7 +185,7 @@ if (isset($_POST['addNewContest'])) {
 	if (!mysqli_query($con,$sql)){
 			die('Error: ' . mysqli_error($con));
 		}
-	$contestsql ="SELECT * FROM contest WHERE organiserID ='1' ORDER BY contestId DESC LIMIT 1";
+	$contestsql ="SELECT * FROM contest WHERE organiserID ='$organiserId' ORDER BY contestId DESC LIMIT 1";
 	$contestresult =mysqli_query($con, $contestsql);
 	if (mysqli_num_rows($contestresult)) {
 		$contestrow = mysqli_fetch_array($contestresult);}
