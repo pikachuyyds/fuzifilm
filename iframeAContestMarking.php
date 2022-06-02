@@ -36,6 +36,7 @@
 </head>
 <body>
 <?php
+	session_start();
     require "conn.php";
     $sql ="SELECT photo,score FROM participantlist WHERE participantId ='$_GET[participantId]' AND contestId ='$_GET[contestId]'";
     $result =mysqli_query($con, $sql);
@@ -58,7 +59,7 @@
         <input class="btnCss" type="submit" name="disqualifyParticipant" value="Disqualify This Participant">
     </div>
 </form>
-<?php if($_SESSION['userType']!='admin'){echo'<script>(document.getElementById("percentageMark")).style.display = "none";(document.getElementById("submitMark")).style.display = "none";</script>';}?>
+<?php if($_SESSION['userType']=='admin'){echo'<script>(document.getElementById("percentageMark")).style.display = "none";(document.getElementById("submitMark")).style.display = "none";</script>';}?>
 </body>
 
 <?php

@@ -168,7 +168,7 @@
 
         <!-- 3rd part (contest information) -->
         <div class="contestInfo">
-            <div class="organiser"><a href="#organiserProfile">by <?php echo $organiserName; ?></a></div>
+            <div class="organiser">by <?php echo $organiserName; ?></div>
             <div class="contestName"><?php echo $Name ?></div>
             <div class="contestDscrpt"><?php echo $description ?></div>
         </div>
