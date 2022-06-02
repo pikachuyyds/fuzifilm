@@ -8,6 +8,7 @@ if (isset($_SESSION['loginId'])){
     $userData = mysqli_query($con, "SELECT * FROM $userType WHERE loginId = '$_SESSION[loginId]' ");
     $userResult = mysqli_fetch_array($userData);
 
+    $id = $userResult['participantId'];
     $name = $userResult['name'];
     $banStart = $userResult['banStartDate'];
     $banEnd = $userResult['banEndDate'];
@@ -21,7 +22,7 @@ if (isset($_SESSION['loginId'])){
         $pic = $userResult['profilePic'];
     }
     
-    $portfolio = mysqli_query($con, "SELECT * FROM participantlist WHERE participantId = '$_SESSION[loginId]'");
+    $portfolio = mysqli_query($con, "SELECT * FROM participantlist WHERE participantId = '$id'");
     $countPic = mysqli_num_rows($portfolio);
 
 }
