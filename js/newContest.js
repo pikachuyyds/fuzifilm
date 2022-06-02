@@ -2,11 +2,11 @@ function showthumbnailimg() {
     // Check file size
     var contestThumbnailSize = contestThumbnail.files.item(0).size;
     var contestThumbnailFile = Math.round((contestThumbnailSize / 1024));
-    if (contestThumbnailFile >= 20480) {
+    if (contestThumbnailFile >= 10240) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'The size of this image is too large, Please select image that is less than 20MB',
+            text: 'The size of this image is too large, Please select image that is less than 10MB',
           })
     } else if (contestThumbnailFile >=0){
         newThumbnailPreview.src = URL.createObjectURL(event.target.files[0]);

@@ -250,7 +250,7 @@ if (isset($_POST['rejectButton'])) {
 		}
 	else {
 		echo "<script>
-		window.location.href= 'requestModification.php';
+		window.location.href= 'contestRequestSelect.php';
 		</script>";
 	}
 	mysqli_close($con);
@@ -262,7 +262,7 @@ if (isset($_POST['approveButton'])) {
 		}
 	else {
 		echo "<script>
-		window.location.href= 'requestModification.php';
+		window.location.href= 'contestRequestSelect.php';
 		</script>";
 	}
 	mysqli_close($con);
