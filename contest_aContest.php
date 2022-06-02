@@ -3,6 +3,9 @@
     require "conn.php";
     $contestId = $_GET['id'];
 
+    // uploads
+    $uploads = "uploads/";
+
 
     // get contest information from database
     $sql_contest = "SELECT * FROM contest WHERE contestId = '$contestId';";
@@ -54,7 +57,7 @@
     }
     else if($now > strtotime($endDate))
     {
-        $status = "judging";  
+        $status = "judging";
     }
     else
     {
@@ -153,14 +156,14 @@
         <!-- 1st part (contest type and status) -->
         <div class="typeNStatus">
             <div class="contestType">
-                <?php echo $type ?>
+                <?php echo $type; ?>
             </div>
-            <div class="contestStatus"><?php echo $status ?></div>
+            <div class="contestStatus"><?php echo $status; ?></div>
         </div>
 
         <!-- 2nd part (contest image) -->
         <div class="contestImg">
-            <img src="<?php echo $image ?>" alt="contest img">
+            <img src="<?php echo $uploads . $image ?>" alt="contest img">
             <!-- images\loginBg.jpeg -->
         </div>
 
