@@ -288,10 +288,10 @@
     ?>
     <!--------------------------------------------- contest part 5 (button) ---------------------------------------------->
     <br>
-    <div class="btnContainer" style="margin: auto;" id="BtnOrganiser">
+    <div class="btnContainer" id="BtnOrganiser">
         <button type="button" onclick="document.location='<?php echo 'requestModification.php?id='.$contestId.'' ?>'">Request To Edit Contest</button>
     </div>
-    <div class="btnContainer" style="margin: auto;" id="BtnAdmin" >
+    <div class="btnContainer" id="BtnAdmin" >
         
     <form method="post" name="deleteBtn"  ENCTYPE="multipart/form-data" >
         <button type="button" class="btnCss" onclick="document.location='<?php echo 'editContest.php?id='.$contestId.'' ?>'">Edit Contest</button><button type="submit" class="btnCss" name="deleteContest">Delete Contest</button>
