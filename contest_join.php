@@ -176,14 +176,11 @@
                 {
                     die("upload payment history failed");
                 }
-                else 
-                {
-                    echo "<script>
-                    alert('Congratulations, you,ve joined the contest');
-                    window.location.href = 'contest_aContest.php?id=". $contestId ."';
-                    </script>";
-                }
             }
         }
+        echo "<script>
+        alert('Congratulations, you,ve joined the contest');
+        window.location.href = 'contest_aContest.php?id=". $contestId ."';
+        </script>";
     }
 ?>
