@@ -165,7 +165,7 @@ if (isset($_POST['addNewContest'])) {
 	else {
 		echo '<script>alert("New Contest Created");</script>';
 		echo "<script>
-		window.location.href= 'requestModification.php';
+		window.location.href= 'allContest.php';
 		</script>";
 	}
 	mysqli_close($con);

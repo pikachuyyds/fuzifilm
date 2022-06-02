@@ -65,17 +65,23 @@
 </div>
 
 <?php
+$sql_contest = "SELECT * FROM contest WHERE contestId = '$_GET[id]';";
+$sql_contestQuery = mysqli_query($con,$sql_contest);
+$contestInfo = mysqli_fetch_array($sql_contestQuery);
 
+// contest information
+$organiserID = $contestInfo['organiserID'];
 
 if (isset($_POST['requestModificationSubmit'])) {
 	$currentDate = date("Y-m-d");
-	$sql="INSERT INTO contestdetailchangingrequest(detailToChange, newImage, description , requestDate , approvalStatus, contestId) 
+	$sql="INSERT INTO contestdetailchangingrequest(detailToChange, newImage, description , requestDate , approvalStatus, contestId,organiserID) 
 	VALUES 
-	('$_POST[requestModificationType]',NULL,'$_POST[requestModificationDescription]','$currentDate','pending','$_GET[id]');";
+	('$_POST[requestModificationType]',NULL,'$_POST[requestModificationDescription]','$currentDate','pending','$_GET[id]','$organiserID');";
 	if (!mysqli_query($con,$sql)){
 			die('Error: ' . mysqli_error($con));
 		}
 	else {
+		echo '<script>alert("Request submitted!!!")</script>';
 		echo "<script>
 		window.location.href= 'aContestOrgAndAdm.php?id=$_GET[id]';
 		</script>";
@@ -89,9 +95,9 @@ if (isset($_POST['requestModificationSubmit'])) {
 		$thumbnailname = basename($_FILES["modificationRequestThumbnailImage"]["name"]);
 	}
 	$currentDate = date("Y-m-d");
-	$sql="INSERT INTO contestdetailchangingrequest(detailToChange, newImage, description , requestDate , approvalStatus,comment, contestId) 
+	$sql="INSERT INTO contestdetailchangingrequest(detailToChange, newImage, description , requestDate , approvalStatus,comment, contestId,organiserID) 
 	VALUES 
-	('$_POST[requestModificationType]','$thumbnailname','$_POST[requestModificationDescription]','$currentDate','pending',NULL,'$_GET[id]');";
+	('$_POST[requestModificationType]','$thumbnailname','$_POST[requestModificationDescription]','$currentDate','pending',NULL,'$_GET[id]','$organiserID');";
 	if (!mysqli_query($con,$sql)){
 			die('Error: ' . mysqli_error($con));
 		}
