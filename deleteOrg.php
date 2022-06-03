@@ -18,9 +18,9 @@
             window.location.href = 'adminViewOrganiser.php';
             </script>";
         }else{
-            echo "Error deleting record from login database:" .$mysqli_error($con);
+            echo "Error deleting record from login database:" .mysqli_error($con);
         }
     }else{
-        echo "Error deleting record from organiser database:" .$mysqli_error($con);
+        echo "Error deleting record from organiser database:" .mysqli_error($con);
     }
 ?>
