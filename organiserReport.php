@@ -61,7 +61,7 @@ if (isset ($_POST["month"], $_POST["year"]))
     }
 
     if(count($contestId) >0){
-        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$organiserID' 
+        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$organiserID ' AND receiver ='organiser'; 
                                     AND contestId IN ('$contestIds') ");
         if (mysqli_num_rows($payData) > 0){
             while ($payResult = mysqli_fetch_array($payData)){
