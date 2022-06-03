@@ -77,7 +77,7 @@ if (isset($_SESSION['loginId'])){
                     <?php
                         if ($countEnd>0){
                             for ($i= 0; $i<$countEnd; $i++ ){
-                                echo("<a href ='contest_aContest.php?id=$conductedId[$i]'>$conductedName[$i]</a><br><br><br><br>");
+                                echo("<a href ='aContestOrgAndAdm.php?id=$conductedId[$i]'>$conductedName[$i]</a><br><br><br><br>");
                             }
                         }else{
                             echo "<b>No Conducted Contest</b>";
@@ -92,7 +92,7 @@ if (isset($_SESSION['loginId'])){
                     <?php
                        if ($countOn>0){
                             for ($i= 0; $i<$countOn; $i++ ){
-                                echo("<a href ='contest_aContest.php?id=$ongoingId[$i]'>$ongoingName[$i]</a><br><br><br><br>");
+                                echo("<a href ='aContestOrgAndAdm.php?id=$ongoingId[$i]'>$ongoingName[$i]</a><br><br><br><br>");
                             }
                         }else{
                             echo "<b>No Ongoing Contest</b>";

@@ -9,6 +9,7 @@ if (isset($_SESSION['loginId'])){
     $userResult = mysqli_fetch_array($userData);
 
     $name = $userResult['name'];
+    $organiserID = $userResult['organiserID'];
 
     $profileUrl = "<a href = 'userProfile.php'> Personal Information </a>";
     $contestUrl =  "<a href = 'organiserContest.php'> Contest History </a>";
@@ -27,7 +28,7 @@ if (isset ($_POST["month"], $_POST["year"]))
     $year = $_POST["year"];
     $contestId = [];
     
-    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$_SESSION[loginId]' 
+    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$organiserID' 
                                         AND MONTH(startDate) = '$month' AND YEAR(startDate) = '$year'"); 
     //only select contest created in specific month and year
     
