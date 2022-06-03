@@ -175,16 +175,20 @@ if (isset ($_POST["month"], $_POST["year"]))
     </head>
     <body>
         <div class = headerSection>
-            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
-            <p>Admin</p>
-            <div class = "userName"><?php echo "$name"?></div>
-            
-            <div class = "pageInfo">
-                <?php
-                    echo "<li>$profileUrl</li>";
-                    echo "<li>$reportUrl</li>";
-                ?>
+            <div>
+                <p>Admin</p>
+                <div class = "userName"><?php echo "$name"?></div>
+                
+                <div class = "pageInfo">
+                    <?php
+                        echo "<ul>";
+                        echo "<li>$profileUrl</li>";
+                        echo "<li>$reportUrl</li>";
+                        echo "</ul>";
+                    ?>
+                </div>
             </div>
+            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
         </div>
 
         <div class = "adminReport">
