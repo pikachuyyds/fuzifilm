@@ -30,10 +30,16 @@
     <div class="allContest">
         <?php
             require "conn.php";
+            // get organiser information from database
+            $sql_organiser = "SELECT organiserID FROM organiser WHERE loginId = '$_SESSION[loginId]';";
+            $sql_organiserQuery = mysqli_query($con,$sql_organiser);
+            $organiserInfo = mysqli_fetch_array($sql_organiserQuery);
+            // organiser information
+            $organiserId = $organiserInfo['organiserID'];
             if ($_SESSION['userType']=='admin'){
                 $sql_allContest = "SELECT contestId, contestName, contestImage, endDate, paidOrFree, price  FROM contest WHERE approvalStatus='approved';";
             }elseif($_SESSION['userType']=='organiser'){
-                $sql_allContest = "SELECT contestId, contestName, contestImage, endDate, paidOrFree, price  FROM contest WHERE organiserID = '1' AND approvalStatus='approved';";
+                $sql_allContest = "SELECT contestId, contestName, contestImage, endDate, paidOrFree, price  FROM contest WHERE organiserID = '$organiserId' AND approvalStatus='approved';";
             }
             // delete row and predefined id use session
             $sql_allContestQuery = mysqli_query($con,$sql_allContest);
