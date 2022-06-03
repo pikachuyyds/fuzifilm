@@ -48,14 +48,14 @@
                         echo "</ul>";
                     ?>
                 </div>
-                <form method = "post">
+            </div>
+            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
+            <form method = "post">
                 <div class = "btn">
                     <a href="adminEditOrg.php?id=<?php echo $id; ?>" class="button"><img src="images\editbtn.png" alt="edit btn"></a>
                     <a href="deleteOrg.php?id=<?php echo $id ?>" class="button" onclick="return confirm('Do you really want to delete this organiser?')"><img src="images\removebtn.png" alt="remove btn"></a>
                 </div>
             </form>
-            </div>
-            <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
         </div>
 
         <div class = "userProfile">

@@ -72,7 +72,7 @@
                     <form method="POST">
                         <input type="text" value="<?php echo $rewardId; ?>" name="rewardId" value="rewardId" style="display: none;">
                         <?php
-                        $redeem = "<a href='reward_redeem.php?rewardId=". $rewardId ."' class='redeemBtn' style= color:white;'>redeem</a>";
+                        $redeem = "<a href='reward_redeem.php?rewardId=". $rewardId ."; ?>' class='redeemBtn' style= color:white;'>redeem</a>";
                         $redeemDisabled = "<div class='redeemBtn' style='background-color: #c2c2c2;'>redeem</div>";
                         if (isset($participantPoints)) 
                         {
