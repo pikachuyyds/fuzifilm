@@ -48,7 +48,7 @@
 
 <div class="d-flex justify-content-start"> <button class='backbutton' onclick="window.location.href='iframeAContestParticipantList.php?id=<?php echo $_GET['contestId'];?>'">Back</button></div>
 <div class="w-100">
-    <img class="iframeimg" src="uploads/<?php echo $participantPhoto;?>" alt="Italian Trulli">
+    <img class="iframeimg" src="<?php echo $participantPhoto;?>" alt="Italian Trulli">
 </div>
 <form method="post" name="markOrDisqualify"  ENCTYPE="multipart/form-data" >
     <div class="d-flex justify-content-center pt-5" id="markDiv">

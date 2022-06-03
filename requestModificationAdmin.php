@@ -17,7 +17,7 @@
 </head>
 <body>
 <?php 
-$sql ="SELECT * FROM contestdetailchangingrequest WHERE changingRequestID ='2'";
+$sql ="SELECT * FROM contestdetailchangingrequest WHERE changingRequestID ='$_GET[id]'";
 $result =mysqli_query($con, $sql);
 if (mysqli_num_rows($result)) {
     $row = mysqli_fetch_array($result);}
