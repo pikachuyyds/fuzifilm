@@ -7,6 +7,7 @@ $userType = 'organiser';
 $userData = mysqli_query($con, "SELECT * FROM $userType WHERE organiserID = '$id' ");
 $userResult = mysqli_fetch_array($userData);
 
+$organiserId = $userResult['organiserID'];
 $name = $userResult['name'];
 
 $profileUrl = "<a href = 'aOrgProfile.php?id=$id '> Personal Information </a>";
@@ -19,14 +20,14 @@ if ($userResult['profilePic'] === null){
     $pic = $userResult['profilePic'];
 }
 
-    if (isset ($_POST["month"], $_POST["year"]))
+if (isset ($_POST["month"], $_POST["year"]))
 {
     $month = $_POST["month"];
     $year = $_POST["year"];
     $contestId = [];
     
-    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$id' 
-                                        AND MONTH(startDate) = '$month' AND YEAR(startDate) = '$year'"); 
+    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$organiserId' 
+                                        AND MONTH(startDate) = '$month' AND YEAR(startDate) = '$year' AND approvalStatus='approved'"); 
     //only select contest created in specific month and year
     
     if (mysqli_num_rows($contestData) > 0){ //check whether has data
@@ -58,8 +59,8 @@ if ($userResult['profilePic'] === null){
     }
 
     if(count($contestId) >0){
-        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$id' 
-                                    AND contestId IN ('$contestIds') ");
+        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$organiserId' 
+                                    AND contestId IN ('$contestIds') AND receiver ='organiser'");
         if (mysqli_num_rows($payData) > 0){
             while ($payResult = mysqli_fetch_array($payData)){
                 $amount[] = $payResult["amount"];
@@ -73,7 +74,7 @@ if ($userResult['profilePic'] === null){
     }
 
 }else{ //if didnt set
-    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$id' ");
+    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$organiserId' AND approvalStatus='approved'");
     if (mysqli_num_rows($contestData) > 0){ //check whether has data
         while ($contestResult = mysqli_fetch_array($contestData)){
             $contestId[] = $contestResult["contestId"]; 
@@ -102,8 +103,8 @@ if ($userResult['profilePic'] === null){
     }
 
     if(count($contestId) >0){
-        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$id' 
-                                    AND contestId IN ('$contestIds') ");
+        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$organiserId' 
+                                    AND contestId IN ('$contestIds') AND receiver ='organiser'");
         if (mysqli_num_rows($payData) > 0){
             while ($payResult = mysqli_fetch_array($payData)){
                 $amount[] = $payResult["amount"];
@@ -140,19 +141,20 @@ if ($userResult['profilePic'] === null){
                         echo "</ul>";
                     ?>
                 </div>
+                <form method = "post">
+                    <div class = "btn">
+                        <a href="deleteOrg.php?id=<?php echo $id ?>" class="button" onclick="return confirm('Do you really want to delete this organiser?')"><img src="images\removebtn.png" alt="remove btn"></a>
+                    </div>
+                </form>
             </div>
             <div class="image"><img src="<?php echo $pic?>" alt="profile picture"></div>
-            <form method = "post">
-                <div class = "btn">
-                    <a href="deleteOrg.php?id=<?php echo $id ?>" class="button" onclick="return confirm('Do you really want to delete this organiser?')"><img src="images\removebtn.png" alt="remove btn"></a>
-                </div>
-            </form>
         </div>
 
         <div class = "orgReport">
             <p>REPORT</p>
             <div class = "data">
                 <form name = "selection" method = "POST" class = "selection" action = "<?php echo $_SERVER['PHP_SELF']; ?>" >
+                    <input type="hidden" name = "id" value="<?php echo $id; ?>">
                     <select class = "selectM" name = "month" >
                         <option value = "none" selected hidden disabled>Month</option>
                         <option value = "1" <?php if (isset($month) && $month=="1") echo "selected";?>>January</option>
@@ -170,7 +172,7 @@ if ($userResult['profilePic'] === null){
                     </select>
 
                     <span></span>
-
+                    
                     <select class = "selectY" name = "year" onchange = "selection.submit()">
                         <option value = "none" selected hidden disabled>Year</option>
                         <option value = "2021" <?php if (isset($year) && $year=="2021") echo "selected";?>>2021</option>
