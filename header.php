@@ -200,6 +200,7 @@
                                 <ul style="list-style-type:none;">
                                     <li class="togglerItem"><a href="reward_all.php">all rewards</a></li>
                                     <li class="togglerItem"><a href="reward_add.php">add new reward</a></li>
+                                    <li class="togglerItem"><a href="reward_viewAllReport.php">reward redeem history</a></li>
                                 </ul>
                             </li>
                         </ul>
