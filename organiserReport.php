@@ -29,7 +29,7 @@ if (isset ($_POST["month"], $_POST["year"]))
     $contestId = [];
     
     $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$organiserID' 
-                                        AND MONTH(startDate) = '$month' AND YEAR(startDate) = '$year'"); 
+                                        AND MONTH(startDate) = '$month' AND YEAR(startDate) = '$year' AND approvalStatus='approved'"); 
     //only select contest created in specific month and year
     
     if (mysqli_num_rows($contestData) > 0){ //check whether has data
@@ -61,7 +61,7 @@ if (isset ($_POST["month"], $_POST["year"]))
     }
 
     if(count($contestId) >0){
-        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$_SESSION[loginId]' 
+        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$organiserID' 
                                     AND contestId IN ('$contestIds') ");
         if (mysqli_num_rows($payData) > 0){
             while ($payResult = mysqli_fetch_array($payData)){
@@ -76,7 +76,7 @@ if (isset ($_POST["month"], $_POST["year"]))
     }
 
 }else{ //if didnt set
-    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$_SESSION[loginId]' ");
+    $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$organiserID' AND approvalStatus='approved' ");
     if (mysqli_num_rows($contestData) > 0){ //check whether has data
         while ($contestResult = mysqli_fetch_array($contestData)){
             $contestId[] = $contestResult["contestId"]; 
@@ -89,7 +89,7 @@ if (isset ($_POST["month"], $_POST["year"]))
     }
 
     if (count($contestId) >0){ //check whether has contest
-        $parListData = mysqli_query($con, "SELECT * FROM participantlist WHERE contestId IN ('$contestIds') ");
+        $parListData = mysqli_query($con, "SELECT * FROM participantlist WHERE contestId IN ('$contestIds')  ");
         if (mysqli_num_rows($parListData) > 0){
             while ($parListResult = mysqli_fetch_array($parListData)){
                 $joinedId[] = $parListResult["participantId"];
@@ -105,8 +105,7 @@ if (isset ($_POST["month"], $_POST["year"]))
     }
 
     if(count($contestId) >0){
-        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$_SESSION[loginId]' 
-                                    AND contestId IN ('$contestIds') ");
+        $payData = mysqli_query($con, "SELECT * FROM paymentRecord WHERE organiserID = '$organiserID' AND contestId IN ('$contestIds') ");
         if (mysqli_num_rows($payData) > 0){
             while ($payResult = mysqli_fetch_array($payData)){
                 $amount[] = $payResult["amount"];

@@ -24,7 +24,7 @@ if (isset($_SESSION['loginId'])){
 
     //for conducted contest
     $conductedData = mysqli_query($con, "SELECT * FROM contest WHERE DATE(endDate)<DATE(NOW()) 
-                                        AND organiserID = '$id' ");
+                                        AND organiserID = '$id' approvalStatus=='past' ");
     while ($conductedResult = mysqli_fetch_array($conductedData)){
         $conductedId[] = $conductedResult["contestId"];
         $conductedName[] = $conductedResult["contestName"];
@@ -32,7 +32,7 @@ if (isset($_SESSION['loginId'])){
 
     //for ongoing contest
     $ongoingData = mysqli_query($con, "SELECT * FROM contest WHERE DATE(endDate)>=DATE(NOW())
-                                        AND organiserID = '$id'");
+                                        AND organiserID = '$id' AND approvalStatus=='approved' ");
     while ($ongoingResult = mysqli_fetch_array($ongoingData)){
         $ongoingId[] = $ongoingResult["contestId"];
         $ongoingName[] = $ongoingResult["contestName"];
