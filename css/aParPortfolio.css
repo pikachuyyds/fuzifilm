@@ -63,6 +63,7 @@
 .headerSection .btn{
     margin-left: 8%;
     margin-top: 30px;
+    display: flex;
 }
 
 .headerSection .btn .button {
