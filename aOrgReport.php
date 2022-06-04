@@ -20,10 +20,10 @@ if ($userResult['profilePic'] === null){
     $pic = $userResult['profilePic'];
 }
 
-if (isset ($_POST["month"], $_POST["year"]))
+if (isset ($_GET["month"], $_GET["year"]))
 {
-    $month = $_POST["month"];
-    $year = $_POST["year"];
+    $month = $_GET["month"];
+    $year = $_GET["year"];
     $contestId = [];
     
     $contestData = mysqli_query($con, "SELECT * FROM contest WHERE organiserID = '$organiserId' 
@@ -153,7 +153,7 @@ if (isset ($_POST["month"], $_POST["year"]))
         <div class = "orgReport">
             <p>REPORT</p>
             <div class = "data">
-                <form name = "selection" method = "POST" class = "selection" action = "<?php echo $_SERVER['PHP_SELF']; ?>" >
+                <form name = "selection" method = "GET" class = "selection" action = "<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $id?>" >
                     <input type="hidden" name = "id" value="<?php echo $id; ?>">
                     <select class = "selectM" name = "month" >
                         <option value = "none" selected hidden disabled>Month</option>
