@@ -340,7 +340,7 @@
         
         // <!--------------------------------------------- contest part 4 (announced) ---------------------------------------------->
 
-            echo "<iframe class='iframeContainer' id='aContestIframe' src='iframeAContestWinnerList.php?id=<?php echo $_GET[id];?>'  frameBorder='0' title='Click to view more information'></iframe></script>";
+            echo "<iframe class='iframeContainer' id='aContestIframe' src='iframeAContestWinnerList.php?id=$_GET[id]'  frameBorder='0' title='Click to view more information'></iframe></script>";
 
         }
     ?>
