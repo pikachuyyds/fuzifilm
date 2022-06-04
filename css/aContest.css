@@ -199,7 +199,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 90px;
+    margin: 90px 0;
 }
 
 .btnContainer .price {
