@@ -31,7 +31,7 @@
         <?php
             require "conn.php";
             if ($_SESSION['userType']=='admin'){
-                $sql_allContest = "SELECT contestId, contestName, contestImage, endDate, paidOrFree, price  FROM contest WHERE approvalStatus='approved';";
+                $sql_allContest = "SELECT contestId, contestName, contestImage, endDate, paidOrFree, price  FROM contest WHERE approvalStatus='approved' AND approvalStatus='past';";
             }elseif($_SESSION['userType']=='organiser'){
                 // get organiser information from database
                 $sql_organiser = "SELECT organiserID FROM organiser WHERE loginId = '$_SESSION[loginId]';";
@@ -39,7 +39,7 @@
                 $organiserInfo = mysqli_fetch_array($sql_organiserQuery);
                 // organiser information
                 $organiserId = $organiserInfo['organiserID'];
-                $sql_allContest = "SELECT contestId, contestName, contestImage, endDate, paidOrFree, price  FROM contest WHERE organiserID = '$organiserId' AND approvalStatus='approved';";
+                $sql_allContest = "SELECT contestId, contestName, contestImage, endDate, paidOrFree, price  FROM contest WHERE organiserID = '$organiserId' AND approvalStatus='approved'AND approvalStatus='past';";
             }
             // delete row and predefined id use session
             $sql_allContestQuery = mysqli_query($con,$sql_allContest);
