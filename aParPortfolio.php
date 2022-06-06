@@ -54,7 +54,6 @@
                 </div>
                 <form method = "post">
                     <div class = "btn">
-                        <a href="adminEditPar.php?id=<?php echo $id; ?>" class="button"><img src="images\editbtn.png" alt="edit btn"></a>
                         <a href="deletePar.php?id=<?php echo $id ?>" class="button" onclick="return confirm('Do you really want to delete this participant?')"><img src="images\removebtn.png" alt="remove btn"></a>
                     </div>
                 </form>
