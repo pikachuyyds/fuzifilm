@@ -41,21 +41,12 @@
         </div>
 
         <!---------------------------------------------- home 3 ---------------------------------------------->
-
-        <div class="home3">
-            <div class="home3Title">Redeem Reward</div>
-            <div class="home3Text">use your points to redeem the available items you want</div>
-            <iframe src="home_items.php" height="560px" width="80%" scrolling="yes" title="reward items" frameborder="0"></iframe>
-            <a href="#reward"><div>Learn more</div></a>
-        </div>
-
-        <!---------------------------------------------- home 4 ---------------------------------------------->
         
         <div class="home4">
             <div class="contentDetails">
                 <div class="home4Title">
                     <h2>Contact us</h2>
-                    <p>"contact us description ........."</p>
+                    <p>"feel free to contact us if you need any help"</p>
                 </div>
                 <div class="home4Content">
                     <div class="phoneBox">+6019-47980223</div>
