@@ -96,11 +96,11 @@
                 <div class="contentInfo"><?php echo $status ?></div>
                 <div class="contentInfo">
                     <div class="img">
-                        <img src="<?php echo $uploads . $image ?>" alt="contest img">
+                        <img src="<?php echo $uploads . $image; ?>" alt="contest img">
                     </div>
                 </div>
-                <div class="contentInfo"><?php echo $name ?></div>
-                <div class="contentInfo"><?php echo $requiredPrice ?></div>
+                <div class="contentInfo"><?php echo $name; ?></div>
+                <div class="contentInfo"><?php echo $requiredPrice; ?></div>
             </div></a>
         <?php } ?>
         
