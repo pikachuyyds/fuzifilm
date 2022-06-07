@@ -39,7 +39,7 @@
                 $organiserInfo = mysqli_fetch_array($sql_organiserQuery);
                 // organiser information
                 $organiserId = $organiserInfo['organiserID'];
-                $sql_allContest = "SELECT contestId, contestName, contestImage, endDate, paidOrFree, price  FROM contest WHERE organiserID = '$organiserId' AND approvalStatus='approved'OR approvalStatus='past';";
+                $sql_allContest = "SELECT contestId, contestName, contestImage, endDate, paidOrFree, price  FROM contest WHERE organiserID = '$organiserId' AND approvalStatus='approved'OR approvalStatus='past' AND organiserID = '$organiserId';";
             }
             // delete row and predefined id use session
             $sql_allContestQuery = mysqli_query($con,$sql_allContest);
